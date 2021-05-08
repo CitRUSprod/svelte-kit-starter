@@ -1,0 +1,4 @@
+.svelte-kit
+.vscode
+dist
+node_modules
