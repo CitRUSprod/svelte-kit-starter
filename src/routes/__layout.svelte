@@ -2,16 +2,16 @@
 
 <style lang="scss" global>
     * {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: "Arial", "Helvetica", sans-serif;
     }
 
     :root,
-    body,
     #svelte {
         height: 100%;
     }
 
     body {
+        height: 100%;
         margin: 0;
         padding: 0;
     }
