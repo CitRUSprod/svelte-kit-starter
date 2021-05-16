@@ -4,14 +4,13 @@ importers:
 
   .:
     specifiers:
-      '@citrus-linting/eslint-config': 0.2.0
+      '@citrus-linting/eslint-config': 0.4.0
       '@citrus-linting/prettier-config': 0.2.0
       '@citrus-linting/stylelint-config': 0.1.0
       '@sveltejs/adapter-node': 1.0.0-next.20
       '@sveltejs/kit': 1.0.0-next.107
       '@typescript-eslint/eslint-plugin': 4.23.0
       '@typescript-eslint/parser': 4.23.0
-      bootstrap: 5.0.1
       eslint: 7.26.0
       eslint-config-prettier: 8.3.0
       eslint-plugin-svelte3: 3.2.0
@@ -28,10 +27,9 @@ importers:
       sveltestrap: 5.0.2
       typescript: 4.2.4
     dependencies:
-      bootstrap: 5.0.1
       sveltestrap: 5.0.2_svelte@3.38.2
     devDependencies:
-      '@citrus-linting/eslint-config': 0.2.0
+      '@citrus-linting/eslint-config': 0.4.0
       '@citrus-linting/prettier-config': 0.2.0
       '@citrus-linting/stylelint-config': 0.1.0
       '@sveltejs/adapter-node': 1.0.0-next.20
@@ -252,8 +250,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@citrus-linting/eslint-config/0.2.0:
-    resolution: {integrity: sha512-QqdKZuJoP5hqdkTSeG4XNU7tecPw48wzyQ/FkPL6f8qO9PQQzQldGFGzn0pbfWswetzmpgyxM0zA502TK21jJg==}
+  /@citrus-linting/eslint-config/0.4.0:
+    resolution: {integrity: sha512-z5j0iaryPT39Py3xORw+Y379omIhXxdYS9VXNOxSeoWGz98pwCcG9oXologbdzg597XV4psH8xkFYvs/doYVYw==}
     dev: true
 
   /@citrus-linting/prettier-config/0.2.0:
@@ -666,12 +664,6 @@ packages:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
     dev: true
-
-  /bootstrap/5.0.1:
-    resolution: {integrity: sha512-Fl79+wsLOZKoiU345KeEaWD0ik8WKRI5zm0YSPj2oF1Qr+BO7z0fco6GbUtqjoG1h4VI89PeKJnMsMMVQdKKTw==}
-    peerDependencies:
-      '@popperjs/core': ^2.9.2
-    dev: false
 
   /brace-expansion/1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}

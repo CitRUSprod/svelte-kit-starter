@@ -4,6 +4,10 @@
     let count = 0
 </script>
 
+<svelte:head>
+    <title>Home</title>
+</svelte:head>
+
 <div class="center">
     <Card>
         <CardHeader>
