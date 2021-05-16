@@ -30,6 +30,10 @@
     "stylelint": {
         "extends": "./configs/stylelint/index.cjs"
     },
+    "dependencies": {
+        "bootstrap": "5.0.1",
+        "sveltestrap": "5.0.2"
+    },
     "devDependencies": {
         "@citrus-linting/eslint-config": "0.2.0",
         "@citrus-linting/prettier-config": "0.2.0",

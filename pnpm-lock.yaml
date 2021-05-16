@@ -11,6 +11,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.107
       '@typescript-eslint/eslint-plugin': 4.23.0
       '@typescript-eslint/parser': 4.23.0
+      bootstrap: 5.0.1
       eslint: 7.26.0
       eslint-config-prettier: 8.3.0
       eslint-plugin-svelte3: 3.2.0
@@ -24,7 +25,11 @@ importers:
       svelte: 3.38.2
       svelte-check: 1.5.4
       svelte-preprocess: 4.7.3
+      sveltestrap: 5.0.2
       typescript: 4.2.4
+    dependencies:
+      bootstrap: 5.0.1
+      sveltestrap: 5.0.2_svelte@3.38.2
     devDependencies:
       '@citrus-linting/eslint-config': 0.2.0
       '@citrus-linting/prettier-config': 0.2.0
@@ -296,6 +301,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.4
       fastq: 1.11.0
     dev: true
+
+  /@popperjs/core/2.9.2:
+    resolution: {integrity: sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==}
+    dev: false
 
   /@rollup/pluginutils/4.1.0:
     resolution: {integrity: sha512-TrBhfJkFxA+ER+ew2U2/fHbebhLT/l/2pRk0hfj9KusXUuRXd2v0R58AfaZK9VXDQ4TogOSEmICVrQAA3zFnHQ==}
@@ -657,6 +666,12 @@ packages:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
     dev: true
+
+  /bootstrap/5.0.1:
+    resolution: {integrity: sha512-Fl79+wsLOZKoiU345KeEaWD0ik8WKRI5zm0YSPj2oF1Qr+BO7z0fco6GbUtqjoG1h4VI89PeKJnMsMMVQdKKTw==}
+    peerDependencies:
+      '@popperjs/core': ^2.9.2
+    dev: false
 
   /brace-expansion/1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
@@ -2493,6 +2508,15 @@ packages:
     resolution: {integrity: sha512-q5Dq0/QHh4BLJyEVWGe7Cej5NWs040LWjMbicBGZ+3qpFWJ1YObRmUDZKbbovddLC9WW7THTj3kYbTOFmU9fbg==}
     engines: {node: '>= 8'}
     dev: true
+
+  /sveltestrap/5.0.2_svelte@3.38.2:
+    resolution: {integrity: sha512-tCGTTLtQ0hl6w7dOlCI3HJSo7Q4N0kZ147GlILiX8dhQrti0stKl7339ylsiO4MppUwLaSZMA81GTzKKl3wNiw==}
+    peerDependencies:
+      svelte: ^3.29.0
+    dependencies:
+      '@popperjs/core': 2.9.2
+      svelte: 3.38.2
+    dev: false
 
   /svg-tags/1.0.0:
     resolution: {integrity: sha1-WPcc7jvVGbWdSyqEO2x95krAR2Q=}
