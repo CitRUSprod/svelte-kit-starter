@@ -1,28 +1,25 @@
 <script lang="ts">
-    import { ThePageProgressBar, TheHeader } from "./_components"
+    import { ThePageProgressBar, TheHeader, TheContent } from "./_components"
 </script>
 
 <ThePageProgressBar />
 <TheHeader />
-<main>
+<TheContent>
     <slot />
-</main>
+</TheContent>
 
-<style lang="scss">
-    $measure: 4px;
+<style lang="scss" global>
+    @import "vars";
+    @import "bootstrap/scss/bootstrap";
 
-    :global(body, #svelte) {
+    body,
+    #svelte {
         display: flex;
         flex-direction: column;
         height: 100%;
     }
 
-    :global(:root) {
+    :root {
         height: 100%;
-    }
-
-    main {
-        flex-grow: 1;
-        padding: $measure * 5;
     }
 </style>

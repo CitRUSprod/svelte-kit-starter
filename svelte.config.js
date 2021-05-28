@@ -3,7 +3,11 @@ import node from "@sveltejs/adapter-node"
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
-    preprocess: preprocess(),
+    preprocess: preprocess({
+        scss: {
+            includePaths: ["src/lib/styles"]
+        }
+    }),
     kit: {
         adapter: node({ out: "dist" })
     }
