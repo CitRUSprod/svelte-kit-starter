@@ -1,16 +1,16 @@
 <script lang="ts">
-    import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "sveltestrap"
-
     const pages = [1, 2, 3, 4]
 </script>
 
-<Navbar color="primary" dark>
-    <NavbarBrand>SvelteKit Template</NavbarBrand>
-    <Nav>
+<div class="bg-neutral shadow-lg text-neutral-content mb-2 navbar">
+    <div class="flex-none mx-2 px-2">
+        <a class="font-bold text-lg" href="/">SvelteKit Template</a>
+    </div>
+    <div class="flex-1 justify-end mx-2 px-2">
         {#each pages as page}
-            <NavItem>
-                <NavLink class="text-white" href="{`/page/${page}`}">Page {page}</NavLink>
-            </NavItem>
+            <a class="rounded-btn btn btn-ghost btn-sm" href="{`/page/${page}`}">
+                Page {page}
+            </a>
         {/each}
-    </Nav>
-</Navbar>
+    </div>
+</div>

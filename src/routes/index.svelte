@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Card, CardHeader, CardBody, CardTitle } from "sveltestrap/src"
+    import { Button } from "$lib/components"
 
     let count = 0
 </script>
@@ -8,24 +8,13 @@
     <title>Home</title>
 </svelte:head>
 
-<div class="center">
-    <Card>
-        <CardHeader>
-            <CardTitle>SvelteKit Template</CardTitle>
-        </CardHeader>
-        <CardBody class="text-center">
-            <Button color="success" on:click="{() => count++}">
+<div class="flex justify-center items-center h-full">
+    <div class="border-primary rounded-lg border text-center p-8">
+        <h1 class="text-4xl">SvelteKit Template</h1>
+        <div class="flex justify-center mt-5">
+            <Button color="primary" outlined on:click="{() => count++}">
                 Clicked: {count}
             </Button>
-        </CardBody>
-    </Card>
+        </div>
+    </div>
 </div>
-
-<style lang="scss">
-    .center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-    }
-</style>

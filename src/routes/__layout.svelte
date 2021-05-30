@@ -8,18 +8,6 @@
     <slot />
 </TheContent>
 
-<style lang="scss" global>
-    @import "vars";
-    @import "bootstrap/scss/bootstrap";
-
-    body,
-    #svelte {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-
-    :root {
-        height: 100%;
-    }
+<style lang="postcss" global>
+    @import "tailwindcss/tailwind";
 </style>

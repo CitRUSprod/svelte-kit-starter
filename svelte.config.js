@@ -4,9 +4,7 @@ import node from "@sveltejs/adapter-node"
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
     preprocess: preprocess({
-        scss: {
-            includePaths: ["src/lib/styles"]
-        }
+        postcss: true
     }),
     kit: {
         adapter: node({ out: "dist" })

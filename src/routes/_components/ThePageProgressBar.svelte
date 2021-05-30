@@ -17,18 +17,12 @@
     $: watchForChanging(!!$navigating)
 </script>
 
-<style lang="scss" global>
+<style lang="postcss" global>
     #nprogress {
-        pointer-events: none;
+        @apply pointer-events-none;
 
         .bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #09b42e;
-            z-index: 1000;
+            @apply fixed top-0 left-0 w-full h-[2px] bg-green-500 z-[1000];
         }
     }
 </style>

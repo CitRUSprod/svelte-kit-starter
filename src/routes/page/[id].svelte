@@ -15,4 +15,4 @@
     <title>Page {id}</title>
 </svelte:head>
 
-<h1>Page {id}</h1>
+<h1 class="text-4xl">Page {id}</h1>

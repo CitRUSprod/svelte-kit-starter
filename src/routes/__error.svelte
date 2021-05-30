@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-    import { Button } from "sveltestrap/src"
+    import { Button } from "$lib/components"
 
     export let error: Error
     export let status: number
@@ -17,8 +17,17 @@
     <title>Error {status}</title>
 </svelte:head>
 
-<h1>Error {status}</h1>
-<h2>{error.message}</h2>
-<div>
-    <Button color="primary" href="/">Go Home</Button>
+<div class="flex justify-center items-center h-full">
+    <div class="border-error rounded-lg border text-center p-8">
+        <h1 class="text-4xl">Error {status}</h1>
+        <h1 class="text-2xl">{error.message}</h1>
+        <div class="flex justify-center mt-5">
+            <Button
+                class="border-error text-error hover:bg-error hover:border-error"
+                color="error"
+                href="/"
+                outlined>Go Home</Button
+            >
+        </div>
+    </div>
 </div>
