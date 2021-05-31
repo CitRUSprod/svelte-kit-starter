@@ -1,4 +1,10 @@
 <script lang="ts">
+    import FaIcon from "svelte-fa"
+
+    import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons"
+    import { theme } from "$lib/stores"
+
+    const { dark } = theme
     const pages = [1, 2, 3, 4]
 </script>
 
@@ -12,5 +18,8 @@
                 Page {page}
             </a>
         {/each}
+        <button class="rounded-btn btn btn-ghost btn-sm" on:click="{theme.toggle}">
+            <FaIcon icon="{$dark ? faMoon : faSun}" />
+        </button>
     </div>
 </div>

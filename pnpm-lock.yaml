@@ -4,7 +4,7 @@ importers:
 
   .:
     specifiers:
-      '@citrus-linting/eslint-config': 0.7.0
+      '@citrus-linting/eslint-config': 0.8.0
       '@citrus-linting/prettier-config': 0.2.0
       '@citrus-linting/stylelint-config': 0.2.0
       '@fortawesome/free-solid-svg-icons': 5.15.3
@@ -37,7 +37,7 @@ importers:
       nprogress: 0.2.0
       svelte-fa: 2.2.0
     devDependencies:
-      '@citrus-linting/eslint-config': 0.7.0
+      '@citrus-linting/eslint-config': 0.8.0
       '@citrus-linting/prettier-config': 0.2.0
       '@citrus-linting/stylelint-config': 0.2.0
       '@sveltejs/adapter-node': 1.0.0-next.23_@sveltejs+kit@1.0.0-next.111
@@ -262,8 +262,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@citrus-linting/eslint-config/0.7.0:
-    resolution: {integrity: sha512-XejQGqUSvJQbOgEiKWC3wm+t8JIdrk4X9JiJzXPp+gsA08vEt2ywtR4DvuAdbwDnEuqv7QepSdDkxB/9ZM9uhQ==}
+  /@citrus-linting/eslint-config/0.8.0:
+    resolution: {integrity: sha512-Mza1Brl1IX3j5wZvfsGJm5PQK+DCgRc2dC0Y2K9n+yhVQXXRZPkYFa+p1UJjkF3Lq8fwhX7Un2WFRhHZBFQbaA==}
     dev: true
 
   /@citrus-linting/prettier-config/0.2.0:

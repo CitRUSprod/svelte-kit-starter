@@ -1,5 +1,12 @@
 <script lang="ts">
     import { ThePageProgressBar, TheHeader, TheContent } from "./_components"
+
+    import { browser } from "$app/env"
+    import { theme } from "$lib/stores"
+
+    if (browser) {
+        theme.sync()
+    }
 </script>
 
 <ThePageProgressBar />
