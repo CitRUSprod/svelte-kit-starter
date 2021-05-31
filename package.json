@@ -2,9 +2,9 @@
     "name": "svelte-kit-template",
     "type": "module",
     "scripts": {
-        "dev": "svelte-kit dev",
+        "dev": "svelte-kit dev -p 6600",
         "build": "svelte-kit build",
-        "start": "node dist",
+        "start": "PORT=6600 node dist",
         "validate": "tsc --noEmit && svelte-check",
         "prettier": "prettier --check",
         "prettier:fix": "pnpm prettier -- --write",
