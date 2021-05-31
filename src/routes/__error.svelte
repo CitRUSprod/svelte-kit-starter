@@ -23,11 +23,11 @@
         <h1 class="text-2xl">{error.message}</h1>
         <div class="flex justify-center mt-5">
             <Button
-                class="border-error text-error hover:bg-error hover:border-error"
-                color="error"
+                class="btn-error btn-outline border-error text-error hover:bg-error hover:border-error"
                 href="/"
-                outlined>Go Home</Button
             >
+                Go Home
+            </Button>
         </div>
     </div>
 </div>

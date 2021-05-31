@@ -1,5 +1,6 @@
 <script lang="ts">
     import FaIcon from "svelte-fa"
+    import { Button } from "$lib/components"
 
     import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons"
     import { theme } from "$lib/stores"
@@ -14,12 +15,12 @@
     </div>
     <div class="flex-1 justify-end mx-2 px-2">
         {#each pages as page}
-            <a class="rounded-btn btn btn-ghost btn-sm" href="{`/page/${page}`}">
+            <Button class="rounded-btn btn-ghost btn-sm" href="{`/page/${page}`}">
                 Page {page}
-            </a>
+            </Button>
         {/each}
-        <button class="rounded-btn btn btn-ghost btn-sm" on:click="{theme.toggle}">
-            <FaIcon icon="{$dark ? faMoon : faSun}" />
-        </button>
+        <Button class="rounded-btn btn-ghost btn-sm" on:click="{theme.toggle}">
+            <FaIcon icon="{$dark ? faSun : faMoon}" />
+        </Button>
     </div>
 </div>
