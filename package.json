@@ -41,6 +41,7 @@
         "@citrus-linting/stylelint-config": "0.2.0",
         "@sveltejs/adapter-node": "1.0.0-next.23",
         "@sveltejs/kit": "1.0.0-next.111",
+        "@types/node": "15.6.1",
         "@types/nprogress": "0.2.0",
         "@typescript-eslint/eslint-plugin": "4.25.0",
         "@typescript-eslint/parser": "4.25.0",
