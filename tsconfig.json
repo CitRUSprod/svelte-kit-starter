@@ -1,18 +1,20 @@
 {
     "compilerOptions": {
         "moduleResolution": "node",
-        "module": "esnext",
         "target": "es2019",
+        "module": "esnext",
         "strict": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "importsNotUsedAsValues": "error",
         "isolatedModules": true,
         "resolveJsonModule": true,
         "sourceMap": true,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
-        "baseUrl": ".",
+        "baseUrl": "src",
         "paths": {
-            "$lib/*": ["src/lib/*"]
+            "$lib/*": ["lib/*"]
         }
     },
     "include": ["src/**/*"]

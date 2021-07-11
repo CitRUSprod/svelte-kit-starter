@@ -1,14 +1,16 @@
 {
     "name": "svelte-kit-template",
+    "private": true,
     "type": "module",
     "scripts": {
         "dev": "svelte-kit dev -p 6600",
         "build": "svelte-kit build",
         "start": "PORT=6600 node dist",
         "validate": "tsc --noEmit && svelte-check",
+        "git:commit": "git-cz",
         "prettier": "prettier --check",
         "prettier:fix": "pnpm prettier -- --write",
-        "prettier:all": "pnpm prettier -- \"**/*.{html,md,json,yml,yaml,js,cjs,ts,svelte}\"",
+        "prettier:all": "pnpm prettier -- \"**/*.{html,md,json,yml,js,cjs,ts,svelte}\"",
         "prettier:fix:all": "pnpm prettier:all -- --write",
         "stylelint": "stylelint --color",
         "stylelint:fix": "pnpm stylelint -- --fix",
@@ -21,7 +23,22 @@
         "eslint:all": "pnpm eslint:all:scripts && pnpm eslint:all:svelte",
         "eslint:fix:all": "pnpm eslint:all:scripts -- --fix && pnpm eslint:all:svelte -- --fix",
         "lint": "pnpm prettier:all && pnpm stylelint:all && pnpm eslint:all",
-        "format": "pnpm prettier:fix:all && pnpm stylelint:fix:all && pnpm eslint:fix:all"
+        "format": "pnpm prettier:fix:all && pnpm stylelint:fix:all && pnpm eslint:fix:all",
+        "ci": "pnpm validate && pnpm lint",
+        "prepare": "husky install"
+    },
+    "lint-staged": {
+        "*.{html,md,json,yml,js,cjs,ts,svelte}": "pnpm prettier:fix",
+        "*.svelte": "pnpm stylelint:fix",
+        "*.{js,cjs,ts,svelte}": "pnpm eslint:fix"
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-customizable"
+        },
+        "cz-customizable": {
+            "config": "./configs/commits/commitizen.cjs"
+        }
     },
     "prettier": "./configs/prettier/index.cjs",
     "eslintConfig": {
@@ -33,34 +50,41 @@
     "dependencies": {
         "@fortawesome/free-solid-svg-icons": "5.15.3",
         "nprogress": "0.2.0",
-        "svelte-fa": "2.2.0"
+        "svelte-fa": "2.2.1"
     },
     "devDependencies": {
-        "@citrus-linting/eslint-config": "0.8.0",
+        "@citrus-linting/eslint-config": "0.15.0",
         "@citrus-linting/prettier-config": "0.2.0",
         "@citrus-linting/stylelint-config": "0.2.0",
-        "@sveltejs/adapter-node": "1.0.0-next.23",
-        "@sveltejs/kit": "1.0.0-next.111",
-        "@types/node": "15.6.1",
+        "@commitlint/cli": "12.1.4",
+        "@sveltejs/adapter-node": "1.0.0-next.32",
+        "@sveltejs/kit": "1.0.0-next.124",
+        "@types/node": "16.3.1",
         "@types/nprogress": "0.2.0",
-        "@typescript-eslint/eslint-plugin": "4.25.0",
-        "@typescript-eslint/parser": "4.25.0",
-        "daisyui": "1.3.0",
-        "eslint": "7.27.0",
+        "@typescript-eslint/eslint-plugin": "4.28.2",
+        "@typescript-eslint/parser": "4.28.2",
+        "commitizen": "4.2.4",
+        "cz-customizable": "6.3.0",
+        "daisyui": "1.8.0",
+        "eslint": "7.30.0",
         "eslint-config-prettier": "8.3.0",
         "eslint-plugin-svelte3": "3.2.0",
-        "postcss": "8.3.0",
-        "postcss-load-config": "3.0.1",
+        "husky": "7.0.1",
+        "inquirer": "8.1.1",
+        "lint-staged": "11.0.0",
+        "postcss": "8.3.5",
+        "postcss-load-config": "3.1.0",
         "postcss-nested": "5.0.5",
-        "prettier": "2.3.0",
+        "prettier": "2.3.2",
         "prettier-plugin-packagejson": "2.2.11",
-        "prettier-plugin-svelte": "2.3.0",
+        "prettier-plugin-svelte": "2.3.1",
         "stylelint": "13.13.1",
         "stylelint-config-prettier": "8.0.2",
-        "svelte": "3.38.2",
-        "svelte-check": "2.0.0",
-        "svelte-preprocess": "4.7.3",
-        "tailwindcss": "2.1.2",
-        "typescript": "4.3.2"
+        "svelte": "3.38.3",
+        "svelte-check": "2.2.2",
+        "svelte-preprocess": "4.7.4",
+        "tailwindcss": "2.2.4",
+        "type-fest": "1.2.2",
+        "typescript": "4.3.5"
     }
 }

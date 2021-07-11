@@ -11,7 +11,7 @@
 
 <div class="bg-neutral shadow-lg text-neutral-content mb-2 navbar">
     <div class="flex-none mx-2 px-2">
-        <a class="font-bold text-lg" href="/">SvelteKit Template</a>
+        <a class="font-bold text-lg" href="/">{import.meta.env.VITE_TITLE}</a>
     </div>
     <div class="flex-1 justify-end mx-2 px-2">
         {#each pages as page}

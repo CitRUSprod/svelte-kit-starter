@@ -1,0 +1,20 @@
+language: node_js
+
+node_js:
+    - 16.4.2
+
+cache:
+    npm: false
+    directories:
+        - ~/.pnpm-store
+
+before_install:
+    - npm i -g pnpm
+    - pnpm config set store-dir ~/.pnpm-store
+
+install:
+    - pnpm i
+    - pnpm build
+
+script:
+    - pnpm ci

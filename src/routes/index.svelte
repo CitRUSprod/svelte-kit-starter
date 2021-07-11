@@ -10,7 +10,7 @@
 
 <div class="flex justify-center items-center h-full">
     <div class="border-primary rounded-lg border text-center p-8">
-        <h1 class="text-4xl">SvelteKit Template</h1>
+        <h1 class="text-4xl">{import.meta.env.VITE_TITLE}</h1>
         <div class="flex justify-center mt-5">
             <Button class="btn-primary btn-outline" on:click="{() => count++}">
                 Clicked: {count}
