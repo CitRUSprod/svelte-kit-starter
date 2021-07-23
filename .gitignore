@@ -1,5 +1,6 @@
 .env
 .svelte-kit
 .vscode
+*.log
 dist
 node_modules
