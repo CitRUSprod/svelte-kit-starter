@@ -4,6 +4,7 @@
     export let loading = false
 
     let klass = ""
+
     export { klass as class }
 </script>
 
