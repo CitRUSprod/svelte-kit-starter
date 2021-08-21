@@ -1,6 +1,3 @@
-const path = require("path")
-const fs = require("fs")
-
 const types = {
     feat: "A new feature",
     fix: "A bug fix",
@@ -15,22 +12,4 @@ const types = {
     revert: "Reverts a previous commit"
 }
 
-function getRootPath(...pathParts) {
-    return path.join(__dirname, "../..", ...pathParts)
-}
-
-function getScopes(...pathParts) {
-    const scopesPath = getRootPath(...pathParts)
-
-    if (fs.existsSync(scopesPath)) {
-        const filesAndFolders = fs.readdirSync(scopesPath)
-        const scopes = filesAndFolders.filter(item =>
-            fs.statSync(getRootPath(...pathParts, item)).isDirectory()
-        )
-        return scopes
-    }
-
-    return []
-}
-
-module.exports = { types, getScopes }
+module.exports = { types }

@@ -15,12 +15,12 @@
     </div>
     <div class="flex-1 justify-end mx-2 px-2">
         {#each pages as page}
-            <Button class="rounded-btn btn-ghost btn-sm" href="{`/page/${page}`}">
+            <Button class="rounded-btn btn-ghost btn-sm" href={`/page/${page}`}>
                 Page {page}
             </Button>
         {/each}
-        <Button class="rounded-btn btn-ghost btn-sm" on:click="{theme.toggle}">
-            <FaIcon icon="{$dark ? faSun : faMoon}" />
+        <Button class="rounded-btn btn-ghost btn-sm" on:click={theme.toggle}>
+            <FaIcon icon={$dark ? faSun : faMoon} />
         </Button>
     </div>
 </div>

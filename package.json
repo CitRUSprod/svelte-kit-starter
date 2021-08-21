@@ -8,29 +8,22 @@
         "start": "PORT=6600 node dist",
         "validate": "tsc --noEmit && svelte-check",
         "git:commit": "git-cz",
-        "prettier": "prettier --check",
-        "prettier:fix": "pnpm prettier -- --write",
-        "prettier:all": "pnpm prettier -- \"**/*.{html,md,json,yml,js,cjs,ts,svelte}\"",
-        "prettier:fix:all": "pnpm prettier:all -- --write",
         "stylelint": "stylelint --color",
         "stylelint:fix": "pnpm stylelint -- --fix",
-        "stylelint:all": "pnpm stylelint -- **/*.svelte",
+        "stylelint:all": "pnpm stylelint -- \"**/*.svelte\"",
         "stylelint:fix:all": "pnpm stylelint:all -- --fix",
         "eslint": "eslint --color",
         "eslint:fix": "pnpm eslint -- --fix",
-        "eslint:all:scripts": "pnpm eslint -- \"**/*.{js,cjs,ts}\"",
-        "eslint:all:svelte": "pnpm eslint -- \"**/*.svelte\"",
-        "eslint:all": "pnpm eslint:all:scripts && pnpm eslint:all:svelte",
-        "eslint:fix:all": "pnpm eslint:all:scripts -- --fix && pnpm eslint:all:svelte -- --fix",
-        "lint": "pnpm prettier:all && pnpm stylelint:all && pnpm eslint:all",
-        "format": "pnpm prettier:fix:all && pnpm stylelint:fix:all && pnpm eslint:fix:all",
+        "eslint:all": "pnpm eslint -- \"**/*.{md,json,y?(a)ml,?(c)js,ts,svelte}\"",
+        "eslint:fix:all": "pnpm eslint:all -- --fix",
+        "lint": "pnpm stylelint:all && pnpm eslint:all",
+        "format": "pnpm stylelint:fix:all && pnpm eslint:fix:all",
         "ci": "pnpm validate && pnpm lint",
         "prepare": "husky install"
     },
     "lint-staged": {
-        "*.{html,md,json,yml,js,cjs,ts,svelte}": "pnpm prettier:fix",
         "*.svelte": "pnpm stylelint:fix",
-        "*.{js,cjs,ts,svelte}": "pnpm eslint:fix"
+        "*.{md,json,y?(a)ml,?(c)js,ts,svelte}": "pnpm eslint:fix"
     },
     "config": {
         "commitizen": {
@@ -42,49 +35,72 @@
     },
     "prettier": "./configs/prettier/index.cjs",
     "eslintConfig": {
-        "extends": "./configs/eslint/index.cjs"
+        "extends": "./configs/eslint/index.cjs",
+        "ignorePatterns": [
+            "!.travis.yml",
+            ".svelte-kit",
+            "dist",
+            "pnpm-lock.yaml"
+        ]
     },
     "stylelint": {
-        "extends": "./configs/stylelint/index.cjs"
+        "extends": "./configs/stylelint/index.cjs",
+        "ignoreFiles": [
+            ".svelte-kit/**/*",
+            "dist/**/*"
+        ]
     },
     "dependencies": {
-        "@fortawesome/free-solid-svg-icons": "5.15.3",
+        "@fortawesome/free-solid-svg-icons": "5.15.4",
         "nprogress": "0.2.0",
         "svelte-fa": "2.2.1"
     },
     "devDependencies": {
-        "@citrus-linting/eslint-config": "0.16.1",
-        "@citrus-linting/prettier-config": "0.2.0",
+        "@citrus-linting/eslint-config": "0.17.1",
+        "@citrus-linting/prettier-config": "0.3.0",
         "@citrus-linting/stylelint-config": "0.2.0",
-        "@commitlint/cli": "12.1.4",
-        "@sveltejs/adapter-node": "1.0.0-next.32",
-        "@sveltejs/kit": "1.0.0-next.124",
-        "@types/node": "16.4.1",
+        "@commitlint/cli": "13.1.0",
+        "@ota-meshi/eslint-plugin-svelte": "0.9.0",
+        "@sveltejs/adapter-node": "1.0.0-next.43",
+        "@sveltejs/kit": "1.0.0-next.154",
+        "@types/eslint": "7.28.0",
+        "@types/node": "16.7.1",
         "@types/nprogress": "0.2.0",
-        "@typescript-eslint/eslint-plugin": "4.28.4",
-        "@typescript-eslint/parser": "4.28.4",
+        "@types/prettier": "2.3.2",
+        "@types/tailwindcss": "2.2.1",
+        "@typescript-eslint/eslint-plugin": "4.29.2",
+        "@typescript-eslint/parser": "4.29.2",
+        "any-eslint-parser": "1.0.1",
         "commitizen": "4.2.4",
         "cz-customizable": "6.3.0",
-        "daisyui": "1.10.0",
-        "eslint": "7.31.0",
+        "daisyui": "1.13.0",
+        "eslint": "7.32.0",
         "eslint-config-prettier": "8.3.0",
-        "eslint-plugin-svelte3": "3.2.0",
+        "eslint-plugin-prettier": "3.4.1",
         "husky": "7.0.1",
-        "inquirer": "8.1.2",
-        "lint-staged": "11.1.0",
+        "lint-staged": "11.1.2",
         "postcss": "8.3.6",
         "postcss-load-config": "3.1.0",
-        "postcss-nested": "5.0.5",
+        "postcss-nested": "5.0.6",
         "prettier": "2.3.2",
         "prettier-plugin-packagejson": "2.2.11",
         "prettier-plugin-svelte": "2.3.1",
         "stylelint": "13.13.1",
         "stylelint-config-prettier": "8.0.2",
-        "svelte": "3.40.1",
-        "svelte-check": "2.2.3",
+        "stylelint-prettier": "1.2.0",
+        "svelte": "3.42.2",
+        "svelte-check": "2.2.4",
+        "svelte-eslint-parser": "0.4.5",
         "svelte-preprocess": "4.7.4",
         "tailwindcss": "2.2.7",
-        "type-fest": "1.2.2",
         "typescript": "4.3.5"
+    },
+    "postcss": {
+        "plugins": {
+            "tailwindcss": {
+                "config": "./configs/postcss/tailwind.cjs"
+            },
+            "postcss-nested": {}
+        }
     }
 }
