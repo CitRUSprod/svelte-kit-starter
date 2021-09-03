@@ -21,10 +21,6 @@
         "ci": "pnpm validate && pnpm lint",
         "prepare": "husky install"
     },
-    "lint-staged": {
-        "*.svelte": "pnpm stylelint:fix",
-        "*.{md,json,y?(a)ml,?(c)js,ts,svelte}": "pnpm eslint:fix"
-    },
     "config": {
         "commitizen": {
             "path": "cz-customizable"
@@ -32,6 +28,10 @@
         "cz-customizable": {
             "config": "./configs/commits/commitizen.cjs"
         }
+    },
+    "lint-staged": {
+        "*.svelte": "pnpm stylelint:fix",
+        "*.{md,json,y?(a)ml,?(c)js,ts,svelte}": "pnpm eslint:fix"
     },
     "prettier": "./configs/prettier/index.cjs",
     "eslintConfig": {
@@ -49,6 +49,14 @@
             ".svelte-kit/**/*",
             "dist/**/*"
         ]
+    },
+    "postcss": {
+        "plugins": {
+            "tailwindcss": {
+                "config": "./configs/postcss/tailwind.cjs"
+            },
+            "postcss-nested": {}
+        }
     },
     "dependencies": {
         "@fortawesome/free-solid-svg-icons": "5.15.4",
@@ -83,7 +91,6 @@
         "postcss-load-config": "3.1.0",
         "postcss-nested": "5.0.6",
         "prettier": "2.3.2",
-        "prettier-plugin-packagejson": "2.2.11",
         "prettier-plugin-svelte": "2.3.1",
         "stylelint": "13.13.1",
         "stylelint-config-prettier": "8.0.2",
@@ -94,13 +101,5 @@
         "svelte-preprocess": "4.7.4",
         "tailwindcss": "2.2.7",
         "typescript": "4.3.5"
-    },
-    "postcss": {
-        "plugins": {
-            "tailwindcss": {
-                "config": "./configs/postcss/tailwind.cjs"
-            },
-            "postcss-nested": {}
-        }
     }
 }
