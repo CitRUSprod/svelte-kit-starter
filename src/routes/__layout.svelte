@@ -3,13 +3,14 @@
 
     import { browser } from "$app/env"
     import { theme } from "$lib/stores"
+    import { title } from "$lib/env"
 
     if (browser) {
         theme.sync()
+    }
 
-        if (!import.meta.env.VITE_TITLE) {
-            console.error("Create .env file with VITE_TITLE variable.")
-        }
+    if (!title) {
+        console.error("Create .env file with VITE_TITLE variable.")
     }
 </script>
 
