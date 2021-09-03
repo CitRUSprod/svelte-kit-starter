@@ -6,6 +6,10 @@
 
     if (browser) {
         theme.sync()
+
+        if (!import.meta.env.VITE_TITLE) {
+            console.error("Create .env file with VITE_TITLE variable.")
+        }
     }
 </script>
 
