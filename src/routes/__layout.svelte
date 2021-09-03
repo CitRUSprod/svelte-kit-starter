@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { ThePageProgressBar, TheHeader, TheContent } from "./_components"
+    import { ThePageProgressBar, TheHeader, TheContent, TheToastContainer } from "./_components"
 
     import { browser } from "$app/env"
     import { theme } from "$lib/stores"
@@ -19,6 +19,7 @@
 <TheContent>
     <slot />
 </TheContent>
+<TheToastContainer />
 
 <style lang="postcss" global>
     @import "tailwindcss/tailwind";
