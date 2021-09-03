@@ -1,5 +1,5 @@
 import { get } from "svelte/store"
-import { writable } from "$lib/local-storage"
+import { writable } from "svelte-local-storage-store"
 
 function setDarkClass(value: boolean) {
     document.documentElement.dataset.theme = value ? "dracula" : "light"

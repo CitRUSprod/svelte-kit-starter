@@ -61,7 +61,8 @@
     "dependencies": {
         "@fortawesome/free-solid-svg-icons": "5.15.4",
         "nprogress": "0.2.0",
-        "svelte-fa": "2.3.3"
+        "svelte-fa": "2.3.3",
+        "svelte-local-storage-store": "0.2.4"
     },
     "devDependencies": {
         "@citrus-linting/eslint-config": "0.17.1",
