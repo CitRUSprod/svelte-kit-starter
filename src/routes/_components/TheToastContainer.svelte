@@ -30,7 +30,7 @@
 
 <div class="fixed right-4 bottom-3 flex flex-col-reverse w-80 text-white z-[1000]">
     {#each $list as toast (toast.id)}
-        <div class="my-1 rounded-lg" in:fly={{ y: -200, duration: 500 }} out:fade>
+        <div class="my-1" in:fly={{ y: -200, duration: 500 }} out:fade>
             <div
                 class="alert flex-row justify-center bg-opacity-20 rounded-lg select-none {[
                     'alert-success',
