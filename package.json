@@ -34,6 +34,13 @@
         "*.{md,json,y?(a)ml,?(c)js,ts,svelte}": "pnpm eslint:fix"
     },
     "prettier": "./configs/prettier/index.cjs",
+    "stylelint": {
+        "extends": "./configs/stylelint/index.cjs",
+        "ignoreFiles": [
+            ".svelte-kit/**/*",
+            "dist/**/*"
+        ]
+    },
     "eslintConfig": {
         "extends": "./configs/eslint/index.cjs",
         "ignorePatterns": [
@@ -41,13 +48,6 @@
             ".svelte-kit",
             "dist",
             "pnpm-lock.yaml"
-        ]
-    },
-    "stylelint": {
-        "extends": "./configs/stylelint/index.cjs",
-        "ignoreFiles": [
-            ".svelte-kit/**/*",
-            "dist/**/*"
         ]
     },
     "postcss": {
