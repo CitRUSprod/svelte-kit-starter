@@ -23,4 +23,8 @@
 
 <style lang="postcss" global>
     @import "tailwindcss/tailwind";
+
+    .break-text {
+        word-break: break-word;
+    }
 </style>
