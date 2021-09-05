@@ -65,13 +65,13 @@
         "svelte-local-storage-store": "0.2.4"
     },
     "devDependencies": {
-        "@citrus-linting/eslint-config": "0.17.1",
+        "@citrus-linting/eslint-config": "0.17.2",
         "@citrus-linting/prettier-config": "0.3.0",
         "@citrus-linting/stylelint-config": "0.2.0",
         "@commitlint/cli": "13.1.0",
         "@ota-meshi/eslint-plugin-svelte": "0.9.0",
         "@sveltejs/adapter-node": "1.0.0-next.45",
-        "@sveltejs/kit": "1.0.0-next.162",
+        "@sveltejs/kit": "1.0.0-next.163",
         "@types/eslint": "7.28.0",
         "@types/node": "16.7.10",
         "@types/nprogress": "0.2.0",
@@ -100,7 +100,7 @@
         "svelte": "3.42.4",
         "svelte-check": "2.2.5",
         "svelte-eslint-parser": "0.4.5",
-        "svelte-preprocess": "4.8.0",
+        "svelte-preprocess": "4.9.1",
         "tailwindcss": "2.2.9",
         "typescript": "4.4.2"
     }
