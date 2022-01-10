@@ -1,8 +1,8 @@
 <script lang="ts" context="module">
     import type { Load } from "@sveltejs/kit"
 
-    export const load: Load = ({ page }) => {
-        const { id } = page.params
+    export const load: Load = ({ params }) => {
+        const { id } = params
         return { props: { id } }
     }
 </script>
