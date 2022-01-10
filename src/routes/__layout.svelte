@@ -2,11 +2,11 @@
     import { PageProgressBar, Header, Content, ToastContainer } from "./_components"
 
     import { browser } from "$app/env"
-    import { theme } from "$lib/stores"
+    import { darkTheme } from "$lib/stores"
     import { title } from "$lib/env"
 
     if (browser) {
-        theme.sync()
+        darkTheme.sync()
     }
 
     if (!title) {

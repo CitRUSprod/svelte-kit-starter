@@ -1,10 +1,9 @@
 <script lang="ts">
     import { Button, Icon } from "$lib/components"
 
-    import { theme } from "$lib/stores"
+    import { darkTheme } from "$lib/stores"
     import { title } from "$lib/env"
 
-    const { dark } = theme
     const pages = [1, 2, 3, 4]
 </script>
 
@@ -18,8 +17,8 @@
                 Page {page}
             </Button>
         {/each}
-        <Button class="rounded-btn btn-ghost btn-sm" on:click={theme.toggle}>
-            <svelte:component this={$dark ? Icon.Sun : Icon.Moon} />
+        <Button class="rounded-btn btn-ghost btn-sm" on:click={darkTheme.toggle}>
+            <svelte:component this={$darkTheme ? Icon.Sun : Icon.Moon} />
         </Button>
     </div>
 </div>
