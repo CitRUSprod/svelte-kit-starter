@@ -1,8 +1,6 @@
 <script lang="ts">
-    import FaIcon from "svelte-fa"
-    import { Button } from "$lib/components"
+    import { Button, Icon } from "$lib/components"
 
-    import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons"
     import { theme } from "$lib/stores"
     import { title } from "$lib/env"
 
@@ -21,7 +19,7 @@
             </Button>
         {/each}
         <Button class="rounded-btn btn-ghost btn-sm" on:click={theme.toggle}>
-            <FaIcon icon={$dark ? faSun : faMoon} />
+            <svelte:component this={$dark ? Icon.Sun : Icon.Moon} />
         </Button>
     </div>
 </div>

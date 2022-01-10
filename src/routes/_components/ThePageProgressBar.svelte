@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { navigating } from "$app/stores"
+    import { onDestroy } from "svelte"
     import NProgress from "nprogress"
+    import { navigating } from "$app/stores"
 
     NProgress.configure({
         showSpinner: false
@@ -15,6 +16,10 @@
     }
 
     $: watchForChanging(!!$navigating)
+
+    onDestroy(() => {
+        NProgress.done()
+    })
 </script>
 
 {#if false}
