@@ -31,7 +31,7 @@
         @apply pointer-events-none;
 
         .bar {
-            @apply fixed top-0 left-0 w-full h-[2px] bg-green-500 z-[1000];
+            @apply fixed top-0 left-0 w-full h-0.5 bg-green-500 z-1000;
         }
     }
 </style>

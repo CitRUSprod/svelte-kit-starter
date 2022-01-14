@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button, Icon } from "$lib/components"
+    import { Icon, Button } from "$lib/components"
 
     import { darkTheme } from "$lib/stores"
     import { title } from "$lib/env"
@@ -7,17 +7,18 @@
     const pages = [1, 2, 3, 4]
 </script>
 
-<div class="bg-neutral shadow-lg text-neutral-content mb-2 navbar">
-    <div class="flex-none mx-2 px-2">
-        <a class="font-bold text-lg" href="/">{title}</a>
+<div class="flex items-center gap-2 px-6 py-2 bg-primary text-content-light shadow-lg">
+    <div>
+        <h2>
+            <a href="/">{title}</a>
+        </h2>
     </div>
-    <div class="flex-1 justify-end mx-2 px-2">
+    <div class="flex flex-1 flex-wrap justify-end gap-2">
+        <Button type="primary" href="/lorem">Lorem</Button>
         {#each pages as page}
-            <Button class="rounded-btn btn-ghost btn-sm" href={`/page/${page}`}>
-                Page {page}
-            </Button>
+            <Button type="primary" href="/pages/{page}">Page {page}</Button>
         {/each}
-        <Button class="rounded-btn btn-ghost btn-sm" on:click={darkTheme.toggle}>
+        <Button type="primary" icon on:click={darkTheme.toggle}>
             <svelte:component this={$darkTheme ? Icon.Sun : Icon.Moon} />
         </Button>
     </div>

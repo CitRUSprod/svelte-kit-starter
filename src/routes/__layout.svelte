@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { PageProgressBar, Header, Content, ToastContainer } from "./_components"
+    import { PageProgressBar, Header, Footer, ToastContainer } from "./_components"
 
     import { browser } from "$app/env"
     import { darkTheme } from "$lib/stores"
@@ -16,15 +16,30 @@
 
 <PageProgressBar />
 <Header />
-<Content>
+<main class="relative flex-1">
     <slot />
-</Content>
+</main>
+<Footer />
 <ToastContainer />
 
 <style lang="postcss" global>
-    @import "tailwindcss/tailwind";
+    @windicss;
 
-    .break-text {
-        word-break: break-word;
+    h1,
+    h2,
+    h3 {
+        @apply font-bold;
+    }
+
+    h1 {
+        @apply text-4xl;
+    }
+
+    h2 {
+        @apply text-2xl;
+    }
+
+    h3 {
+        @apply text-lg;
     }
 </style>

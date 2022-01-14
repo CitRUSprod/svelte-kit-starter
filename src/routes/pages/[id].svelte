@@ -8,6 +8,8 @@
 </script>
 
 <script lang="ts">
+    import { Content } from "$lib/components"
+
     export let id: string
 </script>
 
@@ -15,4 +17,4 @@
     <title>Page {id}</title>
 </svelte:head>
 
-<h1 class="text-4xl">Page {id}</h1>
+<Content.Default title="Page {id}" />
