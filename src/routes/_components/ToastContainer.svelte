@@ -7,7 +7,7 @@
 
 <div class="fixed right-3 bottom-2 flex flex-col-reverse w-80 text-white z-1000">
     {#each $toasts as toast (toast.id)}
-        <div in:fly={{ y: -200, duration: 500 }} out:fade>
+        <div in:fly|local={{ y: -200, duration: 500 }} out:fade|local>
             <Alert
                 class="my-1 shadow-md select-none"
                 type={toast.type}

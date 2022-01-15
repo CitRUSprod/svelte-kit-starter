@@ -7,15 +7,11 @@
         showSpinner: false
     })
 
-    function watchForChanging(changing: boolean) {
-        if (changing) {
-            NProgress.start()
-        } else {
-            NProgress.done()
-        }
+    $: if ($navigating) {
+        NProgress.start()
+    } else {
+        NProgress.done()
     }
-
-    $: watchForChanging(!!$navigating)
 
     onDestroy(() => {
         NProgress.done()

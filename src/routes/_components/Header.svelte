@@ -14,6 +14,7 @@
         </h2>
     </div>
     <div class="flex flex-1 flex-wrap justify-end gap-2">
+        <Button type="primary" href="/todo">To-do</Button>
         <Button type="primary" href="/lorem">Lorem</Button>
         {#each pages as page}
             <Button type="primary" href="/pages/{page}">Page {page}</Button>
