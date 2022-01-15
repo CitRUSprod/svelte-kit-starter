@@ -2,9 +2,11 @@ import { writable } from "svelte/store"
 
 type Layout = "default" | "simple"
 
-const { subscribe, set } = writable<Layout>("default")
+const defaultValue = "default"
 
-let layoutCandidate: Layout = "default"
+const { subscribe, set } = writable<Layout>(defaultValue)
+
+let layoutCandidate: Layout = defaultValue
 
 function select(layout: Layout) {
     layoutCandidate = layout
@@ -12,7 +14,7 @@ function select(layout: Layout) {
 
 function apply() {
     set(layoutCandidate)
-    layoutCandidate = "default"
+    layoutCandidate = defaultValue
 }
 
 export const layout = { subscribe, select, apply }
