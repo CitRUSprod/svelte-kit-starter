@@ -5,6 +5,7 @@
     "scripts": {
         "dev": "svelte-kit dev -p 6600",
         "build": "svelte-kit build",
+        "build:ssg": "MODE=ssg svelte-kit build",
         "start": "PORT=6600 node dist",
         "validate": "tsc --noEmit && svelte-check",
         "git:commit": "git-cz",
@@ -66,6 +67,7 @@
         "@iconify/json": "1.1.454",
         "@ota-meshi/eslint-plugin-svelte": "0.19.1",
         "@sveltejs/adapter-node": "1.0.0-next.60",
+        "@sveltejs/adapter-static": "1.0.0-next.26",
         "@sveltejs/kit": "1.0.0-next.218",
         "@types/eslint": "8.2.2",
         "@types/node": "17.0.8",

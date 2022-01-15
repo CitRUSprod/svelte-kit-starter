@@ -1,6 +1,7 @@
 import preprocess from "svelte-preprocess"
 import icons from "unplugin-icons/vite"
 import adapterNode from "@sveltejs/adapter-node"
+import adapterStatic from "@sveltejs/adapter-static"
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
@@ -8,7 +9,13 @@ const config = {
         postcss: true
     }),
     kit: {
-        adapter: adapterNode({ out: "dist" }),
+        adapter:
+            process.env.MODE === "ssg"
+                ? adapterStatic({
+                      pages: "dist",
+                      assets: "dist"
+                  })
+                : adapterNode({ out: "dist" }),
         vite: {
             plugins: [icons({ compiler: "svelte" })]
         }
