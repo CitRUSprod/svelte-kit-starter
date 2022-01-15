@@ -1,9 +1,15 @@
 <script lang="ts">
-    import { PageProgressBar, Header, Footer, ToastContainer } from "./_components"
+    import { DefaultLayout, SimpleLayout } from "./_layouts"
+    import { PageProgressBar, ToastContainer } from "./_components"
 
     import { browser } from "$app/env"
-    import { darkTheme } from "$lib/stores"
+    import { navigating } from "$app/stores"
+    import { layout, darkTheme } from "$lib/stores"
     import { title } from "$lib/env"
+
+    $: if (!$navigating) {
+        layout.apply()
+    }
 
     if (browser) {
         darkTheme.sync()
@@ -15,11 +21,15 @@
 </script>
 
 <PageProgressBar />
-<Header />
-<main class="relative flex-1">
-    <slot />
-</main>
-<Footer />
+{#if $layout === "default"}
+    <DefaultLayout>
+        <slot />
+    </DefaultLayout>
+{:else}
+    <SimpleLayout>
+        <slot />
+    </SimpleLayout>
+{/if}
 <ToastContainer />
 
 <style lang="postcss" global>

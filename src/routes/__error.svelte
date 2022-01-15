@@ -22,7 +22,7 @@
         <h1>Error {status}</h1>
         <h2>{error.message}</h2>
         <div class="flex justify-center mt-5">
-            <Button type="error" href="/">Go Home</Button>
+            <Button type="error" href="/">Go home</Button>
         </div>
     </div>
 </Content.Center>
