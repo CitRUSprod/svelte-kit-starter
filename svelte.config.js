@@ -24,7 +24,7 @@ const config = {
                     acc.push(`/${locale}`, `/${locale}/404`)
                     return acc
                 },
-                ["*"]
+                ["*", "/404"]
             )
         },
         vite: {
