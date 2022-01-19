@@ -1,20 +1,39 @@
 <script lang="ts">
     import { Icon, Button } from "$lib/components"
 
+    import classNames from "classnames"
+    import { page } from "$app/stores"
     import { darkTheme } from "$lib/stores"
+    import { t, currentLocale, locales, localePath } from "$lib/locales"
     import { title } from "$lib/env"
 </script>
 
 <header class="flex items-center gap-2 px-6 py-2 bg-primary text-content-light shadow-lg">
     <div>
         <h2>
-            <a href="/">{title}</a>
+            <a href={$localePath("/")}>{title}</a>
         </h2>
     </div>
     <div class="flex flex-1 flex-wrap justify-end gap-2">
-        <Button type="primary" href="/todo">To-do</Button>
-        <Button type="primary" href="/lorem">Lorem</Button>
-        <Button type="primary" href="/simple-layout">Simple layout</Button>
+        <Button type="primary" href={$localePath("/todo")}>{$t("header.todo")}</Button>
+        <Button type="primary" href={$localePath("/lorem")}>Lorem</Button>
+        <Button type="primary" href={$localePath("/simple-layout")}>
+            {$t("header.simpleLayout")}
+        </Button>
+        <div class="flex items-center gap-1">
+            {#each $locales as locale, index (locale)}
+                <Button
+                    class={classNames("px-1", { "opacity-50": $currentLocale !== locale })}
+                    type="primary"
+                    href={$localePath($page.stuff.route, locale)}
+                >
+                    {locale.toUpperCase()}
+                </Button>
+                {#if index < $locales.length - 1}
+                    <div class="font-bold">/</div>
+                {/if}
+            {/each}
+        </div>
         <Button type="primary" icon on:click={darkTheme.toggle}>
             <svelte:component this={$darkTheme ? Icon.Sun : Icon.Moon} />
         </Button>

@@ -25,9 +25,9 @@
 <style lang="postcss" global>
     #nprogress {
         @apply pointer-events-none;
+    }
 
-        .bar {
-            @apply fixed top-0 left-0 w-full h-0.5 bg-green-500 z-1000;
-        }
+    #nprogress .bar {
+        @apply fixed top-0 left-0 w-full h-0.5 bg-green-500 z-1000;
     }
 </style>

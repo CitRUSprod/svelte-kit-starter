@@ -35,6 +35,14 @@
 <style lang="postcss" global>
     @windicss;
 
+    html {
+        @apply overflow-x-hidden;
+    }
+
+    body {
+        @apply flex flex-col min-h-screen bg-content text-content-inverse transition duration-200 overflow-x-hidden;
+    }
+
     h1,
     h2,
     h3 {

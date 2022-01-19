@@ -3,6 +3,8 @@ import icons from "unplugin-icons/vite"
 import adapterNode from "@sveltejs/adapter-node"
 import adapterStatic from "@sveltejs/adapter-static"
 
+const supportedLocales = ["en", "ru"]
+
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
     preprocess: preprocess({
@@ -16,6 +18,15 @@ const config = {
                       assets: "dist"
                   })
                 : adapterNode({ out: "dist" }),
+        prerender: {
+            entries: supportedLocales.reduce(
+                (acc, locale) => {
+                    acc.push(`/${locale}`, `/${locale}/404`)
+                    return acc
+                },
+                ["*"]
+            )
+        },
         vite: {
             plugins: [icons({ compiler: "svelte" })]
         }

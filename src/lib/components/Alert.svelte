@@ -4,6 +4,7 @@
 
     import { createEventDispatcher } from "svelte"
     import classNames from "classnames"
+    import { t } from "$lib/locales"
     import { getElementBasicTypeObject } from "$lib/utils"
 
     import type { ElementBasicType } from "$lib/types"
@@ -19,8 +20,8 @@
 
     const dispatch = createEventDispatcher()
 
-    function getIconByType(t: string) {
-        switch (t) {
+    function getIconByType(localType: string) {
+        switch (localType) {
             case "success":
                 return Icon.Success
             case "error":
@@ -32,16 +33,16 @@
         }
     }
 
-    function getTextByType(t: string) {
-        switch (t) {
+    function getTextByType(localType: string) {
+        switch (localType) {
             case "success":
-                return "Success"
+                return $t("alert.success")
             case "error":
-                return "Error"
+                return $t("alert.error")
             case "warning":
-                return "Warning"
+                return $t("alert.warning")
             default:
-                return "Info"
+                return $t("alert.info")
         }
     }
 

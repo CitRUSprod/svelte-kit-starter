@@ -3,6 +3,7 @@
 
     import { crossfade } from "svelte/transition"
     import { browser } from "$app/env"
+    import { t } from "$lib/locales"
 
     const [send, receive] = crossfade({
         duration: 500,
@@ -36,8 +37,8 @@
         localStorage.setItem("tasks", JSON.stringify(tasks))
     }
 
-    $: completedTasks = tasks.filter(t => t.completed)
-    $: incompleteTasks = tasks.filter(t => !t.completed)
+    $: completedTasks = tasks.filter(task => task.completed)
+    $: incompleteTasks = tasks.filter(task => !task.completed)
 
     let taskText = ""
 
@@ -62,29 +63,31 @@
     }
 
     function removeTask(id: number) {
-        tasks = tasks.filter(t => t.id !== id)
+        tasks = tasks.filter(task => task.id !== id)
     }
 </script>
 
 <svelte:head>
-    <title>To-do</title>
+    <title>{$t("todo.todo")}</title>
 </svelte:head>
 
-<Content.Default title="To-do">
+<Content.Default title={$t("todo.todo")}>
     <div class="flex gap-2">
         <TextField
             class="flex-1"
             type="primary"
-            placeholder="Enter task..."
+            placeholder="{$t('todo.enterTask')}..."
             LeftIcon={Icon.Task}
             bind:value={taskText}
             on:keypress={addTaskOnEnter}
         />
-        <Button type="primary" disabled={!trimmedTaskText} on:click={addTask}>Add</Button>
+        <Button type="primary" disabled={!trimmedTaskText} on:click={addTask}>
+            {$t("todo.add")}
+        </Button>
     </div>
     <div class="flex gap-4">
         <div class="flex-1">
-            <h2>Should be done ({incompleteTasks.length})</h2>
+            <h2>{$t("todo.shouldBeDone")} ({incompleteTasks.length})</h2>
             <ul class="flex flex-col gap-2 mt-2">
                 {#each incompleteTasks as task (task.id)}
                     <li
@@ -102,7 +105,7 @@
             </ul>
         </div>
         <div class="flex-1">
-            <h2>Done ({completedTasks.length})</h2>
+            <h2>{$t("todo.done")} ({completedTasks.length})</h2>
             <ul class="flex flex-col gap-2 mt-2">
                 {#each completedTasks as task (task.id)}
                     <li

@@ -3,17 +3,18 @@
 
     import { title } from "$lib/env"
     import { toasts } from "$lib/stores"
+    import { t } from "$lib/locales"
 
     let count = 0
 
     function addOne() {
         count++
-        toasts.add("success", `Count: ${count}`)
+        toasts.add("success", `${$t("home.count") as string}: ${count}`)
     }
 </script>
 
 <svelte:head>
-    <title>Home</title>
+    <title>{$t("home.home")}</title>
 </svelte:head>
 
 <Content.Center>
@@ -21,7 +22,7 @@
         <h1>{title}</h1>
         <div class="flex justify-center mt-5">
             <Button type="primary" on:click={addOne}>
-                Clicked: {count}
+                {$t("home.clicked")}: {count}
             </Button>
         </div>
     </div>
