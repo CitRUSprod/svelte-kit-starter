@@ -61,7 +61,7 @@ function getShortcutsForAllUtils() {
 /** @type {import("windicss/types/interfaces").FullConfig} */
 const config = {
     extract: {
-        include: ["./src/**/*.{html,svelte}"]
+        include: ["./src/**/*.svelte"]
     },
     darkMode: "class",
     theme: {

@@ -42,13 +42,13 @@ const config: Config = {
         {
             locale: "en",
             key: "home",
-            routes: [""],
+            routes: ["/"],
             loader: async () => (await import("./en/home.json")).default
         },
         {
             locale: "ru",
             key: "home",
-            routes: [""],
+            routes: ["/"],
             loader: async () => (await import("./ru/home.json")).default
         },
         {
@@ -89,5 +89,5 @@ export const currentLocale = {
 
 export const localePath = derived(
     currentLocale,
-    l => (path: string, locale?: string) => `/${locale ?? l}${path}`
+    l => (path: string, locale?: string) => `/${locale ?? l}${path === "/" ? "" : path}`
 )

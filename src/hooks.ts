@@ -1,34 +1,26 @@
 import { defaultLocale, locales } from "$lib/locales"
+import { getLocaleAndRoute } from "$lib/utils"
 
 import type { Handle } from "@sveltejs/kit"
 
-export const handle: Handle = async ({ request, resolve }) => {
-    const { pathname } = request.url
+const supportedLocales = locales.get()
 
-    const supportedLocales = locales.get()
-    let currentLocale = /[^/]+?(?=\/|$)/.exec(pathname)?.toString()
+export const handle: Handle = async ({ event: e, resolve }) => {
+    const { locale, route } = getLocaleAndRoute(e.url.pathname)
 
-    if (!currentLocale || !supportedLocales.includes(currentLocale)) {
-        currentLocale = /[a-z]{2}/
-            .exec(request.headers["accept-language"])
-            ?.toString()
-            .toLowerCase()
+    if (!locale) {
+        const lang = e.request.headers.get("accept-language") ?? ""
+        const localeCandidate = /^[a-z]{2}\b/.exec(lang)?.toString()
+        const isSupportedLocale = !!localeCandidate && supportedLocales.includes(localeCandidate)
 
-        if (!currentLocale || !supportedLocales.includes(currentLocale)) {
-            currentLocale = defaultLocale
-        }
+        const headers = new Headers()
+        headers.set("location", `/${isSupportedLocale ? localeCandidate : defaultLocale}${route}`)
 
-        return {
-            status: 301,
-            headers: {
-                location: `/${currentLocale}${pathname}`
-            }
-        }
+        return new Response(undefined, { status: 301, headers })
     }
 
-    const response = await resolve(request)
-    return {
-        ...response,
-        body: response.body?.toString().replace(/<html.*>/, `<html lang="${currentLocale}">`)
-    }
+    const response = await resolve(e)
+    const body = await response.text()
+
+    return new Response(body.replace(/<html.*>/, `<html lang="${locale}">`), response)
 }

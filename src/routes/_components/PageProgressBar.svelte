@@ -1,17 +1,19 @@
 <script lang="ts">
     import { onDestroy } from "svelte"
     import NProgress from "nprogress"
-    import { navigating } from "$app/stores"
+    import { beforeNavigate, afterNavigate } from "$app/navigation"
 
     NProgress.configure({
         showSpinner: false
     })
 
-    $: if ($navigating) {
+    beforeNavigate(() => {
         NProgress.start()
-    } else {
+    })
+
+    afterNavigate(() => {
         NProgress.done()
-    }
+    })
 
     onDestroy(() => {
         NProgress.done()

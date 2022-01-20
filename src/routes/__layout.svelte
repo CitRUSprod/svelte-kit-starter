@@ -3,13 +3,9 @@
     import { PageProgressBar, ToastContainer } from "./_components"
 
     import { browser } from "$app/env"
-    import { navigating } from "$app/stores"
+    import { afterNavigate } from "$app/navigation"
     import { layout, darkTheme } from "$lib/stores"
     import { title } from "$lib/env"
-
-    $: if (!$navigating) {
-        layout.apply()
-    }
 
     if (browser) {
         darkTheme.sync()
@@ -18,6 +14,10 @@
     if (!title) {
         console.error("Create .env file with VITE_TITLE variable.")
     }
+
+    afterNavigate(() => {
+        layout.apply()
+    })
 </script>
 
 <PageProgressBar />
