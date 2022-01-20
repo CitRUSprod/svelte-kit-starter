@@ -20,7 +20,7 @@
         <Button type="primary" href={$localePath("/simple-layout")}>
             {$t("header.simpleLayout")}
         </Button>
-        <div class="flex items-center gap-1">
+        <div class="flex items-center gap-1 mx-1">
             {#each $locales as locale, index (locale)}
                 <Button
                     class={classNames("px-1", { "opacity-50": $currentLocale !== locale })}
@@ -36,6 +36,15 @@
         </div>
         <Button type="primary" icon on:click={darkTheme.toggle}>
             <svelte:component this={$darkTheme ? Icon.Sun : Icon.Moon} />
+        </Button>
+        <Button
+            type="primary"
+            href="https://github.com/CitRUSprod/svelte-kit-template"
+            target="_blank"
+            rel="noopener noreferrer"
+            icon
+        >
+            <Icon.GitHub />
         </Button>
     </div>
 </header>
