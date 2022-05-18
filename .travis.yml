@@ -1,7 +1,9 @@
+dist: focal
+
 language: node_js
 
 node_js:
-    - 16.13.1
+    - 18.1.0
 
 cache:
     npm: false

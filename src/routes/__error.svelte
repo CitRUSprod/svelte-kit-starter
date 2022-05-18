@@ -2,9 +2,9 @@
     import { t, localePath, loadTranslations } from "$lib/locales"
     import { getLocaleAndRoute } from "$lib/utils"
 
-    import type { ErrorLoad } from "@sveltejs/kit"
+    import type { Load } from "@sveltejs/kit"
 
-    export const load: ErrorLoad = async ({ status, error, url }) => {
+    export const load: Load = async ({ status, error, url }) => {
         const { locale, route } = getLocaleAndRoute(url.pathname)
         await loadTranslations(locale!, "error")
 

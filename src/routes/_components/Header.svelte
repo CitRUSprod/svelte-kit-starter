@@ -39,7 +39,7 @@
         </Button>
         <Button
             type="primary"
-            href="https://github.com/CitRUSprod/svelte-kit-template"
+            href="https://github.com/CitRUSprod/svelte-kit-starter"
             target="_blank"
             rel="noopener noreferrer"
             icon

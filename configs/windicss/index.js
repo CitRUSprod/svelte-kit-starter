@@ -2,26 +2,7 @@ import colors from "windicss/colors"
 import { contentColors, specialColors, utils } from "./colors"
 
 function getFullPalette() {
-    const result = {}
-
-    for (const [key, value] of Object.entries(colors)) {
-        const words = []
-
-        for (let i = 0; i < key.length; i++) {
-            const char = key[i]
-
-            if (i === 0 || char.match(/[A-Z]/)) {
-                words[words.length] = char.toLowerCase()
-            } else {
-                words[words.length - 1] += char
-            }
-        }
-
-        const normalizedKey = words.join("-")
-        result[normalizedKey] = value
-    }
-
-    return result
+    return Object.fromEntries(Object.entries(colors).filter(([color]) => !color.match(/[A-Z]/)))
 }
 
 function getShortcuts(util) {

@@ -8,13 +8,13 @@ function getColors(color, shade) {
 
 export const contentColors = {
     light: "white",
-    dark: "gray-800"
+    dark: "zinc-800"
 }
 
 export const specialColors = {
     default: {
-        light: getColors("blue-gray", 400),
-        dark: getColors("blue-gray", 600)
+        light: getColors("slate", 400),
+        dark: getColors("slate", 600)
     },
     primary: {
         light: getColors("orange", 400),
