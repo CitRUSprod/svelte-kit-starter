@@ -20,6 +20,9 @@
         <Button type="primary" href={$localePath("/simple-layout")}>
             {$t("header.simpleLayout")}
         </Button>
+        <Button type="primary" href={$localePath("/posts")}>
+            {$t("header.posts")}
+        </Button>
         <div class="flex items-center gap-1 mx-1">
             {#each $locales as locale, index (locale)}
                 <Button

@@ -74,6 +74,16 @@ const config: Config = {
             key: "simpleLayout",
             routes: ["/simple-layout"],
             loader: async () => (await import("./ru/simple-layout.json")).default
+        },
+        {
+            locale: "en",
+            key: "posts",
+            loader: async () => (await import("./en/posts.json")).default
+        },
+        {
+            locale: "ru",
+            key: "posts",
+            loader: async () => (await import("./ru/posts.json")).default
         }
     ]
 }

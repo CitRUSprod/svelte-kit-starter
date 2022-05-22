@@ -1,0 +1,24 @@
+{
+    "posts": "Posts",
+    "createPost": "Create a new post",
+    "$id": {
+        "edit": "Edit",
+        "remove": "Remove",
+        "editPage": {
+            "postEditing": "Editing a post",
+            "title": "Title",
+            "content": "Content",
+            "enterTitle": "Enter a title...",
+            "enterContent": "Enter a content...",
+            "save": "Save"
+        }
+    },
+    "create": {
+        "postCreating": "Creating a post",
+        "title": "Title",
+        "content": "Content",
+        "enterTitle": "Enter a title...",
+        "enterContent": "Enter a content...",
+        "create": "Create"
+    }
+}
