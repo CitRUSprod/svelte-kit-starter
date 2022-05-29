@@ -9,7 +9,7 @@
     export let type: ElementType = "default"
     export let label: string | undefined = undefined
     export let disabled = false
-    export let checked = false
+    export let checked = false as boolean
 
     let klass: string | undefined = undefined
     export { klass as class }

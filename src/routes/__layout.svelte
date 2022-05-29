@@ -32,6 +32,7 @@
 {/if}
 <ToastContainer />
 
+<!-- eslint-disable @ota-meshi/svelte/valid-compile -->
 <style lang="postcss" global>
     @windicss;
 

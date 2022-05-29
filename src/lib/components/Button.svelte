@@ -7,13 +7,13 @@
     import type { ElementType } from "$lib/types"
 
     export let type: ElementType = "default"
-    export let href: string | undefined = undefined
+    export let href = undefined as string | undefined
     export let target: string | undefined = undefined
     export let rel: string | undefined = undefined
-    export let text = false
+    export let text = false as boolean
     export let icon = false
-    export let disabled = false
-    export let loading = false
+    export let disabled = false as boolean
+    export let loading = false as boolean
 
     let klass: string | undefined = undefined
     export { klass as class }
