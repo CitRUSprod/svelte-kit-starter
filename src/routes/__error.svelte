@@ -4,13 +4,12 @@
 
     import type { Load } from "@sveltejs/kit"
 
-    export const load: Load = async ({ status, error, url }) => {
+    export const load: Load = async ({ url }) => {
         const { locale, route } = getLocaleAndRoute(url.pathname)
         await loadTranslations(locale!, "error")
 
         return {
-            stuff: { route },
-            props: { status, error }
+            stuff: { route }
         }
     }
 </script>
@@ -18,22 +17,25 @@
 <script lang="ts">
     import { Content, Button } from "$lib/components"
 
-    export let status: number
-    export let error: Error
+    import { page } from "$app/stores"
 </script>
 
 <svelte:head>
-    <title>{$t("error.error")} {status}</title>
+    <title>{$t("error.error")} {$page.status}</title>
 </svelte:head>
 
-<Content.Center>
-    <div class="border-error rounded-lg border text-center p-8">
-        <h1>{$t("error.error")} {status}</h1>
-        <h2>{error.message}</h2>
-        <div class="flex justify-center mt-5">
-            <Button type="error" href={$localePath("/")}>
-                {$t("error.goHome")}
-            </Button>
+<main class="relative flex-1">
+    <Content.Center>
+        <div class="border-error rounded-lg border text-center p-8">
+            <h1>{$t("error.error")} {$page.status}</h1>
+            {#if $page.error}
+                <h2>{$page.error.message}</h2>
+            {/if}
+            <div class="flex justify-center mt-5">
+                <Button type="error" href={$localePath("/")}>
+                    {$t("error.goHome")}
+                </Button>
+            </div>
         </div>
-    </div>
-</Content.Center>
+    </Content.Center>
+</main>

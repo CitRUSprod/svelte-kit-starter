@@ -1,10 +1,24 @@
+<script lang="ts" context="module">
+    import { loadTranslations } from "$lib/locales"
+    import { getLocaleAndRoute } from "$lib/utils"
+
+    import type { Load } from "@sveltejs/kit"
+
+    export const load: Load = async ({ url }) => {
+        const { locale, route } = getLocaleAndRoute(url.pathname)
+        await loadTranslations(locale!, route)
+
+        return {
+            stuff: { route }
+        }
+    }
+</script>
+
 <script lang="ts">
-    import { DefaultLayout, SimpleLayout } from "./_layouts"
     import { PageProgressBar, ToastContainer } from "./_components"
 
     import { browser } from "$app/env"
-    import { afterNavigate } from "$app/navigation"
-    import { layout, darkTheme } from "$lib/stores"
+    import { darkTheme } from "$lib/stores"
     import { title } from "$lib/env"
 
     if (browser) {
@@ -14,22 +28,10 @@
     if (!title) {
         console.error("Create .env file with VITE_TITLE variable.")
     }
-
-    afterNavigate(() => {
-        layout.apply()
-    })
 </script>
 
 <PageProgressBar />
-{#if $layout === "default"}
-    <DefaultLayout>
-        <slot />
-    </DefaultLayout>
-{:else}
-    <SimpleLayout>
-        <slot />
-    </SimpleLayout>
-{/if}
+<slot />
 <ToastContainer />
 
 <!-- eslint-disable @ota-meshi/svelte/valid-compile -->

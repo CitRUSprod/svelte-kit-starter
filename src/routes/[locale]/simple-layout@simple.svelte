@@ -1,14 +1,3 @@
-<script lang="ts" context="module">
-    import { layout } from "$lib/stores"
-
-    import type { Load } from "@sveltejs/kit"
-
-    export const load: Load = () => {
-        layout.select("simple")
-        return {}
-    }
-</script>
-
 <script lang="ts">
     import { Content, Button } from "$lib/components"
 
