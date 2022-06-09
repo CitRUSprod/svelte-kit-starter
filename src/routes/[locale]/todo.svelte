@@ -68,26 +68,26 @@
 </script>
 
 <svelte:head>
-    <title>{$t("todo.todo")}</title>
+    <title>{$t("routes.todo.todo")}</title>
 </svelte:head>
 
-<Content.Default title={$t("todo.todo")}>
+<Content.Default title={$t("routes.todo.todo")}>
     <div class="flex gap-2">
         <TextField
             class="flex-1"
             type="primary"
-            placeholder="{$t('todo.enterTask')}..."
+            placeholder={$t("routes.todo.enter-task")}
             LeftIcon={Icon.Task}
             bind:value={taskText}
             on:keypress={addTaskOnEnter}
         />
         <Button type="primary" disabled={!trimmedTaskText} on:click={addTask}>
-            {$t("todo.add")}
+            {$t("routes.todo.add")}
         </Button>
     </div>
     <div class="flex gap-4">
         <div class="flex-1">
-            <h2>{$t("todo.shouldBeDone")} ({incompleteTasks.length})</h2>
+            <h2>{$t("routes.todo.should-be-done")} ({incompleteTasks.length})</h2>
             <ul class="flex flex-col gap-2 mt-2">
                 {#each incompleteTasks as task (task.id)}
                     <li
@@ -105,7 +105,7 @@
             </ul>
         </div>
         <div class="flex-1">
-            <h2>{$t("todo.done")} ({completedTasks.length})</h2>
+            <h2>{$t("routes.todo.done")} ({completedTasks.length})</h2>
             <ul class="flex flex-col gap-2 mt-2">
                 {#each completedTasks as task (task.id)}
                     <li

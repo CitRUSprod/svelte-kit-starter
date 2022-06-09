@@ -12,12 +12,14 @@
 </script>
 
 <svelte:head>
-    <title>{$t("posts.posts")}</title>
+    <title>{$t("routes.posts.posts")}</title>
 </svelte:head>
 
-<Content.Default title={$t("posts.posts")}>
+<Content.Default title={$t("routes.posts.posts")}>
     <div>
-        <Button type="success" href={$localePath("/posts/create")}>{$t("posts.createPost")}</Button>
+        <Button type="success" href={$localePath("/posts/create")}>
+            {$t("routes.posts.create-post")}
+        </Button>
     </div>
     <div class="grid grid-cols-3 gap-4">
         {#each $posts as post (post.id)}

@@ -9,12 +9,12 @@
 
     function addOne() {
         count++
-        toasts.add("success", `${$t("home.count") as string}: ${count}`)
+        toasts.add("success", `${$t("routes.home.count") as string}: ${count}`)
     }
 </script>
 
 <svelte:head>
-    <title>{$t("home.home")}</title>
+    <title>{$t("routes.home.home")}</title>
 </svelte:head>
 
 <Content.Center>
@@ -22,7 +22,7 @@
         <h1>{title}</h1>
         <div class="flex justify-center mt-5">
             <Button type="primary" on:click={addOne}>
-                {$t("home.clicked")}: {count}
+                {$t("routes.home.clicked")}: {count}
             </Button>
         </div>
     </div>

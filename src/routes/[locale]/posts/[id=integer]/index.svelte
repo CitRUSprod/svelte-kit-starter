@@ -42,9 +42,9 @@
         </div>
         <div>
             <Button type="warning" href={$localePath(`/posts/${id}/edit`)}>
-                {$t("posts.$id.edit")}
+                {$t("routes.posts.[id].edit")}
             </Button>
-            <Button type="error" on:click={removePost}>{$t("posts.$id.remove")}</Button>
+            <Button type="error" on:click={removePost}>{$t("routes.posts.[id].remove")}</Button>
         </div>
     </Content.Default>
 {/if}

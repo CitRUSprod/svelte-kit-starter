@@ -15,13 +15,13 @@
         </h2>
     </div>
     <div class="flex flex-1 flex-wrap justify-end gap-2">
-        <Button type="primary" href={$localePath("/todo")}>{$t("header.todo")}</Button>
+        <Button type="primary" href={$localePath("/todo")}>{$t("components.header.todo")}</Button>
         <Button type="primary" href={$localePath("/lorem")}>Lorem</Button>
         <Button type="primary" href={$localePath("/simple-layout")}>
-            {$t("header.simpleLayout")}
+            {$t("components.header.simple-layout")}
         </Button>
         <Button type="primary" href={$localePath("/posts")}>
-            {$t("header.posts")}
+            {$t("components.header.posts")}
         </Button>
         <div class="flex items-center gap-1 mx-1">
             {#each $locales as locale, index (locale)}

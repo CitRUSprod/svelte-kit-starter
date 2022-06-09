@@ -22,32 +22,32 @@
 </script>
 
 <svelte:head>
-    <title>{$t("posts.create.postCreating")}</title>
+    <title>{$t("routes.posts.create.post-creating")}</title>
 </svelte:head>
 
 <Content.Center>
     <div class="flex flex-col gap-4 w-150 border-primary rounded-lg border text-center p-8">
         <div>
-            <h1>{$t("posts.create.postCreating")}</h1>
+            <h1>{$t("routes.posts.create.post-creating")}</h1>
         </div>
         <div>
             <TextField
-                label={$t("posts.create.title")}
-                placeholder={$t("posts.create.enterTitle")}
+                label={$t("routes.posts.create.title")}
+                placeholder={$t("routes.posts.create.enter-title")}
                 bind:value={postTitle}
             />
         </div>
         <div>
             <TextArea
                 class="resize-none"
-                label={$t("posts.create.content")}
-                placeholder={$t("posts.create.enterContent")}
+                label={$t("routes.posts.create.content")}
+                placeholder={$t("routes.posts.create.enter-content")}
                 bind:value={postContent}
             />
         </div>
         <div class="flex justify-center">
             <Button type="success" disabled={disabledCreating} on:click={createPost}>
-                {$t("posts.create.create")}
+                {$t("routes.posts.create.create")}
             </Button>
         </div>
     </div>

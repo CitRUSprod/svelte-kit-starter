@@ -36,13 +36,13 @@
     function getTextByType(localType: string) {
         switch (localType) {
             case "success":
-                return $t("alert.success")
+                return $t("components.alert.success")
             case "error":
-                return $t("alert.error")
+                return $t("components.alert.error")
             case "warning":
-                return $t("alert.warning")
+                return $t("components.alert.warning")
             default:
-                return $t("alert.info")
+                return $t("components.alert.info")
         }
     }
 

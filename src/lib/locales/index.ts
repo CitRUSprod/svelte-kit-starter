@@ -5,87 +5,55 @@ import type { Config } from "sveltekit-i18n"
 
 export const defaultLocale = "en" as string
 
+const localeList = ["en", "ru"]
+
+function createLocaleLoaders(path: string, routes: NonNullable<Config["loaders"]>[0]["routes"]) {
+    const parts = path.split("/")
+
+    const componentPartIndex = parts.indexOf("_components")
+
+    if (componentPartIndex >= 0) {
+        parts.splice(0, componentPartIndex)
+        parts[0] = "components"
+    }
+
+    if (parts[parts.length - 1] === "index") {
+        parts.length -= 1
+    }
+
+    const loaders: Config["loaders"] = localeList.map(locale => ({
+        locale,
+        key: parts.join("."),
+        routes,
+        loader: async () => (await import(`./${locale}/${path}.json`)).default
+    }))
+
+    return loaders
+}
+
+function createAllLoaders(...args: Array<[string, NonNullable<Config["loaders"]>[0]["routes"]]>) {
+    const loaders: Config["loaders"] = []
+
+    for (const arg of args) {
+        loaders.push(...createLocaleLoaders(...arg))
+    }
+
+    return loaders
+}
+
 const config: Config = {
-    loaders: [
-        {
-            locale: "en",
-            key: "alert",
-            loader: async () => (await import("./en/alert.json")).default
-        },
-        {
-            locale: "ru",
-            key: "alert",
-            loader: async () => (await import("./ru/alert.json")).default
-        },
-        {
-            locale: "en",
-            key: "header",
-            loader: async () => (await import("./en/header.json")).default
-        },
-        {
-            locale: "ru",
-            key: "header",
-            loader: async () => (await import("./ru/header.json")).default
-        },
-        {
-            locale: "en",
-            key: "error",
-            routes: ["error"],
-            loader: async () => (await import("./en/error.json")).default
-        },
-        {
-            locale: "ru",
-            key: "error",
-            routes: ["error"],
-            loader: async () => (await import("./ru/error.json")).default
-        },
-        {
-            locale: "en",
-            key: "home",
-            routes: ["/"],
-            loader: async () => (await import("./en/home.json")).default
-        },
-        {
-            locale: "ru",
-            key: "home",
-            routes: ["/"],
-            loader: async () => (await import("./ru/home.json")).default
-        },
-        {
-            locale: "en",
-            key: "todo",
-            routes: ["/todo"],
-            loader: async () => (await import("./en/todo.json")).default
-        },
-        {
-            locale: "ru",
-            key: "todo",
-            routes: ["/todo"],
-            loader: async () => (await import("./ru/todo.json")).default
-        },
-        {
-            locale: "en",
-            key: "simpleLayout",
-            routes: ["/simple-layout"],
-            loader: async () => (await import("./en/simple-layout.json")).default
-        },
-        {
-            locale: "ru",
-            key: "simpleLayout",
-            routes: ["/simple-layout"],
-            loader: async () => (await import("./ru/simple-layout.json")).default
-        },
-        {
-            locale: "en",
-            key: "posts",
-            loader: async () => (await import("./en/posts.json")).default
-        },
-        {
-            locale: "ru",
-            key: "posts",
-            loader: async () => (await import("./ru/posts.json")).default
-        }
-    ]
+    loaders: createAllLoaders(
+        ["components/alert", undefined],
+        ["routes/_components/header", undefined],
+        ["routes/error", ["error"]],
+        ["routes/home", ["/"]],
+        ["routes/todo", ["/todo"]],
+        ["routes/simple-layout", ["/simple-layout"]],
+        ["routes/posts/index", ["/posts"]],
+        ["routes/posts/create", ["/posts/create"]],
+        ["routes/posts/[id]/index", [/^\/posts\/\d+$/]],
+        ["routes/posts/[id]/edit", [/^\/posts\/\d+\/edit$/]]
+    )
 }
 
 const { t, locale: lcl, locales, loadTranslations } = new I18n(config)

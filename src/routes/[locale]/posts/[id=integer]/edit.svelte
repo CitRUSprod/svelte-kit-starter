@@ -48,32 +48,32 @@
 </script>
 
 <svelte:head>
-    <title>{$t("posts.$id.editPage.postEditing")}</title>
+    <title>{$t("routes.posts.[id].edit.post-editing")}</title>
 </svelte:head>
 
 <Content.Center>
     <div class="flex flex-col gap-4 w-150 border-primary rounded-lg border text-center p-8">
         <div>
-            <h1>{$t("posts.$id.editPage.postEditing")}</h1>
+            <h1>{$t("routes.posts.[id].edit.post-editing")}</h1>
         </div>
         <div>
             <TextField
-                label={$t("posts.$id.editPage.title")}
-                placeholder={$t("posts.$id.editPage.enterTitle")}
+                label={$t("routes.posts.[id].edit.title")}
+                placeholder={$t("routes.posts.[id].edit.enter-title")}
                 bind:value={postTitle}
             />
         </div>
         <div>
             <TextArea
                 class="resize-none"
-                label={$t("posts.$id.editPage.content")}
-                placeholder={$t("posts.$id.editPage.enterContent")}
+                label={$t("routes.posts.[id].edit.content")}
+                placeholder={$t("routes.posts.[id].edit.enter-content")}
                 bind:value={postContent}
             />
         </div>
         <div class="flex justify-center">
             <Button type="success" disabled={disabledEditing} on:click={editPost}>
-                {$t("posts.$id.editPage.save")}
+                {$t("routes.posts.[id].edit.save")}
             </Button>
         </div>
     </div>

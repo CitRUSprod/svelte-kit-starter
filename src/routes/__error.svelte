@@ -21,19 +21,19 @@
 </script>
 
 <svelte:head>
-    <title>{$t("error.error")} {$page.status}</title>
+    <title>{$t("routes.error.error")} {$page.status}</title>
 </svelte:head>
 
 <main class="relative flex-1">
     <Content.Center>
         <div class="border-error rounded-lg border text-center p-8">
-            <h1>{$t("error.error")} {$page.status}</h1>
+            <h1>{$t("routes.error.error")} {$page.status}</h1>
             {#if $page.error}
                 <h2>{$page.error.message}</h2>
             {/if}
             <div class="flex justify-center mt-5">
                 <Button type="error" href={$localePath("/")}>
-                    {$t("error.goHome")}
+                    {$t("routes.error.go-home")}
                 </Button>
             </div>
         </div>
