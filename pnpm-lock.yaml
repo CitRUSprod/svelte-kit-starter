@@ -45,6 +45,7 @@ specifiers:
   tslib: 2.4.0
   typescript: 4.7.2
   unplugin-icons: 0.14.3
+  vite-plugin-dynamic-import: 0.9.8
   windicss: 3.5.4
 
 dependencies:
@@ -94,6 +95,7 @@ devDependencies:
   svelte-preprocess: 4.10.6_nrkokdrdekzxnvk725432prq2q
   typescript: 4.7.2
   unplugin-icons: 0.14.3
+  vite-plugin-dynamic-import: 0.9.8
   windicss: 3.5.4
 
 packages:
@@ -2466,7 +2468,7 @@ packages:
     dev: true
 
   /is-extglob/2.1.1:
-    resolution: {integrity: sha1-qIwCU1eR8C7TfHahueqXc8gz+MI=}
+    resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
     dev: true
 
@@ -4379,6 +4381,12 @@ packages:
     dependencies:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
+    dev: true
+
+  /vite-plugin-dynamic-import/0.9.8:
+    resolution: {integrity: sha512-9AItjtvHmtl96Ooph8+PJwEEpomr/9VyJc6hQ3DiXillMNJlgp4kBV5V5qkMi6kbVE7Fa+DF9Y7HSZ7N42NuWw==}
+    dependencies:
+      fast-glob: 3.2.11
     dev: true
 
   /vite/2.9.9:
