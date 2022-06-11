@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { title } from "$lib/env"
+    import { env } from "$lib/utils"
 </script>
 
 <footer class="px-4 py-2 bg-default-darker text-content-light text-center">
-    <h3>{title}</h3>
+    <h3>{env.VITE_TITLE}</h3>
 </footer>

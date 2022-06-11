@@ -5,13 +5,13 @@
     import { page } from "$app/stores"
     import { darkTheme } from "$lib/stores"
     import { t, currentLocale, locales, localePath } from "$lib/locales"
-    import { title } from "$lib/env"
+    import { env } from "$lib/utils"
 </script>
 
 <header class="flex items-center gap-2 px-6 py-2 bg-primary text-content-light shadow-lg">
     <div>
         <h2>
-            <a href={$localePath("/")}>{title}</a>
+            <a href={$localePath("/")}>{env.VITE_TITLE}</a>
         </h2>
     </div>
     <div class="flex flex-1 flex-wrap justify-end gap-2">

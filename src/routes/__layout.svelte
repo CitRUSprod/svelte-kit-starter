@@ -19,14 +19,9 @@
 
     import { browser } from "$app/env"
     import { darkTheme } from "$lib/stores"
-    import { title } from "$lib/env"
 
     if (browser) {
         darkTheme.sync()
-    }
-
-    if (!title) {
-        console.error("Create .env file with VITE_TITLE variable.")
     }
 </script>
 

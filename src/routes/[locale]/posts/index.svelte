@@ -1,6 +1,4 @@
 <script lang="ts">
-    /** eslint-disable @typescript-eslint/restrict-template-expressions */
-
     import { Content, Button } from "$lib/components"
 
     import { t, localePath } from "$lib/locales"
