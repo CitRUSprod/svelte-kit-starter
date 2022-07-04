@@ -19,8 +19,11 @@ export const handle: Handle = async ({ event: e, resolve }) => {
         return new Response(undefined, { status: 301, headers })
     }
 
-    const response = await resolve(e)
-    const body = await response.text()
+    const response = await resolve(e, {
+        transformPage({ html }) {
+            return html.replace(/<html.*>/, `<html lang="${locale}">`)
+        }
+    })
 
-    return new Response(body.replace(/<html.*>/, `<html lang="${locale}">`), response)
+    return response
 }
