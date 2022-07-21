@@ -1,11 +1,14 @@
 <script lang="ts">
     import { Content, Button } from "$lib/components"
+    import { ModalPostCreating } from "./_components"
 
     import { t, localePath } from "$lib/locales"
     import { posts } from "$lib/stores"
 
-    function integer(id: number) {
-        return id
+    let modalPostCreating: ModalPostCreating
+
+    function openModalPostCreating() {
+        modalPostCreating.open()
     }
 </script>
 
@@ -15,7 +18,7 @@
 
 <Content.Default title={$t("routes.posts.posts")}>
     <div>
-        <Button type="success" href={$localePath("/posts/create")}>
+        <Button type="success" on:click={openModalPostCreating}>
             {$t("routes.posts.create-post")}
         </Button>
     </div>
@@ -23,7 +26,7 @@
         {#each $posts as post (post.id)}
             <a
                 class="p-4 border-primary rounded-lg border transition hover:bg-primary hover:bg-opacity-20 dark:hover:bg-opacity-20"
-                href={$localePath(`/posts/${integer(post.id)}`)}
+                href={$localePath(`/posts/${String(post.id)}`)}
             >
                 <div>
                     <h3>{post.title}</h3>
@@ -35,3 +38,5 @@
         {/each}
     </div>
 </Content.Default>
+
+<ModalPostCreating bind:this={modalPostCreating} />

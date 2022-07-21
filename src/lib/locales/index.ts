@@ -50,9 +50,9 @@ const config: Config = {
         ["routes/todo", ["/todo"]],
         ["routes/simple-layout", ["/simple-layout"]],
         ["routes/posts/index", ["/posts"]],
-        ["routes/posts/create", ["/posts/create"]],
+        ["routes/posts/_components/modal-post-creating", ["/posts"]],
         ["routes/posts/[id]/index", [/^\/posts\/\d+$/]],
-        ["routes/posts/[id]/edit", [/^\/posts\/\d+\/edit$/]]
+        ["routes/posts/[id]/_components/modal-post-editing", [/^\/posts\/\d+$/]]
     )
 }
 

@@ -10,6 +10,7 @@
 
 <script lang="ts">
     import { Content, Button } from "$lib/components"
+    import { ModalPostEditing } from "./_components"
 
     import { browser } from "$app/env"
     import { goto } from "$app/navigation"
@@ -18,8 +19,14 @@
 
     export let id: number
 
-    const post = $posts.find(p => p.id === id)
-    if (browser && !post) goto($localePath("/posts"))
+    $: post = $posts.find(p => p.id === id)
+    $: if (browser && !post) goto($localePath("/posts"))
+
+    let modalPostEditing: ModalPostEditing
+
+    function openModalPostEditing() {
+        modalPostEditing.open(post!)
+    }
 
     function removePost() {
         posts.remove(id)
@@ -41,10 +48,12 @@
             {/each}
         </div>
         <div>
-            <Button type="warning" href={$localePath(`/posts/${id}/edit`)}>
+            <Button type="warning" on:click={openModalPostEditing}>
                 {$t("routes.posts.[id].edit")}
             </Button>
             <Button type="error" on:click={removePost}>{$t("routes.posts.[id].remove")}</Button>
         </div>
     </Content.Default>
+
+    <ModalPostEditing bind:this={modalPostEditing} />
 {/if}
