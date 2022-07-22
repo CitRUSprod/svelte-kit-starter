@@ -1,16 +1,12 @@
 import { derived } from "svelte/store"
 import { writable } from "svelte-local-storage-store"
 
-interface Post {
-    id: number
-    title: string
-    content: string
-}
+import type { Post } from "$lib/types"
 
 type Posts = Array<Readonly<Post>>
 
 const writablePosts = writable<Array<Post>>("posts", [])
-const { subscribe } = derived(writablePosts, l => l as Readonly<Posts>)
+const { subscribe } = derived(writablePosts, posts => posts as Readonly<Posts>)
 
 const { update } = writablePosts
 

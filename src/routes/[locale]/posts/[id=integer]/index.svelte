@@ -10,7 +10,7 @@
 
 <script lang="ts">
     import { Content, Button } from "$lib/components"
-    import { ModalPostEditing } from "./_components"
+    import { ModalPostEditing, ModalPostRemoving } from "./_components"
 
     import { browser } from "$app/env"
     import { goto } from "$app/navigation"
@@ -23,20 +23,14 @@
     $: if (browser && !post) goto($localePath("/posts"))
 
     let modalPostEditing: ModalPostEditing
-
-    function openModalPostEditing() {
-        modalPostEditing.open(post!)
-    }
-
-    function removePost() {
-        posts.remove(id)
-        goto($localePath("/posts"))
-    }
+    let modalPostRemoving: ModalPostRemoving
 </script>
 
 <svelte:head>
     {#if browser && post}
-        <title>{post.title}</title>
+        {#key post}
+            <title>{post.title}</title>
+        {/key}
     {/if}
 </svelte:head>
 
@@ -48,12 +42,15 @@
             {/each}
         </div>
         <div>
-            <Button type="warning" on:click={openModalPostEditing}>
+            <Button type="warning" on:click={modalPostEditing.open}>
                 {$t("routes.posts.[id].edit")}
             </Button>
-            <Button type="error" on:click={removePost}>{$t("routes.posts.[id].remove")}</Button>
+            <Button type="error" on:click={modalPostRemoving.open}>
+                {$t("routes.posts.[id].remove")}
+            </Button>
         </div>
     </Content.Default>
 
-    <ModalPostEditing bind:this={modalPostEditing} />
+    <ModalPostEditing {post} bind:this={modalPostEditing} />
+    <ModalPostRemoving {post} bind:this={modalPostRemoving} />
 {/if}

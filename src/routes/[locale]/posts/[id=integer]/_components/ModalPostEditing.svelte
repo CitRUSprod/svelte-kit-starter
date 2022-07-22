@@ -4,15 +4,12 @@
     import { t } from "$lib/locales"
     import { posts } from "$lib/stores"
 
-    interface Data {
-        id: number
-        title: string
-        content: string
-    }
+    import type { Post } from "$lib/types"
+
+    export let post: Readonly<Post>
 
     let visible = false
 
-    let id = 0
     let title = ""
     let content = ""
 
@@ -21,17 +18,20 @@
 
     $: disabled = !(trimmedTitle && trimmedContent)
 
-    export function open(data: Data) {
-        id = data.id
-        title = data.title
-        content = data.content
+    export function open() {
+        title = post.title
+        content = post.content
 
         visible = true
     }
 
+    export function close() {
+        visible = false
+    }
+
     function editPost() {
         if (!disabled) {
-            posts.edit(id, trimmedTitle, trimmedContent)
+            posts.edit(post.id, trimmedTitle, trimmedContent)
             visible = false
         }
     }
@@ -56,7 +56,10 @@
             bind:value={content}
         />
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-between">
+        <Button type="error" text on:click={close}>
+            {$t("components.modal-post-editing.cancel")}
+        </Button>
         <Button type="success" {disabled} on:click={editPost}>
             {$t("components.modal-post-editing.save")}
         </Button>

@@ -22,6 +22,10 @@
         visible = true
     }
 
+    export function close() {
+        visible = false
+    }
+
     function createPost() {
         if (!disabled) {
             posts.add(trimmedTitle, trimmedContent)
@@ -50,7 +54,10 @@
             bind:value={content}
         />
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-between">
+        <Button type="error" text on:click={close}>
+            {$t("components.modal-post-creating.cancel")}
+        </Button>
         <Button type="success" {disabled} on:click={createPost}>
             {$t("components.modal-post-creating.create")}
         </Button>

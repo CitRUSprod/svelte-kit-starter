@@ -52,7 +52,8 @@ const config: Config = {
         ["routes/posts/index", ["/posts"]],
         ["routes/posts/_components/modal-post-creating", ["/posts"]],
         ["routes/posts/[id]/index", [/^\/posts\/\d+$/]],
-        ["routes/posts/[id]/_components/modal-post-editing", [/^\/posts\/\d+$/]]
+        ["routes/posts/[id]/_components/modal-post-editing", [/^\/posts\/\d+$/]],
+        ["routes/posts/[id]/_components/modal-post-removing", [/^\/posts\/\d+$/]]
     )
 }
 

@@ -6,10 +6,6 @@
     import { posts } from "$lib/stores"
 
     let modalPostCreating: ModalPostCreating
-
-    function openModalPostCreating() {
-        modalPostCreating.open()
-    }
 </script>
 
 <svelte:head>
@@ -18,7 +14,7 @@
 
 <Content.Default title={$t("routes.posts.posts")}>
     <div>
-        <Button type="success" on:click={openModalPostCreating}>
+        <Button type="success" on:click={modalPostCreating.open}>
             {$t("routes.posts.create-post")}
         </Button>
     </div>
