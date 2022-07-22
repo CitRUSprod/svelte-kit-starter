@@ -3,9 +3,10 @@
 
     import { goto } from "$app/navigation"
     import { t, localePath } from "$lib/locales"
-    import { posts } from "$lib/stores"
+    import * as api from "$lib/api"
 
     let visible = false
+    let loading = false
 
     let title = ""
     let content = ""
@@ -26,16 +27,21 @@
         visible = false
     }
 
-    function createPost() {
+    async function createPost() {
         if (!disabled) {
-            posts.add(trimmedTitle, trimmedContent)
-            const newPost = $posts.at(-1)!
-            goto($localePath(`/posts/${String(newPost.id)}`))
+            loading = true
+            const post = await api.posts.createPost({
+                title: trimmedTitle,
+                content: trimmedContent
+            })
+            loading = false
+            close()
+            goto($localePath(`/posts/${post.id}`))
         }
     }
 </script>
 
-<Modal class="flex flex-col gap-4 w-200" bind:visible>
+<Modal class="flex flex-col gap-4 w-200" persistent={loading} bind:visible>
     <div>
         <h1 class="text-center">{$t("components.modal-post-creating.post-creating")}</h1>
     </div>
@@ -43,6 +49,7 @@
         <TextField
             label={$t("components.modal-post-creating.title")}
             placeholder={$t("components.modal-post-creating.enter-title")}
+            disabled={loading}
             bind:value={title}
         />
     </div>
@@ -51,14 +58,15 @@
             class="resize-none"
             label={$t("components.modal-post-creating.content")}
             placeholder={$t("components.modal-post-creating.enter-content")}
+            disabled={loading}
             bind:value={content}
         />
     </div>
     <div class="flex justify-between">
-        <Button type="error" text on:click={close}>
+        <Button type="error" text disabled={loading} on:click={close}>
             {$t("components.modal-post-creating.cancel")}
         </Button>
-        <Button type="success" {disabled} on:click={createPost}>
+        <Button type="success" {loading} {disabled} on:click={createPost}>
             {$t("components.modal-post-creating.create")}
         </Button>
     </div>

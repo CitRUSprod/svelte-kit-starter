@@ -2,13 +2,14 @@
     import { Button, TextField, TextArea, Modal } from "$lib/components"
 
     import { t } from "$lib/locales"
-    import { posts } from "$lib/stores"
+    import * as api from "$lib/api"
 
     import type { Post } from "$lib/types"
 
     export let post: Readonly<Post>
 
     let visible = false
+    let loading = false
 
     let title = ""
     let content = ""
@@ -16,7 +17,9 @@
     $: trimmedTitle = title.trim()
     $: trimmedContent = content.trim()
 
-    $: disabled = !(trimmedTitle && trimmedContent)
+    $: disabled =
+        !(trimmedTitle && trimmedContent) ||
+        (trimmedTitle === post.title && trimmedContent === post.content)
 
     export function open() {
         title = post.title
@@ -29,15 +32,21 @@
         visible = false
     }
 
-    function editPost() {
+    async function editPost() {
         if (!disabled) {
-            posts.edit(post.id, trimmedTitle, trimmedContent)
-            visible = false
+            loading = true
+            await api.posts.editPost({
+                id: post.id,
+                title: trimmedTitle,
+                content: trimmedContent
+            })
+            loading = false
+            close()
         }
     }
 </script>
 
-<Modal class="flex flex-col gap-4 w-200" bind:visible>
+<Modal class="flex flex-col gap-4 w-200" persistent={loading} bind:visible>
     <div>
         <h1 class="text-center">{$t("components.modal-post-editing.post-editing")}</h1>
     </div>
@@ -45,6 +54,7 @@
         <TextField
             label={$t("components.modal-post-editing.title")}
             placeholder={$t("components.modal-post-editing.enter-title")}
+            disabled={loading}
             bind:value={title}
         />
     </div>
@@ -53,14 +63,15 @@
             class="resize-none"
             label={$t("components.modal-post-editing.content")}
             placeholder={$t("components.modal-post-editing.enter-content")}
+            disabled={loading}
             bind:value={content}
         />
     </div>
     <div class="flex justify-between">
-        <Button type="error" text on:click={close}>
+        <Button type="error" text disabled={loading} on:click={close}>
             {$t("components.modal-post-editing.cancel")}
         </Button>
-        <Button type="success" {disabled} on:click={editPost}>
+        <Button type="success" {loading} {disabled} on:click={editPost}>
             {$t("components.modal-post-editing.save")}
         </Button>
     </div>
