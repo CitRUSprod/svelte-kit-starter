@@ -2,7 +2,7 @@
     import { Content, Button } from "$lib/components"
     import { ModalPostEditing, ModalPostRemoving } from "./_components"
 
-    import { browser } from "$app/env"
+    import { browser } from "$app/environment"
     import { goto } from "$app/navigation"
     import { t, localePath } from "$lib/locales"
     import { posts } from "$lib/stores"

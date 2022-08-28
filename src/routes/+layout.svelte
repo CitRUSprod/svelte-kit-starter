@@ -1,7 +1,7 @@
 <script lang="ts">
     import { PageProgressBar, ToastContainer } from "./_components"
 
-    import { browser } from "$app/env"
+    import { browser } from "$app/environment"
     import { darkTheme } from "$lib/stores"
 
     if (browser) {

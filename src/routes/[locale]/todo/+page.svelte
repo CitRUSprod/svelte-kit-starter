@@ -2,7 +2,7 @@
     import { Content, Icon, Button, TextField, Checkbox } from "$lib/components"
 
     import { crossfade } from "svelte/transition"
-    import { browser } from "$app/env"
+    import { browser } from "$app/environment"
     import { t } from "$lib/locales"
 
     const [send, receive] = crossfade({
