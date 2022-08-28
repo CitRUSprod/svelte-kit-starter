@@ -45,7 +45,7 @@ const config: Config = {
     loaders: createAllLoaders(
         ["components/alert", undefined],
         ["routes/_components/header", undefined],
-        ["routes/error", ["error"]],
+        ["routes/error", undefined],
         ["routes/home", ["/"]],
         ["routes/todo", ["/todo"]],
         ["routes/simple-layout", ["/simple-layout"]],

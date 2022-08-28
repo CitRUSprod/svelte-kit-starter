@@ -20,7 +20,7 @@ export const handle: Handle = async ({ event: e, resolve }) => {
     }
 
     const response = await resolve(e, {
-        transformPage({ html }) {
+        transformPageChunk({ html }) {
             return html.replace(/<html.*>/, `<html lang="${locale}">`)
         }
     })

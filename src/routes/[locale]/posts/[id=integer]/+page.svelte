@@ -1,13 +1,3 @@
-<script lang="ts" context="module">
-    import type { Load } from "@sveltejs/kit"
-
-    export const load: Load = ({ params }) => ({
-        props: {
-            id: parseInt(params.id)
-        }
-    })
-</script>
-
 <script lang="ts">
     import { Content, Button } from "$lib/components"
     import { ModalPostEditing, ModalPostRemoving } from "./_components"
@@ -17,9 +7,11 @@
     import { t, localePath } from "$lib/locales"
     import { posts } from "$lib/stores"
 
-    export let id: number
+    import type { PageData } from "./$types"
 
-    $: post = $posts.find(p => p.id === id)
+    export let data: PageData
+
+    $: post = $posts.find(p => p.id === data.id)
     $: if (browser && !post) goto($localePath("/posts"))
 
     let modalPostEditing: ModalPostEditing

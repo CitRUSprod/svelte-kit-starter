@@ -1,23 +1,8 @@
-<script lang="ts" context="module">
-    import { t, localePath, loadTranslations } from "$lib/locales"
-    import { getLocaleAndRoute } from "$lib/utils"
-
-    import type { Load } from "@sveltejs/kit"
-
-    export const load: Load = async ({ url }) => {
-        const { locale, route } = getLocaleAndRoute(url.pathname)
-        await loadTranslations(locale!, "error")
-
-        return {
-            stuff: { route }
-        }
-    }
-</script>
-
 <script lang="ts">
     import { Content, Button } from "$lib/components"
 
     import { page } from "$app/stores"
+    import { t, localePath } from "$lib/locales"
 </script>
 
 <svelte:head>

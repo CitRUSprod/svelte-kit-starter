@@ -2,10 +2,11 @@
     import { Icon, Button } from "$lib/components"
 
     import classNames from "classnames"
-    import { page } from "$app/stores"
     import { darkTheme } from "$lib/stores"
     import { t, currentLocale, locales, localePath } from "$lib/locales"
     import { env } from "$lib/utils"
+
+    export let route: string
 </script>
 
 <header class="flex items-center gap-2 px-6 py-2 bg-primary text-content-light shadow-lg">
@@ -28,7 +29,7 @@
                 <Button
                     class={classNames("px-1", { "opacity-50": $currentLocale !== locale })}
                     type="primary"
-                    href={$localePath($page.stuff.route, locale)}
+                    href={$localePath(route, locale)}
                 >
                     {locale.toUpperCase()}
                 </Button>
