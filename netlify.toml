@@ -5,7 +5,7 @@
 [build.environment]
     NODE_VERSION = "18.1.0"
     NPM_FLAGS = "-v"
-    VITE_TITLE = "SvelteKit Starter"
+    PUBLIC_TITLE = "SvelteKit Starter"
 
 [functions]
     node_bundler = "esbuild"

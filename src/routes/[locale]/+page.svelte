@@ -19,7 +19,7 @@
 
 <Content.Center>
     <div class="border-primary rounded-lg border text-center p-8">
-        <h1>{env.VITE_TITLE}</h1>
+        <h1>{env.PUBLIC_TITLE}</h1>
         <div class="flex justify-center mt-5">
             <Button type="primary" on:click={addOne}>
                 {$t("routes.home.clicked")}: {count}

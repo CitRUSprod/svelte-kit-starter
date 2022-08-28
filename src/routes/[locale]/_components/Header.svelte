@@ -12,7 +12,7 @@
 <header class="flex items-center gap-2 px-6 py-2 bg-primary text-content-light shadow-lg">
     <div>
         <h2>
-            <a href={$localePath("/")}>{env.VITE_TITLE}</a>
+            <a href={$localePath("/")}>{env.PUBLIC_TITLE}</a>
         </h2>
     </div>
     <div class="flex flex-1 flex-wrap justify-end gap-2">
