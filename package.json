@@ -70,7 +70,6 @@
         "@types/prettier": "2.7.1",
         "@typescript-eslint/eslint-plugin": "5.43.0",
         "@typescript-eslint/parser": "5.43.0",
-        "@unocss/preset-uno": "0.46.5",
         "@unocss/preset-wind": "0.46.5",
         "@unocss/reset": "0.46.5",
         "@unocss/transformer-directives": "0.46.5",
