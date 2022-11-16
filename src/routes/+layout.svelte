@@ -17,7 +17,7 @@
 <ToastContainer />
 
 <!-- eslint-disable @ota-meshi/svelte/valid-compile -->
-<style lang="postcss" global>
+<style global lang="postcss">
     html {
         @apply u-overflow-x-hidden;
     }

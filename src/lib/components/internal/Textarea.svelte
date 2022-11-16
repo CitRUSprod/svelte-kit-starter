@@ -15,9 +15,9 @@
 </script>
 
 <textarea
+    bind:this={textarea}
     {readonly}
     bind:value
-    bind:this={textarea}
     {...$$restProps}
     on:keypress
     on:focus

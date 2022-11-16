@@ -36,8 +36,8 @@ const config = {
         {
             files: ["*.svelte"],
             rules: {
-                "@ota-meshi/svelte/indent": 0,
-                "@ota-meshi/svelte/first-attribute-linebreak": 0
+                "svelte/indent": 0,
+                "svelte/first-attribute-linebreak": 0
             }
         }
     ]

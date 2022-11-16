@@ -96,7 +96,7 @@
             </div>
             {#if closable}
                 <div class="u-pr-2 u-py-2">
-                    <Button {type} text icon on:click={close}>
+                    <Button icon text {type} on:click={close}>
                         <Icon.Close />
                     </Button>
                 </div>

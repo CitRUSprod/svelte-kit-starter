@@ -47,26 +47,26 @@
     </div>
     <div>
         <TextField
+            disabled={loading}
             label={$t("components.modal-post-creating.title")}
             placeholder={$t("components.modal-post-creating.enter-title")}
-            disabled={loading}
             bind:value={title}
         />
     </div>
     <div>
         <TextArea
             class="u-resize-none"
+            disabled={loading}
             label={$t("components.modal-post-creating.content")}
             placeholder={$t("components.modal-post-creating.enter-content")}
-            disabled={loading}
             bind:value={content}
         />
     </div>
     <div class="u-flex u-justify-between">
-        <Button type="error" text disabled={loading} on:click={close}>
+        <Button disabled={loading} text type="error" on:click={close}>
             {$t("components.modal-post-creating.cancel")}
         </Button>
-        <Button type="success" {loading} {disabled} on:click={createPost}>
+        <Button {disabled} {loading} type="success" on:click={createPost}>
             {$t("components.modal-post-creating.create")}
         </Button>
     </div>

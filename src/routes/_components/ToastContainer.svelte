@@ -10,8 +10,8 @@
         <div in:fly|local={{ y: -200, duration: 500 }} out:fade|local>
             <Alert
                 class="u-my-1 u-shadow-md u-select-none"
-                type={toast.type}
                 closable
+                type={toast.type}
                 on:close={() => toasts.remove(toast.id)}
             >
                 {toast.text}

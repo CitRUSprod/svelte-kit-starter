@@ -17,10 +17,10 @@
 
 {#if type === "number"}
     <input
-        type="number"
-        {readonly}
-        bind:value
         bind:this={input}
+        {readonly}
+        type="number"
+        bind:value
         {...$$restProps}
         on:keypress
         on:focus
@@ -29,9 +29,9 @@
 {:else}
     <input
         {...{ type }}
+        bind:this={input}
         {readonly}
         bind:value
-        bind:this={input}
         {...$$restProps}
         on:keypress
         on:focus

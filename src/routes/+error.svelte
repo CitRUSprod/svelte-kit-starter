@@ -17,7 +17,7 @@
                 <h2>{$page.error.message}</h2>
             {/if}
             <div class="u-flex u-justify-center u-mt-5">
-                <Button type="error" href={$localePath("/")}>
+                <Button href={$localePath("/")} type="error">
                     {$t("routes.error.go-home")}
                 </Button>
             </div>

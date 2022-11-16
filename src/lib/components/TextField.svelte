@@ -66,11 +66,11 @@
                 "u-border-info u-placeholder-text-info-lighter": types.info
             }
         )}
-        type={valueType}
-        {placeholder}
-        {disabled}
-        {readonly}
         {autofocus}
+        {disabled}
+        {placeholder}
+        {readonly}
+        type={valueType}
         bind:value
         on:keypress
         on:focus

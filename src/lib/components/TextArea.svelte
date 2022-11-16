@@ -58,10 +58,10 @@
                 "u-resize-none": !resizable
             }
         )}
-        {placeholder}
-        {disabled}
-        {readonly}
         {autofocus}
+        {disabled}
+        {placeholder}
+        {readonly}
         bind:value
         on:keypress
         on:focus

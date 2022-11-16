@@ -25,7 +25,7 @@
 {/if}
 
 <!-- eslint-disable @ota-meshi/svelte/valid-compile -->
-<style lang="postcss" global>
+<style global lang="postcss">
     #nprogress {
         @apply u-pointer-events-none;
     }

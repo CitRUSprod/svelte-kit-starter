@@ -37,10 +37,10 @@
         <p>{$t("components.modal-post-removing.post-removing-question")}</p>
     </div>
     <div class="u-flex u-justify-between">
-        <Button type="success" text disabled={loading} on:click={close}>
+        <Button disabled={loading} text type="success" on:click={close}>
             {$t("components.modal-post-removing.cancel")}
         </Button>
-        <Button type="error" {loading} on:click={removePost}>
+        <Button {loading} type="error" on:click={removePost}>
             {$t("components.modal-post-removing.remove")}
         </Button>
     </div>

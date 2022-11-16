@@ -23,7 +23,7 @@
     }
 </script>
 
-<div
+<button
     class={classNames(
         "u-inline-flex u-items-center u-w-auto u-gap-1 u-align-top u-cursor-pointer",
         {
@@ -58,6 +58,6 @@
         {/if}
     </span>
     {#if label}
-        <span>{label}</span>
+        <span class="u-ml-1">{label}</span>
     {/if}
-</div>
+</button>

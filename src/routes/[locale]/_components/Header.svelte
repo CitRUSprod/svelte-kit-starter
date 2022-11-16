@@ -18,20 +18,20 @@
         </h2>
     </div>
     <div class="u-flex u-flex-1 u-flex-wrap u-justify-end u-gap-2">
-        <Button type="primary" href={$localePath("/todo")}>{$t("components.header.todo")}</Button>
-        <Button type="primary" href={$localePath("/lorem")}>Lorem</Button>
-        <Button type="primary" href={$localePath("/simple-layout")}>
+        <Button href={$localePath("/todo")} type="primary">{$t("components.header.todo")}</Button>
+        <Button href={$localePath("/lorem")} type="primary">Lorem</Button>
+        <Button href={$localePath("/simple-layout")} type="primary">
             {$t("components.header.simple-layout")}
         </Button>
-        <Button type="primary" href={$localePath("/posts")}>
+        <Button href={$localePath("/posts")} type="primary">
             {$t("components.header.posts")}
         </Button>
         <div class="u-flex u-items-center u-gap-1 u-mx-1">
             {#each $locales as locale, index (locale)}
                 <Button
                     class={classNames("u-px-1", { "u-opacity-50": $currentLocale !== locale })}
-                    type="primary"
                     href={$localePath(route, locale)}
+                    type="primary"
                 >
                     {locale.toUpperCase()}
                 </Button>
@@ -40,15 +40,15 @@
                 {/if}
             {/each}
         </div>
-        <Button type="primary" icon on:click={darkTheme.toggle}>
+        <Button icon type="primary" on:click={darkTheme.toggle}>
             <svelte:component this={$darkTheme ? Icon.Sun : Icon.Moon} />
         </Button>
         <Button
-            type="primary"
             href="https://github.com/CitRUSprod/svelte-kit-starter"
-            target="_blank"
-            rel="noopener noreferrer"
             icon
+            rel="noopener noreferrer"
+            target="_blank"
+            type="primary"
         >
             <Icon.GitHub />
         </Button>

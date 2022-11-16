@@ -43,6 +43,6 @@
         </div>
     </Content.Default>
 
-    <ModalPostEditing {post} bind:this={modalPostEditing} />
-    <ModalPostRemoving {post} bind:this={modalPostRemoving} />
+    <ModalPostEditing bind:this={modalPostEditing} {post} />
+    <ModalPostRemoving bind:this={modalPostRemoving} {post} />
 {/if}

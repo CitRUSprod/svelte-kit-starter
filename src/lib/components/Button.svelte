@@ -88,8 +88,8 @@
                 "u-rounded-full": icon
             })}
             {href}
-            {target}
             {rel}
+            {target}
         />
     {/if}
 </button>

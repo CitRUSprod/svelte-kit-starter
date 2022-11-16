@@ -75,13 +75,13 @@
     <div class="u-flex u-gap-2">
         <TextField
             class="u-flex-1"
-            type="primary"
-            placeholder={$t("routes.todo.enter-task")}
             LeftIcon={Icon.Task}
+            placeholder={$t("routes.todo.enter-task")}
+            type="primary"
             bind:value={taskText}
             on:keypress={addTaskOnEnter}
         />
-        <Button type="primary" disabled={!trimmedTaskText} on:click={addTask}>
+        <Button disabled={!trimmedTaskText} type="primary" on:click={addTask}>
             {$t("routes.todo.add")}
         </Button>
     </div>
@@ -97,7 +97,7 @@
                     >
                         <Checkbox type="primary" bind:checked={task.completed} />
                         <span class="u-flex-1">{task.text}</span>
-                        <Button type="error" text icon on:click={() => removeTask(task.id)}>
+                        <Button icon text type="error" on:click={() => removeTask(task.id)}>
                             <Icon.Trash />
                         </Button>
                     </li>
@@ -115,7 +115,7 @@
                     >
                         <Checkbox type="primary" bind:checked={task.completed} />
                         <span class="u-flex-1 u-line-through">{task.text}</span>
-                        <Button type="error" text icon on:click={() => removeTask(task.id)}>
+                        <Button icon text type="error" on:click={() => removeTask(task.id)}>
                             <Icon.Trash />
                         </Button>
                     </li>
