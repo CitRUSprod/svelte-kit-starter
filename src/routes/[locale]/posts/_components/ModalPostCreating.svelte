@@ -41,9 +41,9 @@
     }
 </script>
 
-<Modal class="u-flex u-flex-col u-gap-4 u-w-200" persistent={loading} bind:visible>
+<Modal class="u:flex u:flex-col u:gap-4 u:w-200" persistent={loading} bind:visible>
     <div>
-        <h1 class="u-text-center">{$t("components.modal-post-creating.post-creating")}</h1>
+        <h1 class="u:text-center">{$t("components.modal-post-creating.post-creating")}</h1>
     </div>
     <div>
         <TextField
@@ -55,14 +55,14 @@
     </div>
     <div>
         <TextArea
-            class="u-resize-none"
+            class="u:resize-none"
             disabled={loading}
             label={$t("components.modal-post-creating.content")}
             placeholder={$t("components.modal-post-creating.enter-content")}
             bind:value={content}
         />
     </div>
-    <div class="u-flex u-justify-between">
+    <div class="u:flex u:justify-between">
         <Button disabled={loading} text type="error" on:click={close}>
             {$t("components.modal-post-creating.cancel")}
         </Button>

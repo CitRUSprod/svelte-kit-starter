@@ -7,7 +7,7 @@
 </script>
 
 <Header route={data.route} />
-<main class="u-relative u-flex-1">
+<main class="u:relative u:flex-1">
     <slot />
 </main>
 <Footer />

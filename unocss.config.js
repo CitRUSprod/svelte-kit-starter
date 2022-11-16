@@ -57,7 +57,7 @@ const config = {
     ],
     transformers: [transformerDirectives()],
     preprocess(matcher) {
-        const prefix = "u-"
+        const prefix = "u:"
         return matcher.startsWith(prefix) ? matcher.slice(prefix.length) : undefined
     }
 }

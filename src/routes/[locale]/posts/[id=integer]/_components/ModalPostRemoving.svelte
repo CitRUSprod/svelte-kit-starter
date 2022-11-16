@@ -29,14 +29,14 @@
     }
 </script>
 
-<Modal class="u-flex u-flex-col u-gap-4 u-w-100" persistent={loading} bind:visible>
+<Modal class="u:flex u:flex-col u:gap-4 u:w-100" persistent={loading} bind:visible>
     <div>
         <h1>{$t("components.modal-post-removing.post-removing")}</h1>
     </div>
     <div>
         <p>{$t("components.modal-post-removing.post-removing-question")}</p>
     </div>
-    <div class="u-flex u-justify-between">
+    <div class="u:flex u:justify-between">
         <Button disabled={loading} text type="success" on:click={close}>
             {$t("components.modal-post-removing.cancel")}
         </Button>
