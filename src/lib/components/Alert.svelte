@@ -1,5 +1,4 @@
 <script lang="ts">
-    import * as Icon from "./Icon"
     import Button from "./Button.svelte"
 
     import { createEventDispatcher } from "svelte"
@@ -19,19 +18,6 @@
     $: types = getElementBasicTypeObject(type)
 
     const dispatch = createEventDispatcher()
-
-    function getIconByType(localType: string) {
-        switch (localType) {
-            case "success":
-                return Icon.Success
-            case "error":
-                return Icon.Error
-            case "warning":
-                return Icon.Warning
-            default:
-                return Icon.Info
-        }
-    }
 
     function getTextByType(localType: string) {
         switch (localType) {
@@ -76,7 +62,14 @@
                 }
             )}
         >
-            <svelte:component this={getIconByType(type)} />
+            <i
+                class={classNames("u-text-xl", {
+                    "u-i-fa-solid-check": types.success,
+                    "u-i-fa-solid-times-circle": types.error,
+                    "u-i-fa-solid-exclamation-triangle": types.warning,
+                    "u-i-fa-solid-info-circle": types.info
+                })}
+            />
         </div>
         <div class="u-flex u-flex-1 u-justify-between">
             <div class="u-px-4 u-py-2">
@@ -97,7 +90,7 @@
             {#if closable}
                 <div class="u-pr-2 u-py-2">
                     <Button icon text {type} on:click={close}>
-                        <Icon.Close />
+                        <i class="u-i-fa-solid-times u-text-xl" />
                     </Button>
                 </div>
             {/if}

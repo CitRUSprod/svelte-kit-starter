@@ -1,6 +1,4 @@
 <script lang="ts">
-    import * as Icon from "./Icon"
-
     import classNames from "classnames"
     import { getElementTypeObject } from "$lib/utils"
 
@@ -54,7 +52,7 @@
         )}
     >
         {#if checked}
-            <Icon.Success class="u-text-sm" />
+            <i class="u-i-fa-solid-check u-text-sm" />
         {/if}
     </span>
     {#if label}

@@ -4,7 +4,7 @@
     import classNames from "classnames"
     import { getElementTypeObject } from "$lib/utils"
 
-    import type { ElementType, Icon } from "$lib/types"
+    import type { ElementType } from "$lib/types"
 
     export let type: ElementType = "default"
     export let placeholder: string | undefined = undefined
@@ -14,10 +14,8 @@
     export let readonly = false
     export let autofocus = false
     export let value: string | number | null | undefined = undefined
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    export let LeftIcon: Icon | undefined = undefined
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    export let RightIcon: Icon | undefined = undefined
+    export let leftIconClass: string | undefined = undefined
+    export let rightIconClass: string | undefined = undefined
 
     let klass: string | undefined = undefined
     export { klass as class }
@@ -47,8 +45,8 @@
             {label}
         </div>
     {/if}
-    {#if LeftIcon}
-        <svelte:component this={LeftIcon} class="u-absolute u-left-3 u-pointer-events-none" />
+    {#if leftIconClass}
+        <i class={`u-absolute u-left-3 u-pointer-events-none u-text-xl ${leftIconClass}`} />
     {/if}
     <Input
         class={classNames(
@@ -56,8 +54,8 @@
             "u-dark:placeholder-opacity-80",
             "u-disabled:cursor-not-allowed",
             {
-                "u-pl-10": LeftIcon,
-                "u-pr-10": RightIcon,
+                "u-pl-10": leftIconClass,
+                "u-pr-10": rightIconClass,
                 "u-border-default u-placeholder-text-default-lighter": types.default,
                 "u-border-primary u-placeholder-text-primary-lighter": types.primary,
                 "u-border-success u-placeholder-text-success-lighter": types.success,
@@ -76,7 +74,7 @@
         on:focus
         on:blur
     />
-    {#if RightIcon}
-        <svelte:component this={RightIcon} class="u-absolute u-right-3 u-pointer-events-none" />
+    {#if rightIconClass}
+        <i class={`u-absolute u-right-3 u-pointer-events-none u-text-xl ${rightIconClass}`} />
     {/if}
 </div>

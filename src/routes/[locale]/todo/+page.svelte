@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Content, Icon, Button, TextField, Checkbox } from "$lib/components"
+    import { Content, Button, TextField, Checkbox } from "$lib/components"
 
     import { crossfade } from "svelte/transition"
     import { browser } from "$app/environment"
@@ -75,7 +75,7 @@
     <div class="u-flex u-gap-2">
         <TextField
             class="u-flex-1"
-            LeftIcon={Icon.Task}
+            leftIconClass="u-i-ic-baseline-add-task"
             placeholder={$t("routes.todo.enter-task")}
             type="primary"
             bind:value={taskText}
@@ -98,7 +98,7 @@
                         <Checkbox type="primary" bind:checked={task.completed} />
                         <span class="u-flex-1">{task.text}</span>
                         <Button icon text type="error" on:click={() => removeTask(task.id)}>
-                            <Icon.Trash />
+                            <i class="u-i-ph-trash-bold u-text-xl" />
                         </Button>
                     </li>
                 {/each}
@@ -116,7 +116,7 @@
                         <Checkbox type="primary" bind:checked={task.completed} />
                         <span class="u-flex-1 u-line-through">{task.text}</span>
                         <Button icon text type="error" on:click={() => removeTask(task.id)}>
-                            <Icon.Trash />
+                            <i class="u-i-ph-trash-bold u-text-xl" />
                         </Button>
                     </li>
                 {/each}

@@ -1,6 +1,4 @@
 <script lang="ts">
-    import * as Icon from "./Icon"
-
     import classNames from "classnames"
     import { getElementTypeObject } from "$lib/utils"
 
@@ -78,7 +76,7 @@
                 }
             )}
         >
-            <Icon.Loading class="u-animate-spin" />
+            <i class="u-i-whh-loadingflowcw u-text-xl u-animate-spin" />
         </div>
     {:else if href !== undefined && !disabled}
         <!-- svelte-ignore a11y-missing-content -->

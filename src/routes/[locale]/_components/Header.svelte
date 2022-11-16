@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Icon, Button } from "$lib/components"
+    import { Button } from "$lib/components"
 
     import classNames from "classnames"
     import { darkTheme } from "$lib/stores"
@@ -41,7 +41,7 @@
             {/each}
         </div>
         <Button icon type="primary" on:click={darkTheme.toggle}>
-            <svelte:component this={$darkTheme ? Icon.Sun : Icon.Moon} />
+            <i class="u-i-fa-solid-sun u-dark:i-fa-solid-moon u-text-xl" />
         </Button>
         <Button
             href="https://github.com/CitRUSprod/svelte-kit-starter"
@@ -50,7 +50,7 @@
             target="_blank"
             type="primary"
         >
-            <Icon.GitHub />
+            <i class="u-i-icomoon-free-github u-text-xl" />
         </Button>
     </div>
 </header>
