@@ -4,9 +4,7 @@ import adapterAuto from "@sveltejs/adapter-auto"
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
-    preprocess: preprocess({
-        postcss: true
-    }),
+    preprocess: preprocess(),
     kit: {
         adapter: process.env.ADAPTER === "auto" ? adapterAuto() : adapterNode({ out: "dist" })
     }

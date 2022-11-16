@@ -72,9 +72,9 @@
 </svelte:head>
 
 <Content.Default title={$t("routes.todo.todo")}>
-    <div class="flex gap-2">
+    <div class="u-flex u-gap-2">
         <TextField
-            class="flex-1"
+            class="u-flex-1"
             type="primary"
             placeholder={$t("routes.todo.enter-task")}
             LeftIcon={Icon.Task}
@@ -85,18 +85,18 @@
             {$t("routes.todo.add")}
         </Button>
     </div>
-    <div class="flex gap-4">
-        <div class="flex-1">
+    <div class="u-flex u-gap-4">
+        <div class="u-flex-1">
             <h2>{$t("routes.todo.should-be-done")} ({incompleteTasks.length})</h2>
-            <ul class="flex flex-col gap-2 mt-2">
+            <ul class="u-flex u-flex-col u-gap-2 u-mt-2">
                 {#each incompleteTasks as task (task.id)}
                     <li
-                        class="flex items-center gap-2 p-3 bg-content border-primary border rounded"
+                        class="u-flex u-items-center u-gap-2 u-p-3 u-bg-content u-border-primary u-border u-rounded"
                         in:receive|local={{ key: task.id }}
                         out:send|local={{ key: task.id }}
                     >
                         <Checkbox type="primary" bind:checked={task.completed} />
-                        <span class="flex-1">{task.text}</span>
+                        <span class="u-flex-1">{task.text}</span>
                         <Button type="error" text icon on:click={() => removeTask(task.id)}>
                             <Icon.Trash />
                         </Button>
@@ -104,17 +104,17 @@
                 {/each}
             </ul>
         </div>
-        <div class="flex-1">
+        <div class="u-flex-1">
             <h2>{$t("routes.todo.done")} ({completedTasks.length})</h2>
-            <ul class="flex flex-col gap-2 mt-2">
+            <ul class="u-flex u-flex-col u-gap-2 u-mt-2">
                 {#each completedTasks as task (task.id)}
                     <li
-                        class="flex items-center gap-2 p-3 bg-content border-primary border rounded"
+                        class="u-flex u-items-center u-gap-2 u-p-3 u-bg-content u-border-primary u-border u-rounded"
                         in:receive|local={{ key: task.id }}
                         out:send|local={{ key: task.id }}
                     >
                         <Checkbox type="primary" bind:checked={task.completed} />
-                        <span class="flex-1 line-through">{task.text}</span>
+                        <span class="u-flex-1 u-line-through">{task.text}</span>
                         <Button type="error" text icon on:click={() => removeTask(task.id)}>
                             <Icon.Trash />
                         </Button>

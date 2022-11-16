@@ -5,6 +5,8 @@
     export { klass as class }
 </script>
 
-<div class={classNames("absolute flex justify-center items-center w-full h-full", klass)}>
+<div
+    class={classNames("u-absolute u-flex u-justify-center u-items-center u-w-full u-h-full", klass)}
+>
     <slot />
 </div>

@@ -5,11 +5,11 @@
     import { toasts } from "$lib/stores"
 </script>
 
-<div class="fixed right-3 bottom-2 flex flex-col-reverse w-80 text-white z-1000">
+<div class="u-fixed u-right-3 u-bottom-2 u-flex u-flex-col-reverse u-w-80 u-text-white u-z-1000">
     {#each $toasts as toast (toast.id)}
         <div in:fly|local={{ y: -200, duration: 500 }} out:fade|local>
             <Alert
-                class="my-1 shadow-md select-none"
+                class="u-my-1 u-shadow-md u-select-none"
                 type={toast.type}
                 closable
                 on:close={() => toasts.remove(toast.id)}

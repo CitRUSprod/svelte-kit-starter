@@ -1,4 +1,5 @@
 import { sveltekit } from "@sveltejs/kit/vite"
+import unocss from "unocss/vite"
 import icons from "unplugin-icons/vite"
 import dynamicImport from "vite-plugin-dynamic-import"
 
@@ -7,7 +8,7 @@ const config = {
     server: {
         port: 6400
     },
-    plugins: [sveltekit(), icons({ compiler: "svelte" }), dynamicImport.default()]
+    plugins: [unocss(), sveltekit(), icons({ compiler: "svelte" }), dynamicImport.default()]
 }
 
 export default config

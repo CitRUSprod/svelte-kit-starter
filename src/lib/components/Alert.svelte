@@ -55,44 +55,47 @@
 {#if visible}
     <div
         class={classNames(
-            "flex w-full rounded-md bg-content border-2",
+            "u-flex u-w-full u-rounded-md u-bg-content u-border-2",
             {
-                "border-success": types.success,
-                "border-error": types.error,
-                "border-warning": types.warning,
-                "border-info": types.info
+                "u-border-success": types.success,
+                "u-border-error": types.error,
+                "u-border-warning": types.warning,
+                "u-border-info": types.info
             },
             klass
         )}
     >
         <div
-            class={classNames("flex justify-center items-center w-12 text-content-light", {
-                "bg-success": types.success,
-                "bg-error": types.error,
-                "bg-warning": types.warning,
-                "bg-info": types.info
-            })}
+            class={classNames(
+                "u-flex u-justify-center u-items-center u-w-12 u-text-content-lighter",
+                {
+                    "u-bg-success": types.success,
+                    "u-bg-error": types.error,
+                    "u-bg-warning": types.warning,
+                    "u-bg-info": types.info
+                }
+            )}
         >
             <svelte:component this={getIconByType(type)} />
         </div>
-        <div class="flex flex-1 justify-between">
-            <div class="px-4 py-2">
+        <div class="u-flex u-flex-1 u-justify-between">
+            <div class="u-px-4 u-py-2">
                 <b
                     class={classNames({
-                        "text-success": types.success,
-                        "text-error": types.error,
-                        "text-warning": types.warning,
-                        "text-info": types.info
+                        "u-text-success": types.success,
+                        "u-text-error": types.error,
+                        "u-text-warning": types.warning,
+                        "u-text-info": types.info
                     })}
                 >
                     {getTextByType(type)}
                 </b>
-                <p class="text-content-inverse text-sm">
+                <p class="u-text-content-inverse u-text-sm">
                     <slot />
                 </p>
             </div>
             {#if closable}
-                <div class="pr-2 py-2">
+                <div class="u-pr-2 u-py-2">
                     <Button {type} text icon on:click={close}>
                         <Icon.Close />
                     </Button>

@@ -9,14 +9,14 @@
     <title>{$t("routes.error.error")} {$page.status}</title>
 </svelte:head>
 
-<main class="relative flex-1">
+<main class="u-relative u-flex-1">
     <Content.Center>
-        <div class="border-error rounded-lg border text-center p-8">
+        <div class="u-border-error u-rounded-lg u-border u-text-center u-p-8">
             <h1>{$t("routes.error.error")} {$page.status}</h1>
             {#if $page.error}
                 <h2>{$page.error.message}</h2>
             {/if}
-            <div class="flex justify-center mt-5">
+            <div class="u-flex u-justify-center u-mt-5">
                 <Button type="error" href={$localePath("/")}>
                     {$t("routes.error.go-home")}
                 </Button>

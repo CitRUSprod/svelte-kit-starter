@@ -23,37 +23,37 @@
 
 <button
     class={classNames(
-        "relative inline-flex justify-center items-center h-10 font-bold transition duration-200 align-top select-none",
-        "active:transform",
-        "disabled:cursor-not-allowed",
-        "focus:outline-none",
+        "u-relative u-inline-flex u-justify-center u-items-center u-h-10 u-font-bold u-transition u-duration-200 u-align-top u-select-none",
+        "u-active:transform",
+        "u-disabled:cursor-not-allowed",
+        "u-focus:outline-none",
         {
-            "px-4 rounded": !icon,
-            "w-10 rounded-full": icon,
-            "text-content-light": !text && !loading,
-            "text-transparent": loading,
-            "hover:bg-opacity-30 active:bg-opacity-30 dark:hover:bg-opacity-30 dark:active:bg-opacity-30":
+            "u-px-4 u-rounded": !icon,
+            "u-w-10 u-rounded-full": icon,
+            "u-text-content-lighter": !text && !loading,
+            "u-text-transparent": loading,
+            "u-hover:bg-opacity-30 u-active:bg-opacity-30 u-dark:hover:bg-opacity-30 u-dark:active:bg-opacity-30":
                 text,
-            "active:scale-90": !disabled && !loading,
-            "disabled:opacity-50": disabled,
-            "bg-default": !text && types.default,
-            "bg-primary": !text && types.primary,
-            "bg-success": !text && types.success,
-            "bg-error": !text && types.error,
-            "bg-warning": !text && types.warning,
-            "bg-info": !text && types.info,
-            "hover:bg-default-lighter active:bg-default-darker": !disabled && types.default,
-            "hover:bg-primary-lighter active:bg-primary-darker": !disabled && types.primary,
-            "hover:bg-success-lighter active:bg-success-darker": !disabled && types.success,
-            "hover:bg-error-lighter active:bg-error-darker": !disabled && types.error,
-            "hover:bg-warning-lighter active:bg-warning-darker": !disabled && types.warning,
-            "hover:bg-info-lighter active:bg-info-darker": !disabled && types.info,
-            "text-default": !loading && text && types.default,
-            "text-primary": !loading && text && types.primary,
-            "text-success": !loading && text && types.success,
-            "text-error": !loading && text && types.error,
-            "text-warning": !loading && text && types.warning,
-            "text-info": !loading && text && types.info
+            "u-active:scale-90": !disabled && !loading,
+            "u-disabled:opacity-50": disabled,
+            "u-bg-default": !text && types.default,
+            "u-bg-primary": !text && types.primary,
+            "u-bg-success": !text && types.success,
+            "u-bg-error": !text && types.error,
+            "u-bg-warning": !text && types.warning,
+            "u-bg-info": !text && types.info,
+            "u-hover:bg-default-lighter u-active:bg-default-darker": !disabled && types.default,
+            "u-hover:bg-primary-lighter u-active:bg-primary-darker": !disabled && types.primary,
+            "u-hover:bg-success-lighter u-active:bg-success-darker": !disabled && types.success,
+            "u-hover:bg-error-lighter u-active:bg-error-darker": !disabled && types.error,
+            "u-hover:bg-warning-lighter u-active:bg-warning-darker": !disabled && types.warning,
+            "u-hover:bg-info-lighter u-active:bg-info-darker": !disabled && types.info,
+            "u-text-default": !loading && text && types.default,
+            "u-text-primary": !loading && text && types.primary,
+            "u-text-success": !loading && text && types.success,
+            "u-text-error": !loading && text && types.error,
+            "u-text-warning": !loading && text && types.warning,
+            "u-text-info": !loading && text && types.info
         },
         klass
     )}
@@ -64,28 +64,28 @@
     {#if loading}
         <div
             class={classNames(
-                "absolute top-0 left-0 flex justify-center items-center w-full h-full",
+                "u-absolute u-top-0 u-left-0 u-flex u-justify-center u-items-center u-w-full u-h-full",
                 {
-                    rounded: !icon,
-                    "rounded-full": icon,
-                    "text-content-light": !text,
-                    "text-default": text && types.default,
-                    "text-primary": text && types.primary,
-                    "text-success": text && types.success,
-                    "text-error": text && types.error,
-                    "text-warning": text && types.warning,
-                    "text-info": text && types.info
+                    "u-rounded": !icon,
+                    "u-rounded-full": icon,
+                    "u-text-content-lighter": !text,
+                    "u-text-default": text && types.default,
+                    "u-text-primary": text && types.primary,
+                    "u-text-success": text && types.success,
+                    "u-text-error": text && types.error,
+                    "u-text-warning": text && types.warning,
+                    "u-text-info": text && types.info
                 }
             )}
         >
-            <Icon.Loading class="animate-spin" />
+            <Icon.Loading class="u-animate-spin" />
         </div>
     {:else if href !== undefined && !disabled}
         <!-- svelte-ignore a11y-missing-content -->
         <a
-            class={classNames("absolute top-0 left-0 w-full h-full", {
-                rounded: !icon,
-                "rounded-full": icon
+            class={classNames("u-absolute u-top-0 u-left-0 u-w-full u-h-full", {
+                "u-rounded": !icon,
+                "u-rounded-full": icon
             })}
             {href}
             {target}

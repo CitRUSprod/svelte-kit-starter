@@ -28,7 +28,7 @@
 
 {#if browser && post}
     <Content.Default title={post.title}>
-        <div class="flex flex-col gap-4">
+        <div class="u-flex u-flex-col u-gap-4">
             {#each post.content.split(/\n+/) as paragraph}
                 <p>{paragraph}</p>
             {/each}

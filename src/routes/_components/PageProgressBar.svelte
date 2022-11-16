@@ -27,10 +27,10 @@
 <!-- eslint-disable @ota-meshi/svelte/valid-compile -->
 <style lang="postcss" global>
     #nprogress {
-        @apply pointer-events-none;
+        @apply u-pointer-events-none;
     }
 
     #nprogress .bar {
-        @apply fixed top-0 left-0 w-full h-0.5 bg-green-500 z-1000;
+        @apply u-fixed u-top-0 u-left-0 u-w-full u-h-0.5 u-bg-green-500 u-z-1000;
     }
 </style>

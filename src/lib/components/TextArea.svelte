@@ -23,39 +23,39 @@
 
 <div
     class={classNames(
-        "relative flex items-center",
+        "u-relative u-flex u-items-center",
         {
-            "opacity-50": disabled,
-            "text-default": types.default,
-            "text-primary": types.primary,
-            "text-success": types.success,
-            "text-error": types.error,
-            "text-warning": types.warning,
-            "text-info": types.info
+            "u-opacity-50": disabled,
+            "u-text-default": types.default,
+            "u-text-primary": types.primary,
+            "u-text-success": types.success,
+            "u-text-error": types.error,
+            "u-text-warning": types.warning,
+            "u-text-info": types.info
         },
         klass
     )}
 >
     {#if label}
         <div
-            class="absolute top-0 left-3 -top-1.5 px-0.5 bg-content text-xs select-none pointer-events-none z-1"
+            class="u-absolute u-left-3 u-top--1.8 u-px-0.5 u-bg-content u-text-xs u-select-none u-pointer-events-none u-z-1"
         >
             {label}
         </div>
     {/if}
     <Textarea
         class={classNames(
-            "w-full h-40 px-3 py-2 bg-content text-content-inverse border rounded placeholder-opacity-80 outline-none",
-            "dark:placeholder-opacity-80",
-            "disabled:cursor-not-allowed",
+            "u-w-full u-h-40 u-px-3 u-py-2 u-bg-content u-text-content-inverse u-border u-rounded u-placeholder-opacity-80 u-outline-none",
+            "u-dark:placeholder-opacity-80",
+            "u-disabled:cursor-not-allowed",
             {
-                "border-default placeholder-default-lighter": types.default,
-                "border-primary placeholder-primary-lighter": types.primary,
-                "border-success placeholder-success-lighter": types.success,
-                "border-error placeholder-error-lighter": types.error,
-                "border-warning placeholder-warning-lighter": types.warning,
-                "border-info placeholder-info-lighter": types.info,
-                "resize-none": !resizable
+                "u-border-default u-placeholder-text-default-lighter": types.default,
+                "u-border-primary u-placeholder-text-primary-lighter": types.primary,
+                "u-border-success u-placeholder-text-success-lighter": types.success,
+                "u-border-error u-placeholder-text-error-lighter": types.error,
+                "u-border-warning u-placeholder-text-warning-lighter": types.warning,
+                "u-border-info u-placeholder-text-info-lighter": types.info,
+                "u-resize-none": !resizable
             }
         )}
         {placeholder}

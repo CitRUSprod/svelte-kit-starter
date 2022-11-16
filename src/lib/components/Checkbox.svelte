@@ -25,9 +25,9 @@
 
 <div
     class={classNames(
-        "inline-flex items-center w-auto gap-1 align-top cursor-pointer",
+        "u-inline-flex u-items-center u-w-auto u-gap-1 u-align-top u-cursor-pointer",
         {
-            "opacity-50": disabled
+            "u-opacity-50": disabled
         },
         klass
     )}
@@ -35,26 +35,26 @@
 >
     <span
         class={classNames(
-            "flex justify-center items-center w-6 h-6 text-content-light border rounded select-none",
+            "u-flex u-justify-center u-items-center u-w-6 u-h-6 u-text-content-lighter u-border u-rounded u-select-none",
             {
-                "bg-content": !checked,
-                "border-default": types.default,
-                "border-primary": types.primary,
-                "border-success": types.success,
-                "border-error": types.error,
-                "border-warning": types.warning,
-                "border-info": types.info,
-                "bg-default": checked && types.default,
-                "bg-primary": checked && types.primary,
-                "bg-success": checked && types.success,
-                "bg-error": checked && types.error,
-                "bg-warning": checked && types.warning,
-                "bg-info": checked && types.info
+                "u-bg-content": !checked,
+                "u-border-default": types.default,
+                "u-border-primary": types.primary,
+                "u-border-success": types.success,
+                "u-border-error": types.error,
+                "u-border-warning": types.warning,
+                "u-border-info": types.info,
+                "u-bg-default": checked && types.default,
+                "u-bg-primary": checked && types.primary,
+                "u-bg-success": checked && types.success,
+                "u-bg-error": checked && types.error,
+                "u-bg-warning": checked && types.warning,
+                "u-bg-info": checked && types.info
             }
         )}
     >
         {#if checked}
-            <Icon.Success class="text-sm" />
+            <Icon.Success class="u-text-sm" />
         {/if}
     </span>
     {#if label}

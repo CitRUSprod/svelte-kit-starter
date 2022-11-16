@@ -4,6 +4,9 @@
     import { browser } from "$app/environment"
     import { darkTheme } from "$lib/stores"
 
+    import "uno.css"
+    import "@unocss/reset/tailwind.css"
+
     if (browser) {
         darkTheme.sync()
     }
@@ -15,31 +18,29 @@
 
 <!-- eslint-disable @ota-meshi/svelte/valid-compile -->
 <style lang="postcss" global>
-    @windicss;
-
     html {
-        @apply overflow-x-hidden;
+        @apply u-overflow-x-hidden;
     }
 
     body {
-        @apply flex flex-col min-h-screen bg-content text-content-inverse transition duration-200 overflow-x-hidden;
+        @apply u-flex u-flex-col u-min-h-screen u-bg-content u-text-content-inverse u-transition u-duration-200 u-overflow-x-hidden;
     }
 
     h1,
     h2,
     h3 {
-        @apply font-bold;
+        @apply u-font-bold;
     }
 
     h1 {
-        @apply text-4xl;
+        @apply u-text-4xl;
     }
 
     h2 {
-        @apply text-2xl;
+        @apply u-text-2xl;
     }
 
     h3 {
-        @apply text-lg;
+        @apply u-text-lg;
     }
 </style>
