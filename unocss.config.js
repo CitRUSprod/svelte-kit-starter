@@ -1,5 +1,4 @@
-import { presetUno, presetIcons, extractorSvelte } from "unocss"
-import transformerDirectives from "@unocss/transformer-directives"
+import { extractorSvelte, presetUno, presetIcons, transformerDirectives } from "unocss"
 import { colors } from "@unocss/preset-wind"
 import { presetBetterNestedColors } from "unocss-preset-better-nested-colors"
 
