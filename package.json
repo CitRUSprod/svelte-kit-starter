@@ -3,7 +3,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite dev --host",
+        "dev": "vite dev",
         "build": "vite build",
         "build:auto": "ADAPTER=auto vite build",
         "start": "PORT=6400 node dist",
