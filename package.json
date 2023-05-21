@@ -13,7 +13,7 @@
         "stylelint:fix": "pnpm stylelint --fix",
         "stylelint:all": "pnpm stylelint \"**/*.svelte\"",
         "stylelint:fix:all": "pnpm stylelint:all --fix",
-        "eslint": "eslint --color",
+        "eslint": "eslint --color --no-error-on-unmatched-pattern",
         "eslint:fix": "pnpm eslint --fix",
         "eslint:all": "pnpm eslint \"**/*.{md,json,y?(a)ml,?(c)js,ts,svelte}\"",
         "eslint:fix:all": "pnpm eslint:all --fix",
