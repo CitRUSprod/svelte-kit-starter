@@ -1,5 +1,3 @@
-import type { PageLoad } from "./$types"
-
-export const load: PageLoad = ({ params }) => ({
-    id: parseInt(params.id)
-})
+export function load({ params }) {
+    return { id: parseInt(params.id) }
+}

@@ -7,9 +7,7 @@
     import { t, localePath } from "$lib/locales"
     import { posts } from "$lib/stores"
 
-    import type { PageData } from "./$types"
-
-    export let data: PageData
+    export let data
 
     $: post = $posts.find(p => p.id === data.id)
     $: if (browser && !post) goto($localePath("/posts"))

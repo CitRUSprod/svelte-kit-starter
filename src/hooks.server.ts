@@ -1,11 +1,9 @@
 import { defaultLocale, locales } from "$lib/locales"
 import { getLocaleAndRoute } from "$lib/utils"
 
-import type { Handle } from "@sveltejs/kit"
-
 const supportedLocales = locales.get()
 
-export const handle: Handle = async ({ event: e, resolve }) => {
+export async function handle({ event: e, resolve }) {
     const { locale, route } = getLocaleAndRoute(e.url.pathname)
 
     if (!locale) {
