@@ -36,8 +36,8 @@
         }
     },
     "lint-staged": {
-        "*.{css,svelte}": "pnpm stylelint:fix",
-        "*.{html,mjml,md,json,y?(a)ml,?([cm])js,ts,svelte}": "pnpm eslint:fix"
+        "*.{css,svelte}": "pnpm stylelint",
+        "*.{html,mjml,md,json,y?(a)ml,?([cm])js,ts,svelte}": "pnpm eslint"
     },
     "prettier": "./configs/prettier/index.cjs",
     "stylelint": {
