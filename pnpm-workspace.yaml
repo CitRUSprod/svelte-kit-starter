@@ -1,3 +1,6 @@
+engineStrict: true
+saveExact: true
+
 allowBuilds:
     "@parcel/watcher": true
     "@sveltejs/kit": true
