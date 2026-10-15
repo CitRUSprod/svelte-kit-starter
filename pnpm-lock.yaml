@@ -66,6 +66,9 @@ importers:
       '@sveltejs/kit':
         specifier: 1.11.0
         version: 1.11.0(supports-color@7.2.0)(svelte@3.56.0)(vite@4.1.4(@types/node@26.6.5)(sass@1.105.1))
+      '@total-typescript/ts-reset':
+        specifier: ^0.6.1
+        version: 0.6.1
       '@types/eslint':
         specifier: 8.21.1
         version: 8.21.1
@@ -804,6 +807,9 @@ packages:
 
   '@sveltekit-i18n/parser-default@1.0.3':
     resolution: {integrity: sha512-HheveklTjp3hxpYQhoHfyA6B4bQaUeSV5MQf2usIv/58UF2jY/YqhCAWj9bDBjufbuZc5pSz4BXvdX3WVT+viA==}
+
+  '@total-typescript/ts-reset@0.6.1':
+    resolution: {integrity: sha512-cka47fVSo6lfQDIATYqb/vO1nvFfbPw7uWLayIXIhGETj0wcOOlrlkobOMDNQOFr9QOafegUPq13V2+6vtD7yg==}
 
   '@tsconfig/node10@1.0.13':
     resolution: {integrity: sha512-gcLdvR9HO1ZJBypsOGqaP6TFEzb6vIta0KSTLt9NAQ6pXQO3cRgSVyCN6pzYqI9DlJgY71XKO0dpDhCf08b3pg==}
@@ -3796,6 +3802,8 @@ snapshots:
       '@sveltekit-i18n/parser-default': 1.0.3
 
   '@sveltekit-i18n/parser-default@1.0.3': {}
+
+  '@total-typescript/ts-reset@0.6.1': {}
 
   '@tsconfig/node10@1.0.13': {}
 

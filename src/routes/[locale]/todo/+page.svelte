@@ -30,7 +30,7 @@
     let tasks: Array<Task> = []
 
     if (browser) {
-        tasks = JSON.parse(localStorage.getItem("tasks") ?? "[]")
+        tasks = JSON.parse(localStorage.getItem("tasks") ?? "[]") as Array<Task>
     }
 
     $: if (browser) {

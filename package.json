@@ -7,21 +7,22 @@
         "build": "vite build",
         "build:auto": "ADAPTER=auto vite build",
         "start": "PORT=6400 node dist",
-        "validate": "svelte-check --tsconfig tsconfig.json",
+        "check-types": "svelte-check --tsconfig tsconfig.json",
         "commit": "git-cz",
-        "stylelint": "stylelint --color",
+        "stylelint": "stylelint --color --allow-empty-input",
         "stylelint:fix": "pnpm stylelint --fix",
-        "stylelint:all": "pnpm stylelint \"**/*.svelte\"",
+        "stylelint:all": "pnpm stylelint \"**/*.{css,svelte}\"",
         "stylelint:fix:all": "pnpm stylelint:all --fix",
         "eslint": "eslint --color --no-error-on-unmatched-pattern",
         "eslint:fix": "pnpm eslint --fix",
-        "eslint:all": "pnpm eslint \"**/*.{md,json,y?(a)ml,?(c)js,ts,svelte}\"",
+        "eslint:all": "pnpm eslint .",
         "eslint:fix:all": "pnpm eslint:all --fix",
         "lint": "pnpm stylelint:all && pnpm eslint:all",
         "format": "pnpm stylelint:fix:all && pnpm eslint:fix:all",
-        "ci": "pnpm validate && pnpm lint",
+        "validate": "pnpm check-types && pnpm lint",
         "prepare": "husky install"
     },
+    "packageManager": "pnpm@11.20.0",
     "engines": {
         "node": "26.12.0",
         "pnpm": "11.20.0"
@@ -35,8 +36,8 @@
         }
     },
     "lint-staged": {
-        "*.svelte": "pnpm stylelint:fix",
-        "*.{md,json,y?(a)ml,?(c)js,ts,svelte}": "pnpm eslint:fix"
+        "*.{css,svelte}": "pnpm stylelint:fix",
+        "*.{html,mjml,md,json,y?(a)ml,?([cm])js,ts,svelte}": "pnpm eslint:fix"
     },
     "prettier": "./configs/prettier/index.cjs",
     "stylelint": {
@@ -64,6 +65,7 @@
         "@sveltejs/adapter-auto": "2.0.0",
         "@sveltejs/adapter-node": "1.2.2",
         "@sveltejs/kit": "1.11.0",
+        "@total-typescript/ts-reset": "^0.6.1",
         "@types/eslint": "8.21.1",
         "@types/node": "26.6.5",
         "@types/nprogress": "0.2.0",
