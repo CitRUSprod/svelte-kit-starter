@@ -1,6 +1,8 @@
-import path from "path"
-import { extractorSvelte, presetUno, presetIcons, transformerDirectives } from "unocss"
-import { colors } from "@unocss/preset-wind"
+import path from "node:path"
+
+import extractorSvelte from "@unocss/extractor-svelte"
+import { presetIcons, transformerDirectives } from "unocss"
+import { colors, presetWind3 } from "@unocss/preset-wind3"
 import { presetBetterNestedColors } from "unocss-preset-better-nested-colors"
 
 function getColors([lightColor, lightShade], [darkColor, darkShade]) {
@@ -42,11 +44,13 @@ const specialColors = {
     info: getColors(["sky", 400], ["sky", 500])
 }
 
+const classPrefix = "u:"
+
 /** @type {import("unocss/vite").VitePluginConfig} */
 const config = {
     extractors: [extractorSvelte],
     presets: [
-        presetUno(),
+        presetWind3(),
         presetBetterNestedColors({
             colors: {
                 ...colors,
@@ -55,11 +59,14 @@ const config = {
         }),
         presetIcons()
     ],
-    include: [path.join(__dirname, "src/**/*.svelte")],
+    content: {
+        pipeline: {
+            include: [path.join(import.meta.dirname, "src/**/*.svelte")]
+        }
+    },
     transformers: [transformerDirectives()],
     preprocess(matcher) {
-        const prefix = "u:"
-        return matcher.startsWith(prefix) ? matcher.slice(prefix.length) : undefined
+        return matcher.startsWith(classPrefix) ? matcher.slice(classPrefix.length) : undefined
     }
 }
 
