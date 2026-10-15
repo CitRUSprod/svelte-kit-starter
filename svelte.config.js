@@ -6,7 +6,10 @@ import adapterAuto from "@sveltejs/adapter-auto"
 const config = {
     preprocess: preprocess(),
     kit: {
-        adapter: process.env.ADAPTER === "auto" ? adapterAuto() : adapterNode({ out: "dist" })
+        adapter: process.env.ADAPTER === "auto" ? adapterAuto() : adapterNode({ out: "dist" }),
+        alias: {
+            $styles: "src/styles"
+        }
     }
 }
 

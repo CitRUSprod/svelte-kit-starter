@@ -23,13 +23,3 @@
 {#if false}
     <div />
 {/if}
-
-<style global lang="postcss">
-    #nprogress {
-        @apply u\:pointer-events-none;
-    }
-
-    #nprogress .bar {
-        @apply u\:fixed u\:top-0 u\:left-0 u\:w-full u\:h-0.5 u\:bg-green-500 u\:z-1000;
-    }
-</style>
