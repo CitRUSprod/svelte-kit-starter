@@ -1,5 +1,11 @@
 #!/usr/bin/env sh
 
-. "$(dirname "$0")/_/husky.sh"
+BRANCH=$(git branch --show-current)
+
+if [ "$BRANCH" = "master" ] || [ "$BRANCH" = "main" ]; then
+    echo "Commits to branch \"$BRANCH\" are FORBIDDEN!"
+    echo "Create a feature branch and open a Pull Request."
+    exit 1
+fi
 
 pnpx lint-staged

@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+ZERO_COMMIT="0000000000000000000000000000000000000000"
+
+while read LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA; do
+  [ "$REMOTE_SHA" = "$ZERO_COMMIT" ] && continue
+  [ "$LOCAL_SHA" = "$ZERO_COMMIT" ] && continue
+
+  if [ "$REMOTE_REF" = "refs/heads/master" ] || [ "$REMOTE_REF" = "refs/heads/main" ]; then
+    echo "Direct push to \"master\" or \"main\" is FORBIDDEN!"
+    echo "Create a feature branch and open a Pull Request."
+    exit 1
+  fi
+
+  if ! git cat-file -e "$REMOTE_SHA" 2>/dev/null; then
+    continue
+  fi
+
+  if ! git merge-base --is-ancestor "$REMOTE_SHA" "$LOCAL_SHA"; then
+    echo "Force push is forbidden! History must not be overwritten."
+    echo "Branch: $REMOTE_REF"
+    echo "Use a regular git push (without --force)"
+    exit 1
+  fi
+done

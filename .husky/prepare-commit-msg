@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+if [ "$2" = "amend" ]; then
+  echo "git commit --amend is forbidden! History must not be rewritten."
+  echo "Create a new commit instead of modifying an existing one."
+  exit 1
+fi
+
+exit 0
