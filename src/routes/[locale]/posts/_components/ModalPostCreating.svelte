@@ -1,20 +1,19 @@
 <script lang="ts">
-    import { Button, TextField, TextArea, Modal } from "$lib/components"
-
     import { goto } from "$app/navigation"
-    import { t, localePath } from "$lib/locales"
     import * as api from "$lib/api"
+    import { Button, TextField, TextArea, Modal } from "$lib/components"
+    import { t, localePath } from "$lib/locales"
 
-    let visible = false
-    let loading = false
+    let visible = $state(false)
+    let loading = $state(false)
 
-    let title = ""
-    let content = ""
+    let title = $state("")
+    let content = $state("")
 
-    $: trimmedTitle = title.trim()
-    $: trimmedContent = content.trim()
+    const trimmedTitle = $derived(title.trim())
+    const trimmedContent = $derived(content.trim())
 
-    $: disabled = !(trimmedTitle && trimmedContent)
+    const disabled = $derived(!(trimmedTitle && trimmedContent))
 
     export function open() {
         title = ""
@@ -63,10 +62,10 @@
         />
     </div>
     <div class="u:flex u:justify-between">
-        <Button disabled={loading} text type="error" on:click={close}>
+        <Button disabled={loading} text type="error" onclick={close}>
             {$t("components.modal-post-creating.cancel")}
         </Button>
-        <Button {disabled} {loading} type="success" on:click={createPost}>
+        <Button {disabled} {loading} type="success" onclick={createPost}>
             {$t("components.modal-post-creating.create")}
         </Button>
     </div>

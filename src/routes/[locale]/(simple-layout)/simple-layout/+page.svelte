@@ -1,6 +1,5 @@
 <script lang="ts">
     import { Content, Button } from "$lib/components"
-
     import { t, localePath } from "$lib/locales"
 </script>
 

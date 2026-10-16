@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { Content, Button, TextField, Checkbox } from "$lib/components"
-
     import { crossfade } from "svelte/transition"
+
     import { browser } from "$app/environment"
+    import { Content, Button, TextField, Checkbox } from "$lib/components"
     import { t } from "$lib/locales"
 
     const [send, receive] = crossfade({
@@ -27,22 +27,24 @@
         completed: boolean
     }
 
-    let tasks: Array<Task> = []
+    let tasks = $state<Array<Task>>([])
 
     if (browser) {
         tasks = JSON.parse(localStorage.getItem("tasks") ?? "[]") as Array<Task>
     }
 
-    $: if (browser) {
-        localStorage.setItem("tasks", JSON.stringify(tasks))
-    }
+    $effect(() => {
+        if (browser) {
+            localStorage.setItem("tasks", JSON.stringify(tasks))
+        }
+    })
 
-    $: completedTasks = tasks.filter(task => task.completed)
-    $: incompleteTasks = tasks.filter(task => !task.completed)
+    const completedTasks = $derived(tasks.filter(task => task.completed))
+    const incompleteTasks = $derived(tasks.filter(task => !task.completed))
 
-    let taskText = ""
+    let taskText = $state("")
 
-    $: trimmedTaskText = taskText.trim()
+    const trimmedTaskText = $derived(taskText.trim())
 
     function addTask() {
         if (trimmedTaskText) {
@@ -51,7 +53,6 @@
                 text: trimmedTaskText,
                 completed: false
             })
-            tasks = tasks
             taskText = ""
         }
     }
@@ -79,9 +80,9 @@
             placeholder={$t("routes.todo.enter-task")}
             type="primary"
             bind:value={taskText}
-            on:keypress={addTaskOnEnter}
+            onkeypress={addTaskOnEnter}
         />
-        <Button disabled={!trimmedTaskText} type="primary" on:click={addTask}>
+        <Button disabled={!trimmedTaskText} type="primary" onclick={addTask}>
             {$t("routes.todo.add")}
         </Button>
     </div>
@@ -92,13 +93,13 @@
                 {#each incompleteTasks as task (task.id)}
                     <li
                         class="u:flex u:items-center u:gap-2 u:p-3 u:bg-content u:border-primary u:border u:rounded"
-                        in:receive|local={{ key: task.id }}
-                        out:send|local={{ key: task.id }}
+                        in:receive={{ key: task.id }}
+                        out:send={{ key: task.id }}
                     >
                         <Checkbox type="primary" bind:checked={task.completed} />
                         <span class="u:flex-1">{task.text}</span>
-                        <Button icon text type="error" on:click={() => removeTask(task.id)}>
-                            <i class="u:i-ph-trash-bold u:text-xl" />
+                        <Button icon text type="error" onclick={() => removeTask(task.id)}>
+                            <i class="u:i-ph-trash-bold u:text-xl"></i>
                         </Button>
                     </li>
                 {/each}
@@ -110,13 +111,13 @@
                 {#each completedTasks as task (task.id)}
                     <li
                         class="u:flex u:items-center u:gap-2 u:p-3 u:bg-content u:border-primary u:border u:rounded"
-                        in:receive|local={{ key: task.id }}
-                        out:send|local={{ key: task.id }}
+                        in:receive={{ key: task.id }}
+                        out:send={{ key: task.id }}
                     >
                         <Checkbox type="primary" bind:checked={task.completed} />
                         <span class="u:flex-1 u:line-through">{task.text}</span>
-                        <Button icon text type="error" on:click={() => removeTask(task.id)}>
-                            <i class="u:i-ph-trash-bold u:text-xl" />
+                        <Button icon text type="error" onclick={() => removeTask(task.id)}>
+                            <i class="u:i-ph-trash-bold u:text-xl"></i>
                         </Button>
                     </li>
                 {/each}

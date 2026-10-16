@@ -1,19 +1,26 @@
 <script lang="ts">
-    import { Content, Button } from "$lib/components"
     import { ModalPostEditing, ModalPostRemoving } from "./_components"
 
     import { browser } from "$app/environment"
     import { goto } from "$app/navigation"
+    import { Content, Button } from "$lib/components"
     import { t, localePath } from "$lib/locales"
     import { posts } from "$lib/stores"
 
-    export let data
+    interface Props {
+        data: { id: number }
+    }
 
-    $: post = $posts.find(p => p.id === data.id)
-    $: if (browser && !post) goto($localePath("/posts"))
+    const { data }: Props = $props()
 
-    let modalPostEditing: ModalPostEditing
-    let modalPostRemoving: ModalPostRemoving
+    const post = $derived($posts.find(p => p.id === data.id))
+
+    $effect(() => {
+        if (browser && !post) goto($localePath("/posts"))
+    })
+
+    let modalPostEditing = $state<ModalPostEditing>()
+    let modalPostRemoving = $state<ModalPostRemoving>()
 </script>
 
 <svelte:head>
@@ -27,15 +34,15 @@
 {#if browser && post}
     <Content.Default title={post.title}>
         <div class="u:flex u:flex-col u:gap-4">
-            {#each post.content.split(/\n+/) as paragraph}
+            {#each post.content.split(/\n+/) as paragraph, index (index)}
                 <p>{paragraph}</p>
             {/each}
         </div>
         <div>
-            <Button type="warning" on:click={modalPostEditing.open}>
+            <Button type="warning" onclick={() => modalPostEditing?.open()}>
                 {$t("routes.posts.[id].edit")}
             </Button>
-            <Button type="error" on:click={modalPostRemoving.open}>
+            <Button type="error" onclick={() => modalPostRemoving?.open()}>
                 {$t("routes.posts.[id].remove")}
             </Button>
         </div>

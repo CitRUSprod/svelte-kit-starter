@@ -1,15 +1,17 @@
 <script lang="ts">
-    import { Button, Modal } from "$lib/components"
-
-    import { t } from "$lib/locales"
     import * as api from "$lib/api"
-
+    import { Button, Modal } from "$lib/components"
+    import { t } from "$lib/locales"
     import type { Post } from "$lib/types"
 
-    export let post: Readonly<Post>
+    interface Props {
+        post: Readonly<Post>
+    }
 
-    let visible = false
-    let loading = false
+    const { post }: Props = $props()
+
+    let visible = $state(false)
+    let loading = $state(false)
 
     export function open() {
         visible = true
@@ -37,10 +39,10 @@
         <p>{$t("components.modal-post-removing.post-removing-question")}</p>
     </div>
     <div class="u:flex u:justify-between">
-        <Button disabled={loading} text type="success" on:click={close}>
+        <Button disabled={loading} text type="success" onclick={close}>
             {$t("components.modal-post-removing.cancel")}
         </Button>
-        <Button {loading} type="error" on:click={removePost}>
+        <Button {loading} type="error" onclick={removePost}>
             {$t("components.modal-post-removing.remove")}
         </Button>
     </div>

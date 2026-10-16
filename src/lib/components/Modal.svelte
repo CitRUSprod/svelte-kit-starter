@@ -1,44 +1,66 @@
 <script lang="ts">
-    import { Dialog, Transition, TransitionChild } from "@rgossiaux/svelte-headlessui"
-
+    import { Dialog } from "bits-ui"
     import classNames from "classnames"
+    import type { Snippet } from "svelte"
+    import { fade } from "svelte/transition"
 
-    export let visible = false
-    export let persistent = false
+    interface Props {
+        visible?: boolean
+        persistent?: boolean
+        class?: string
+        children?: Snippet
+    }
 
-    let klass: string | undefined = undefined
-    export { klass as class }
+    let {
+        visible = $bindable(false),
+        persistent = false,
+        class: klass = undefined,
+        children
+    }: Props = $props()
 
-    function close() {
-        if (!persistent) {
+    function handleBackdrop(e: MouseEvent) {
+        if (!persistent && e.target === e.currentTarget) {
             visible = false
         }
     }
 </script>
 
-<Transition appear show={visible}>
-    <Dialog on:close={close}>
-        <TransitionChild
-            enter="u:ease-out u:duration-300"
-            enterFrom="u:opacity-0"
-            enterTo="u:opacity-100"
-            leave="u:ease-in u:duration-200"
-            leaveFrom="u:opacity-100"
-            leaveTo="u:opacity-0"
+<Dialog.Root bind:open={visible}>
+    <Dialog.Portal>
+        <Dialog.Overlay forceMount>
+            {#snippet child({ props, open })}
+                {#if open}
+                    <div
+                        {...props}
+                        in:fade={{ duration: 300 }}
+                        out:fade={{ duration: 200 }}
+                        class="u:fixed u:inset-0 u:bg-black u:bg-opacity-30"
+                    ></div>
+                {/if}
+            {/snippet}
+        </Dialog.Overlay>
+        <Dialog.Content
+            forceMount
+            interactOutsideBehavior={persistent ? "ignore" : "close"}
+            escapeKeydownBehavior={persistent ? "ignore" : "close"}
         >
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <div
-                class="u:fixed u:inset-0 u:flex u:justify-center u:items-center u:p-4 u:bg-black u:bg-opacity-30"
-                on:click={close}
-            >
-                <!-- svelte-ignore a11y-click-events-have-key-events -->
-                <div
-                    class={classNames("u:p-8 u:bg-content u:shadow-md u:rounded-md", klass)}
-                    on:click|stopPropagation
-                >
-                    <slot />
-                </div>
-            </div>
-        </TransitionChild>
-    </Dialog>
-</Transition>
+            {#snippet child({ props, open })}
+                {#if open}
+                    <div
+                        {...props}
+                        in:fade={{ duration: 300 }}
+                        out:fade={{ duration: 200 }}
+                        class="u:fixed u:inset-0 u:flex u:justify-center u:items-center u:p-4"
+                        onclick={handleBackdrop}
+                    >
+                        <div
+                            class={classNames("u:p-8 u:bg-content u:shadow-md u:rounded-md", klass)}
+                        >
+                            {@render children?.()}
+                        </div>
+                    </div>
+                {/if}
+            {/snippet}
+        </Dialog.Content>
+    </Dialog.Portal>
+</Dialog.Root>

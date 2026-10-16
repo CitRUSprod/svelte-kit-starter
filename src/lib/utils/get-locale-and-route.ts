@@ -8,7 +8,7 @@ export function getLocaleAndRoute(path: string) {
 
     let locale: string | undefined
 
-    if (supportedLocales.includes(parts[0])) {
+    if (supportedLocales.includes(parts[0]!)) {
         locale = parts.shift()
     }
 

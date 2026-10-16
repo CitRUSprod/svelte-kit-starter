@@ -1,25 +1,28 @@
 <script lang="ts">
-    import { Button, TextField, TextArea, Modal } from "$lib/components"
-
-    import { t } from "$lib/locales"
     import * as api from "$lib/api"
-
+    import { Button, TextField, TextArea, Modal } from "$lib/components"
+    import { t } from "$lib/locales"
     import type { Post } from "$lib/types"
 
-    export let post: Readonly<Post>
+    interface Props {
+        post: Readonly<Post>
+    }
 
-    let visible = false
-    let loading = false
+    const { post }: Props = $props()
 
-    let title = ""
-    let content = ""
+    let visible = $state(false)
+    let loading = $state(false)
 
-    $: trimmedTitle = title.trim()
-    $: trimmedContent = content.trim()
+    let title = $state("")
+    let content = $state("")
 
-    $: disabled =
+    const trimmedTitle = $derived(title.trim())
+    const trimmedContent = $derived(content.trim())
+
+    const disabled = $derived(
         !(trimmedTitle && trimmedContent) ||
-        (trimmedTitle === post.title && trimmedContent === post.content)
+            (trimmedTitle === post.title && trimmedContent === post.content)
+    )
 
     export function open() {
         title = post.title
@@ -68,11 +71,11 @@
         />
     </div>
     <div class="u:flex u:justify-between">
-        <Button disabled={loading} text type="error" on:click={close}>
+        <Button disabled={loading} text type="error" onclick={close}>
             {$t("components.modal-post-editing.cancel")}
         </Button>
-        <Button {disabled} {loading} type="success" on:click={editPost}>
-            {$t("components.modal-post-editing.save")}
+        <Button {disabled} {loading} type="success" onclick={editPost}>
+            {$t("components.modal-post-editing.edit")}
         </Button>
     </div>
 </Modal>

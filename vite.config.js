@@ -1,5 +1,5 @@
-import unocss from "unocss/vite"
 import { sveltekit } from "@sveltejs/kit/vite"
+import unocss from "unocss/vite"
 import dynamicImport from "vite-plugin-dynamic-import"
 
 /** @type {import("vite").UserConfig} */

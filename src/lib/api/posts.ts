@@ -1,4 +1,5 @@
 import { get } from "svelte/store"
+
 import { posts } from "$lib/stores"
 
 function wait() {

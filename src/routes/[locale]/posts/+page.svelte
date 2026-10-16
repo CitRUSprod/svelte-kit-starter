@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { Content, Button } from "$lib/components"
     import { ModalPostCreating } from "./_components"
 
+    import { Content, Button } from "$lib/components"
     import { t, localePath } from "$lib/locales"
     import { posts } from "$lib/stores"
 
@@ -14,7 +14,7 @@
 
 <Content.Default title={$t("routes.posts.posts")}>
     <div>
-        <Button type="success" on:click={modalPostCreating.open}>
+        <Button type="success" onclick={modalPostCreating.open}>
             {$t("routes.posts.create-post")}
         </Button>
     </div>

@@ -1,19 +1,30 @@
 <script lang="ts">
     import classNames from "classnames"
-    import { getElementTypeObject } from "$lib/utils"
 
     import type { ElementType } from "$lib/types"
+    import { getElementTypeObject } from "$lib/utils"
 
-    export let type: ElementType = "default"
-    export let label: string | undefined = undefined
-    export let disabled = false
-    export let readonly = false
-    export let checked = false as boolean
+    interface Props {
+        type?: ElementType
+        label?: string
+        disabled?: boolean
+        readonly?: boolean
+        checked?: boolean
+        class?: string
+        [key: string]: unknown
+    }
 
-    let klass: string | undefined = undefined
-    export { klass as class }
+    let {
+        type = "default",
+        label = undefined,
+        disabled = false,
+        readonly = false,
+        checked = $bindable(false),
+        class: klass = undefined,
+        ...restProps
+    }: Props = $props()
 
-    $: types = getElementTypeObject(type)
+    const types = $derived(getElementTypeObject(type))
 
     function click() {
         if (!readonly && !disabled) {
@@ -32,7 +43,8 @@
         },
         klass
     )}
-    on:click={click}
+    onclick={click}
+    {...restProps}
 >
     <span
         class={classNames(
@@ -55,7 +67,7 @@
         )}
     >
         {#if checked}
-            <i class="u:i-fa-solid-check u:text-sm" />
+            <i class="u:i-fa-solid-check u:text-sm"></i>
         {/if}
     </span>
     {#if label}

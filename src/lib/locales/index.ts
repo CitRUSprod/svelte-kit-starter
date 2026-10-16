@@ -1,11 +1,16 @@
+import stores from "@sveltekit-i18n/extension-stores"
 import { derived } from "svelte/store"
-import I18n, { type Config } from "sveltekit-i18n"
+import type { Config } from "sveltekit-i18n"
+import I18n from "sveltekit-i18n"
 
 export const defaultLocale = "en" as string
 
 const localeList = ["en", "ru"]
 
-function createLocaleLoaders(path: string, routes: NonNullable<Config["loaders"]>[0]["routes"]) {
+type LoaderModule = NonNullable<Config["loaders"]>[number]
+type LoaderRoutes = LoaderModule["routes"]
+
+function createLocaleLoaders(path: string, routes: LoaderRoutes): Array<LoaderModule> {
     const parts = path.split("/")
 
     const componentPartIndex = parts.indexOf("_components")
@@ -19,24 +24,16 @@ function createLocaleLoaders(path: string, routes: NonNullable<Config["loaders"]
         parts.length -= 1
     }
 
-    const loaders: Config["loaders"] = localeList.map(locale => ({
+    return localeList.map(locale => ({
         locale,
-        key: parts.join("."),
+        namespace: parts.join("."),
         routes,
         loader: async () => (await import(`./${locale}/${path}.json`)).default
     }))
-
-    return loaders
 }
 
-function createAllLoaders(...args: Array<[string, NonNullable<Config["loaders"]>[0]["routes"]]>) {
-    const loaders: Config["loaders"] = []
-
-    for (const arg of args) {
-        loaders.push(...createLocaleLoaders(...arg))
-    }
-
-    return loaders
+function createAllLoaders(...args: Array<[string, LoaderRoutes]>) {
+    return args.flatMap(([path, routes]) => createLocaleLoaders(path, routes))
 }
 
 const config: Config = {
@@ -55,7 +52,7 @@ const config: Config = {
     )
 }
 
-const { t, locale: lcl, locales, loadTranslations } = new I18n(config)
+const { t, locale: lcl, locales, loadTranslations } = new I18n({ ...config, extensions: [stores] })
 
 export { t, locales, loadTranslations }
 

@@ -1,9 +1,9 @@
-import Ajv, { type ErrorObject } from "ajv"
-import ajvKeywords from "ajv-keywords"
-import ajvFormats from "ajv-formats"
 import { AggregateAjvError } from "@segment/ajv-human-errors"
-
 import type { Static, TSchema } from "@sinclair/typebox"
+import type { ErrorObject } from "ajv"
+import Ajv from "ajv"
+import ajvFormats from "ajv-formats"
+import ajvKeywords from "ajv-keywords"
 import type { JsonObject } from "type-fest"
 
 export const ajv = new Ajv({

@@ -1,23 +1,32 @@
 <script lang="ts">
+    import classNames from "classnames"
+    import type { Snippet } from "svelte"
+
     import Button from "./Button.svelte"
 
-    import { createEventDispatcher } from "svelte"
-    import classNames from "classnames"
     import { t } from "$lib/locales"
+    import type { ElementBasicType } from "$lib/types"
     import { getElementBasicTypeObject } from "$lib/utils"
 
-    import type { ElementBasicType } from "$lib/types"
+    interface Props {
+        type: ElementBasicType
+        visible?: boolean
+        closable?: boolean
+        class?: string
+        onClose?(): void
+        children?: Snippet
+    }
 
-    export let type: ElementBasicType
-    export let visible = true
-    export let closable = false
+    let {
+        type,
+        visible = $bindable(true),
+        closable = false,
+        class: klass = undefined,
+        onClose,
+        children
+    }: Props = $props()
 
-    let klass: string | undefined = undefined
-    export { klass as class }
-
-    $: types = getElementBasicTypeObject(type)
-
-    const dispatch = createEventDispatcher()
+    const types = $derived(getElementBasicTypeObject(type))
 
     function getTextByType(localType: string) {
         switch (localType) {
@@ -33,7 +42,7 @@
     }
 
     function close() {
-        dispatch("close")
+        onClose?.()
         visible = false
     }
 </script>
@@ -69,7 +78,7 @@
                     "u:i-fa-solid-exclamation-triangle": types.warning,
                     "u:i-fa-solid-info-circle": types.info
                 })}
-            />
+            ></i>
         </div>
         <div class="u:flex u:flex-1 u:justify-between">
             <div class="u:px-4 u:py-2">
@@ -84,13 +93,13 @@
                     {getTextByType(type)}
                 </b>
                 <p class="u:text-content-inverse u:text-sm">
-                    <slot />
+                    {@render children?.()}
                 </p>
             </div>
             {#if closable}
                 <div class="u:pr-2 u:py-2">
-                    <Button icon text {type} on:click={close}>
-                        <i class="u:i-fa-solid-times u:text-xl" />
+                    <Button icon text {type} onclick={close}>
+                        <i class="u:i-fa-solid-times u:text-xl"></i>
                     </Button>
                 </div>
             {/if}

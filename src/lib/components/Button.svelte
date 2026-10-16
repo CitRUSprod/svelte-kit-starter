@@ -1,22 +1,39 @@
 <script lang="ts">
     import classNames from "classnames"
-    import { getElementTypeObject } from "$lib/utils"
+    import type { Snippet } from "svelte"
 
     import type { ElementType } from "$lib/types"
+    import { getElementTypeObject } from "$lib/utils"
 
-    export let type: ElementType = "default"
-    export let href = undefined as string | undefined
-    export let target: string | undefined = undefined
-    export let rel: string | undefined = undefined
-    export let text = false as boolean
-    export let icon = false
-    export let disabled = false as boolean
-    export let loading = false as boolean
+    interface Props {
+        type?: ElementType
+        href?: string
+        target?: string
+        rel?: string
+        text?: boolean
+        icon?: boolean
+        disabled?: boolean
+        loading?: boolean
+        class?: string
+        children?: Snippet
+        [key: string]: unknown
+    }
 
-    let klass: string | undefined = undefined
-    export { klass as class }
+    const {
+        type = "default",
+        href = undefined,
+        target = undefined,
+        rel = undefined,
+        text = false,
+        icon = false,
+        disabled = false,
+        loading = false,
+        class: klass = undefined,
+        children,
+        ...restProps
+    }: Props = $props()
 
-    $: types = getElementTypeObject(type)
+    const types = $derived(getElementTypeObject(type))
 </script>
 
 <svelte:element
@@ -59,9 +76,9 @@
     {href}
     {rel}
     {target}
-    on:click
+    {...restProps}
 >
-    <slot />
+    {@render children?.()}
     {#if loading}
         <div
             class={classNames(
@@ -79,7 +96,7 @@
                 }
             )}
         >
-            <i class="u:i-whh-loadingflowcw u:text-xl u:animate-spin" />
+            <i class="u:i-whh-loadingflowcw u:text-xl u:animate-spin"></i>
         </div>
     {/if}
 </svelte:element>

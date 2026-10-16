@@ -1,12 +1,16 @@
 <script lang="ts">
-    import { Button } from "$lib/components"
-
     import classNames from "classnames"
-    import { darkTheme } from "$lib/stores"
+
+    import { Button } from "$lib/components"
     import { t, currentLocale, locales, localePath } from "$lib/locales"
+    import { darkTheme } from "$lib/stores"
     import { env } from "$lib/utils"
 
-    export let route: string
+    interface Props {
+        route: string
+    }
+
+    const { route }: Props = $props()
 </script>
 
 <header
@@ -40,8 +44,8 @@
                 {/if}
             {/each}
         </div>
-        <Button icon type="primary" on:click={darkTheme.toggle}>
-            <i class="u:i-fa-solid-sun u:dark:i-fa-solid-moon u:text-xl" />
+        <Button icon type="primary" onclick={darkTheme.toggle}>
+            <i class="u:i-fa-solid-sun u:dark:i-fa-solid-moon u:text-xl"></i>
         </Button>
         <Button
             href="https://github.com/CitRUSprod/svelte-kit-starter"
@@ -50,7 +54,7 @@
             target="_blank"
             type="primary"
         >
-            <i class="u:i-icomoon-free-github u:text-xl" />
+            <i class="u:i-icomoon-free-github u:text-xl"></i>
         </Button>
     </div>
 </header>

@@ -1,6 +1,8 @@
 import { Type } from "@sinclair/typebox"
-import * as publicEnv from "$env/static/public"
+
 import { parseByAjvSchema } from "./ajv"
+
+import * as publicEnv from "$env/static/public"
 
 const schema = Type.Strict(
     Type.Object(

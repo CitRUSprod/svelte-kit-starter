@@ -1,11 +1,18 @@
 <script lang="ts">
+    import type { Snippet } from "svelte"
+
     import { Header, Footer } from "./_components"
 
-    export let data
+    interface Props {
+        data: { route: string }
+        children?: Snippet
+    }
+
+    const { data, children }: Props = $props()
 </script>
 
 <Header route={data.route} />
 <main class="u:relative u:flex-1">
-    <slot />
+    {@render children?.()}
 </main>
 <Footer />

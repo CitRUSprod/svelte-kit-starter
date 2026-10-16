@@ -1,26 +1,42 @@
 <script lang="ts">
+    import classNames from "classnames"
+
     import { Input } from "./internal"
 
-    import classNames from "classnames"
+    import type { ElementType } from "$lib/types"
     import { getElementTypeObject } from "$lib/utils"
 
-    import type { ElementType } from "$lib/types"
+    interface Props {
+        type?: ElementType
+        placeholder?: string
+        label?: string
+        valueType?: string
+        disabled?: boolean
+        readonly?: boolean
+        autofocus?: boolean
+        value?: string | number | null | undefined
+        leftIconClass?: string
+        rightIconClass?: string
+        class?: string
+        [key: string]: unknown
+    }
 
-    export let type: ElementType = "default"
-    export let placeholder: string | undefined = undefined
-    export let label: string | undefined = undefined
-    export let valueType = "text"
-    export let disabled = false
-    export let readonly = false
-    export let autofocus = false
-    export let value: string | number | null | undefined = undefined
-    export let leftIconClass: string | undefined = undefined
-    export let rightIconClass: string | undefined = undefined
+    let {
+        type = "default",
+        placeholder = undefined,
+        label = undefined,
+        valueType = "text",
+        disabled = false,
+        readonly = false,
+        autofocus = false,
+        value = $bindable(),
+        leftIconClass = undefined,
+        rightIconClass = undefined,
+        class: klass = undefined,
+        ...restProps
+    }: Props = $props()
 
-    let klass: string | undefined = undefined
-    export { klass as class }
-
-    $: types = getElementTypeObject(type)
+    const types = $derived(getElementTypeObject(type))
 </script>
 
 <div
@@ -46,7 +62,7 @@
         </div>
     {/if}
     {#if leftIconClass}
-        <i class={`u:absolute u:left-3 u:pointer-events-none u:text-xl ${leftIconClass}`} />
+        <i class={`u:absolute u:left-3 u:pointer-events-none u:text-xl ${leftIconClass}`}></i>
     {/if}
     <Input
         class={classNames(
@@ -70,12 +86,9 @@
         {readonly}
         type={valueType}
         bind:value
-        on:input
-        on:keypress
-        on:focus
-        on:blur
+        {...restProps}
     />
     {#if rightIconClass}
-        <i class={`u:absolute u:right-3 u:pointer-events-none u:text-xl ${rightIconClass}`} />
+        <i class={`u:absolute u:right-3 u:pointer-events-none u:text-xl ${rightIconClass}`}></i>
     {/if}
 </div>

@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { onDestroy } from "svelte"
     import NProgress from "nprogress"
+    import { onDestroy } from "svelte"
+
     import { beforeNavigate, afterNavigate } from "$app/navigation"
 
     NProgress.configure({
@@ -21,5 +22,5 @@
 </script>
 
 {#if false}
-    <div />
+    <div></div>
 {/if}

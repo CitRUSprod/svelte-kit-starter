@@ -1,24 +1,38 @@
 <script lang="ts">
+    import classNames from "classnames"
+
     import { Textarea } from "./internal"
 
-    import classNames from "classnames"
+    import type { ElementType } from "$lib/types"
     import { getElementTypeObject } from "$lib/utils"
 
-    import type { ElementType } from "$lib/types"
+    interface Props {
+        type?: ElementType
+        placeholder?: string
+        label?: string
+        resizable?: boolean
+        disabled?: boolean
+        readonly?: boolean
+        autofocus?: boolean
+        value?: string | number | null | undefined
+        class?: string
+        [key: string]: unknown
+    }
 
-    export let type: ElementType = "default"
-    export let placeholder: string | undefined = undefined
-    export let label: string | undefined = undefined
-    export let resizable = false
-    export let disabled = false
-    export let readonly = false
-    export let autofocus = false
-    export let value: string | number | null | undefined = undefined
+    let {
+        type = "default",
+        placeholder = undefined,
+        label = undefined,
+        resizable = false,
+        disabled = false,
+        readonly = false,
+        autofocus = false,
+        value = $bindable(),
+        class: klass = undefined,
+        ...restProps
+    }: Props = $props()
 
-    let klass: string | undefined = undefined
-    export { klass as class }
-
-    $: types = getElementTypeObject(type)
+    const types = $derived(getElementTypeObject(type))
 </script>
 
 <div
@@ -63,9 +77,6 @@
         {placeholder}
         {readonly}
         bind:value
-        on:input
-        on:keypress
-        on:focus
-        on:blur
+        {...restProps}
     />
 </div>

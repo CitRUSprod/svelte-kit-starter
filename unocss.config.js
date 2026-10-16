@@ -1,8 +1,8 @@
 import path from "node:path"
 
 import extractorSvelte from "@unocss/extractor-svelte"
-import { presetIcons, transformerDirectives } from "unocss"
 import { colors, presetWind3 } from "@unocss/preset-wind3"
+import { presetIcons, transformerDirectives } from "unocss"
 import { presetBetterNestedColors } from "unocss-preset-better-nested-colors"
 
 function getColors([lightColor, lightShade], [darkColor, darkShade]) {
