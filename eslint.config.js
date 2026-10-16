@@ -22,12 +22,7 @@ const config = [
     {
         files: ["**/*.?([cm])js", "**/*.ts", "**/*.svelte"],
         rules: {
-            ...prettierRules,
-            "import-x/no-unassigned-import": [
-                2,
-                { allow: ["**/*.css", "@total-typescript/ts-reset"] }
-            ],
-            "new-cap": [2, { properties: false }]
+            ...prettierRules
         }
     },
     ...baseConfig,
