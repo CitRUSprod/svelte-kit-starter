@@ -1,6 +1,6 @@
 <script lang="ts">
-    import classNames from "classnames"
     import type { Snippet } from "svelte"
+    import type { ClassValue } from "svelte/elements"
 
     import type { ElementType } from "$lib/types"
     import { getElementTypeObject } from "$lib/utils"
@@ -14,7 +14,7 @@
         icon?: boolean
         disabled?: boolean
         loading?: boolean
-        class?: string
+        class?: ClassValue
         children?: Snippet
         [key: string]: unknown
     }
@@ -38,7 +38,7 @@
 
 <svelte:element
     this={href !== undefined && !disabled ? "a" : "button"}
-    class={classNames(
+    class={[
         "u:relative u:inline-flex u:justify-center u:items-center u:h-10 u:font-bold u:transition u:duration-200 u:align-top u:select-none",
         "u:active:transform",
         "u:disabled:cursor-not-allowed",
@@ -71,7 +71,7 @@
             "u:text-info": !loading && text && types.info
         },
         klass
-    )}
+    ]}
     disabled={disabled || loading}
     {href}
     {rel}
@@ -81,7 +81,7 @@
     {@render children?.()}
     {#if loading}
         <div
-            class={classNames(
+            class={[
                 "u:absolute u:top-0 u:left-0 u:flex u:justify-center u:items-center u:w-full u:h-full",
                 {
                     "u:rounded": !icon,
@@ -94,7 +94,7 @@
                     "u:text-warning": text && types.warning,
                     "u:text-info": text && types.info
                 }
-            )}
+            ]}
         >
             <i class="u:i-whh-loadingflowcw u:text-xl u:animate-spin"></i>
         </div>

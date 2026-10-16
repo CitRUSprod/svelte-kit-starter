@@ -1,5 +1,5 @@
 <script lang="ts">
-    import classNames from "classnames"
+    import type { ClassValue } from "svelte/elements"
 
     import { Input } from "./internal"
 
@@ -17,7 +17,7 @@
         value?: string | number | null | undefined
         leftIconClass?: string
         rightIconClass?: string
-        class?: string
+        class?: ClassValue
         [key: string]: unknown
     }
 
@@ -40,7 +40,7 @@
 </script>
 
 <div
-    class={classNames(
+    class={[
         "u:relative u:flex u:items-center",
         {
             "u:opacity-50": disabled,
@@ -52,7 +52,7 @@
             "u:text-info": types.info
         },
         klass
-    )}
+    ]}
 >
     {#if label}
         <div
@@ -62,10 +62,10 @@
         </div>
     {/if}
     {#if leftIconClass}
-        <i class={`u:absolute u:left-3 u:pointer-events-none u:text-xl ${leftIconClass}`}></i>
+        <i class={["u:absolute u:left-3 u:pointer-events-none u:text-xl", leftIconClass]}></i>
     {/if}
     <Input
-        class={classNames(
+        class={[
             "u:w-full u:h-10 u:px-3 u:bg-content u:text-content-inverse u:border u:rounded u:placeholder-opacity-80 u:outline-none",
             "u:dark:placeholder-opacity-80",
             "u:disabled:cursor-not-allowed",
@@ -79,7 +79,7 @@
                 "u:border-warning u:placeholder-text-warning-lighter": types.warning,
                 "u:border-info u:placeholder-text-info-lighter": types.info
             }
-        )}
+        ]}
         {autofocus}
         {disabled}
         {placeholder}
@@ -89,6 +89,6 @@
         {...restProps}
     />
     {#if rightIconClass}
-        <i class={`u:absolute u:right-3 u:pointer-events-none u:text-xl ${rightIconClass}`}></i>
+        <i class={["u:absolute u:right-3 u:pointer-events-none u:text-xl", rightIconClass]}></i>
     {/if}
 </div>

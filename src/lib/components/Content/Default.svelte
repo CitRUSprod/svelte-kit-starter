@@ -1,10 +1,10 @@
 <script lang="ts">
-    import classNames from "classnames"
     import type { Snippet } from "svelte"
+    import type { ClassValue } from "svelte/elements"
 
     interface Props {
         title: string
-        class?: string
+        class?: ClassValue
         children?: Snippet
     }
 
@@ -15,7 +15,7 @@
     <div>
         <h1>{title}</h1>
     </div>
-    <div class={classNames("u:grid u:gap-4 u:my-4", klass)}>
+    <div class={["u:grid u:gap-4 u:my-4", klass]}>
         {@render children?.()}
     </div>
 </div>

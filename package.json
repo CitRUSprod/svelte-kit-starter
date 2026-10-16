@@ -92,7 +92,6 @@
         "ajv-formats": "2.1.1",
         "ajv-keywords": "5.1.0",
         "bits-ui": "2.19.5",
-        "classnames": "2.3.2",
         "nprogress": "0.2.0",
         "svelte-local-storage-store": "0.6.4",
         "sveltekit-i18n": "3.4.1",

@@ -1,6 +1,4 @@
 <script lang="ts">
-    import classNames from "classnames"
-
     import { Button } from "$lib/components"
     import { t, currentLocale, locales, localePath } from "$lib/locales"
     import { darkTheme } from "$lib/stores"
@@ -33,7 +31,7 @@
         <div class="u:flex u:items-center u:gap-1 u:mx-1">
             {#each $locales as locale, index (locale)}
                 <Button
-                    class={classNames("u:px-1", { "u:opacity-50": $currentLocale !== locale })}
+                    class={["u:px-1", { "u:opacity-50": $currentLocale !== locale }]}
                     href={$localePath(route, locale)}
                     type="primary"
                 >

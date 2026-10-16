@@ -1,13 +1,13 @@
 <script lang="ts">
     import { Dialog } from "bits-ui"
-    import classNames from "classnames"
     import type { Snippet } from "svelte"
+    import type { ClassValue } from "svelte/elements"
     import { fade } from "svelte/transition"
 
     interface Props {
         visible?: boolean
         persistent?: boolean
-        class?: string
+        class?: ClassValue
         children?: Snippet
     }
 
@@ -53,9 +53,7 @@
                         class="u:fixed u:inset-0 u:flex u:justify-center u:items-center u:p-4"
                         onclick={handleBackdrop}
                     >
-                        <div
-                            class={classNames("u:p-8 u:bg-content u:shadow-md u:rounded-md", klass)}
-                        >
+                        <div class={["u:p-8 u:bg-content u:shadow-md u:rounded-md", klass]}>
                             {@render children?.()}
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import classNames from "classnames"
+    import type { ClassValue } from "svelte/elements"
 
     import { Textarea } from "./internal"
 
@@ -15,7 +15,7 @@
         readonly?: boolean
         autofocus?: boolean
         value?: string | number | null | undefined
-        class?: string
+        class?: ClassValue
         [key: string]: unknown
     }
 
@@ -36,7 +36,7 @@
 </script>
 
 <div
-    class={classNames(
+    class={[
         "u:relative u:flex u:items-center",
         {
             "u:opacity-50": disabled,
@@ -48,7 +48,7 @@
             "u:text-info": types.info
         },
         klass
-    )}
+    ]}
 >
     {#if label}
         <div
@@ -58,7 +58,7 @@
         </div>
     {/if}
     <Textarea
-        class={classNames(
+        class={[
             "u:w-full u:h-40 u:px-3 u:py-2 u:bg-content u:text-content-inverse u:border u:rounded u:placeholder-opacity-80 u:outline-none",
             "u:dark:placeholder-opacity-80",
             "u:disabled:cursor-not-allowed",
@@ -71,7 +71,7 @@
                 "u:border-info u:placeholder-text-info-lighter": types.info,
                 "u:resize-none": !resizable
             }
-        )}
+        ]}
         {autofocus}
         {disabled}
         {placeholder}

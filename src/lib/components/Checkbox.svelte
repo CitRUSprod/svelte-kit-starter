@@ -1,5 +1,5 @@
 <script lang="ts">
-    import classNames from "classnames"
+    import type { ClassValue } from "svelte/elements"
 
     import type { ElementType } from "$lib/types"
     import { getElementTypeObject } from "$lib/utils"
@@ -10,7 +10,7 @@
         disabled?: boolean
         readonly?: boolean
         checked?: boolean
-        class?: string
+        class?: ClassValue
         [key: string]: unknown
     }
 
@@ -34,7 +34,7 @@
 </script>
 
 <button
-    class={classNames(
+    class={[
         "u:inline-flex u:items-center u:w-auto u:gap-1 u:align-top",
         {
             "u:cursor-pointer": !disabled && !readonly,
@@ -42,12 +42,12 @@
             "u:cursor-[default]": readonly
         },
         klass
-    )}
+    ]}
     onclick={click}
     {...restProps}
 >
     <span
-        class={classNames(
+        class={[
             "u:flex u:justify-center u:items-center u:w-6 u:h-6 u:text-content-lighter u:border u:rounded u:select-none",
             {
                 "u:bg-content": !checked,
@@ -64,7 +64,7 @@
                 "u:bg-warning": checked && types.warning,
                 "u:bg-info": checked && types.info
             }
-        )}
+        ]}
     >
         {#if checked}
             <i class="u:i-fa-solid-check u:text-sm"></i>

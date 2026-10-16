@@ -1,6 +1,6 @@
 <script lang="ts">
-    import classNames from "classnames"
     import type { Snippet } from "svelte"
+    import type { ClassValue } from "svelte/elements"
 
     import Button from "./Button.svelte"
 
@@ -12,7 +12,7 @@
         type: ElementBasicType
         visible?: boolean
         closable?: boolean
-        class?: string
+        class?: ClassValue
         onClose?(): void
         children?: Snippet
     }
@@ -49,7 +49,7 @@
 
 {#if visible}
     <div
-        class={classNames(
+        class={[
             "u:flex u:w-full u:rounded-md u:bg-content u:border-2",
             {
                 "u:border-success": types.success,
@@ -58,10 +58,10 @@
                 "u:border-info": types.info
             },
             klass
-        )}
+        ]}
     >
         <div
-            class={classNames(
+            class={[
                 "u:flex u:justify-center u:items-center u:w-12 u:text-content-lighter",
                 {
                     "u:bg-success": types.success,
@@ -69,26 +69,29 @@
                     "u:bg-warning": types.warning,
                     "u:bg-info": types.info
                 }
-            )}
+            ]}
         >
             <i
-                class={classNames("u:text-xl", {
-                    "u:i-fa-solid-check": types.success,
-                    "u:i-fa-solid-times-circle": types.error,
-                    "u:i-fa-solid-exclamation-triangle": types.warning,
-                    "u:i-fa-solid-info-circle": types.info
-                })}
+                class={[
+                    "u:text-xl",
+                    {
+                        "u:i-fa-solid-check": types.success,
+                        "u:i-fa-solid-times-circle": types.error,
+                        "u:i-fa-solid-exclamation-triangle": types.warning,
+                        "u:i-fa-solid-info-circle": types.info
+                    }
+                ]}
             ></i>
         </div>
         <div class="u:flex u:flex-1 u:justify-between">
             <div class="u:px-4 u:py-2">
                 <b
-                    class={classNames({
+                    class={{
                         "u:text-success": types.success,
                         "u:text-error": types.error,
                         "u:text-warning": types.warning,
                         "u:text-info": types.info
-                    })}
+                    }}
                 >
                     {getTextByType(type)}
                 </b>
