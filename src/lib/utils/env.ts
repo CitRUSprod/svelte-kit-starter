@@ -1,19 +1,6 @@
-import { Type } from "@sinclair/typebox"
-
-import { parseByAjvSchema } from "./ajv"
+import { parseDataBySchema } from "./validation"
 
 import * as publicEnv from "$env/static/public"
+import { $env } from "$lib/schemas"
 
-// eslint-disable-next-line new-cap
-const schema = Type.Strict(
-    // eslint-disable-next-line new-cap
-    Type.Object(
-        {
-            // eslint-disable-next-line new-cap
-            PUBLIC_TITLE: Type.String({ minLength: 1, transform: ["trim"] })
-        },
-        { additionalProperties: false }
-    )
-)
-
-export const env = parseByAjvSchema(schema, publicEnv, "env")
+export const env = parseDataBySchema($env(), publicEnv)
