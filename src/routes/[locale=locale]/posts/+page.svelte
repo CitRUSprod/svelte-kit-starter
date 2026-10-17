@@ -19,7 +19,7 @@
         </Button>
     </div>
     <div class="u:grid u:grid-cols-3 u:gap-4">
-        {#each $posts as post (post.id)}
+        {#each posts.list as post (post.id)}
             <a
                 class="u:p-4 u:border-primary u:rounded-lg u:border u:transition u:hover:bg-primary u:hover:bg-opacity-20 u:dark:hover:bg-opacity-20"
                 href={$localePath(`/posts/${String(post.id)}`)}

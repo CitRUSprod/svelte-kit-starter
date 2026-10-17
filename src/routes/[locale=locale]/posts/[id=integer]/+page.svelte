@@ -13,7 +13,7 @@
 
     const { data }: Props = $props()
 
-    const post = $derived($posts.find(p => p.id === data.id))
+    const post = $derived(posts.list.find(p => p.id === data.id))
 
     $effect(() => {
         if (browser && !post) goto($localePath("/posts"))

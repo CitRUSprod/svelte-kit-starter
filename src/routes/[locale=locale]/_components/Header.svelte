@@ -8,7 +8,7 @@
         replaceLocaleInUrlWithoutSearchParams
     } from "$i18n/helpers"
     import { Button } from "$lib/components"
-    import { darkTheme } from "$lib/stores"
+    import { theme } from "$lib/stores"
     import { env } from "$lib/utils"
 </script>
 
@@ -43,7 +43,7 @@
                 {/if}
             {/each}
         </div>
-        <Button icon variant="primary" onclick={darkTheme.toggle}>
+        <Button icon variant="primary" onclick={theme.toggle}>
             <i class="u:i-fa-solid-sun u:dark:i-fa-solid-moon u:text-xl"></i>
         </Button>
         <Button

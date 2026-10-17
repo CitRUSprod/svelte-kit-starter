@@ -1,3 +1,3 @@
-export * from "./dark-theme"
-export * from "./toasts"
-export * from "./posts"
+export * from "./theme.svelte"
+export * from "./toasts.svelte"
+export * from "./posts.svelte"

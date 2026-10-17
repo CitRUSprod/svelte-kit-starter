@@ -55,6 +55,7 @@
         "@sveltejs/kit": "2.70.3",
         "@sveltejs/vite-plugin-svelte": "7.3.1",
         "@total-typescript/ts-reset": "0.6.1",
+        "@types/js-cookie": "3.0.6",
         "@types/node": "26.6.5",
         "@types/nprogress": "0.2.0",
         "@unocss/extractor-svelte": "66.11.0",
@@ -89,8 +90,9 @@
     },
     "dependencies": {
         "bits-ui": "2.19.5",
+        "js-cookie": "3.0.5",
         "nprogress": "0.2.0",
-        "svelte-local-storage-store": "0.6.4",
+        "runed": "0.37.1",
         "tslib": "2.8.1",
         "typesafe-i18n": "5.27.1",
         "zod": "4.6.7",

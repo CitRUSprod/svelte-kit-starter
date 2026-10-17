@@ -3,10 +3,8 @@
 
     import { PageProgressBar, ToastContainer } from "./_components"
 
-    import { browser } from "$app/environment"
     import type { Locale } from "$i18n/helpers"
     import { setLocale } from "$i18n/helpers"
-    import { darkTheme } from "$lib/stores"
 
     // eslint-disable-next-line import-x/no-unassigned-import
     import "uno.css"
@@ -25,10 +23,6 @@
     $effect(() => {
         setLocale(data.locale)
     })
-
-    if (browser) {
-        darkTheme.sync()
-    }
 </script>
 
 <PageProgressBar />
