@@ -1,13 +1,13 @@
 <script lang="ts">
-    import type { ClassValue } from "svelte/elements"
+    import type { HTMLInputAttributes } from "svelte/elements"
 
     import { Input } from "./internal"
 
-    import type { ElementType } from "$lib/types"
-    import { getElementTypeObject } from "$lib/utils"
+    import type { ComponentBasicProps, ComponentVariant } from "$lib/types"
+    import { getComponentVariantMap } from "$lib/utils"
 
-    interface Props {
-        type?: ElementType
+    type Props = ComponentBasicProps & {
+        variant?: ComponentVariant
         placeholder?: string
         label?: string
         valueType?: string
@@ -17,12 +17,11 @@
         value?: string | number | null | undefined
         leftIconClass?: string
         rightIconClass?: string
-        class?: ClassValue
-        [key: string]: unknown
+        onkeypress?: HTMLInputAttributes["onkeypress"]
     }
 
     let {
-        type = "default",
+        variant = "default",
         placeholder = undefined,
         label = undefined,
         valueType = "text",
@@ -36,7 +35,7 @@
         ...restProps
     }: Props = $props()
 
-    const types = $derived(getElementTypeObject(type))
+    const variants = $derived(getComponentVariantMap(variant))
 </script>
 
 <div
@@ -44,12 +43,12 @@
         "u:relative u:flex u:items-center",
         {
             "u:opacity-50": disabled,
-            "u:text-default": types.default,
-            "u:text-primary": types.primary,
-            "u:text-success": types.success,
-            "u:text-error": types.error,
-            "u:text-warning": types.warning,
-            "u:text-info": types.info
+            "u:text-default": variants.default,
+            "u:text-primary": variants.primary,
+            "u:text-success": variants.success,
+            "u:text-error": variants.error,
+            "u:text-warning": variants.warning,
+            "u:text-info": variants.info
         },
         klass
     ]}
@@ -72,12 +71,12 @@
             {
                 "u:pl-10": leftIconClass,
                 "u:pr-10": rightIconClass,
-                "u:border-default u:placeholder-text-default-lighter": types.default,
-                "u:border-primary u:placeholder-text-primary-lighter": types.primary,
-                "u:border-success u:placeholder-text-success-lighter": types.success,
-                "u:border-error u:placeholder-text-error-lighter": types.error,
-                "u:border-warning u:placeholder-text-warning-lighter": types.warning,
-                "u:border-info u:placeholder-text-info-lighter": types.info
+                "u:border-default u:placeholder-text-default-lighter": variants.default,
+                "u:border-primary u:placeholder-text-primary-lighter": variants.primary,
+                "u:border-success u:placeholder-text-success-lighter": variants.success,
+                "u:border-error u:placeholder-text-error-lighter": variants.error,
+                "u:border-warning u:placeholder-text-warning-lighter": variants.warning,
+                "u:border-info u:placeholder-text-info-lighter": variants.info
             }
         ]}
         {autofocus}

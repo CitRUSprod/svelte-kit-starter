@@ -78,11 +78,11 @@
             class="u:flex-1"
             leftIconClass="u:i-ic-baseline-add-task"
             placeholder={$ll.enterTask()}
-            type="primary"
+            variant="primary"
             bind:value={taskText}
             onkeypress={addTaskOnEnter}
         />
-        <Button disabled={!trimmedTaskText} type="primary" onclick={addTask}>
+        <Button disabled={!trimmedTaskText} variant="primary" onclick={addTask}>
             {$ll.add()}
         </Button>
     </div>
@@ -96,9 +96,9 @@
                         in:receive={{ key: task.id }}
                         out:send={{ key: task.id }}
                     >
-                        <Checkbox type="primary" bind:checked={task.completed} />
+                        <Checkbox variant="primary" bind:checked={task.completed} />
                         <span class="u:flex-1">{task.text}</span>
-                        <Button icon text type="error" onclick={() => removeTask(task.id)}>
+                        <Button icon text variant="error" onclick={() => removeTask(task.id)}>
                             <i class="u:i-ph-trash-bold u:text-xl"></i>
                         </Button>
                     </li>
@@ -114,9 +114,9 @@
                         in:receive={{ key: task.id }}
                         out:send={{ key: task.id }}
                     >
-                        <Checkbox type="primary" bind:checked={task.completed} />
+                        <Checkbox variant="primary" bind:checked={task.completed} />
                         <span class="u:flex-1 u:line-through">{task.text}</span>
-                        <Button icon text type="error" onclick={() => removeTask(task.id)}>
+                        <Button icon text variant="error" onclick={() => removeTask(task.id)}>
                             <i class="u:i-ph-trash-bold u:text-xl"></i>
                         </Button>
                     </li>

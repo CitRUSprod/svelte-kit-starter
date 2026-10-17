@@ -1,21 +1,17 @@
 <script lang="ts">
-    import type { ClassValue } from "svelte/elements"
+    import type { ComponentBasicProps, ComponentVariant } from "$lib/types"
+    import { getComponentVariantMap } from "$lib/utils"
 
-    import type { ElementType } from "$lib/types"
-    import { getElementTypeObject } from "$lib/utils"
-
-    interface Props {
-        type?: ElementType
+    type Props = ComponentBasicProps & {
+        variant?: ComponentVariant
         label?: string
         disabled?: boolean
         readonly?: boolean
         checked?: boolean
-        class?: ClassValue
-        [key: string]: unknown
     }
 
     let {
-        type = "default",
+        variant = "default",
         label = undefined,
         disabled = false,
         readonly = false,
@@ -24,7 +20,7 @@
         ...restProps
     }: Props = $props()
 
-    const types = $derived(getElementTypeObject(type))
+    const variants = $derived(getComponentVariantMap(variant))
 
     function click() {
         if (!readonly && !disabled) {
@@ -51,18 +47,18 @@
             "u:flex u:justify-center u:items-center u:w-6 u:h-6 u:text-content-lighter u:border u:rounded u:select-none",
             {
                 "u:bg-content": !checked,
-                "u:border-default": types.default,
-                "u:border-primary": types.primary,
-                "u:border-success": types.success,
-                "u:border-error": types.error,
-                "u:border-warning": types.warning,
-                "u:border-info": types.info,
-                "u:bg-default": checked && types.default,
-                "u:bg-primary": checked && types.primary,
-                "u:bg-success": checked && types.success,
-                "u:bg-error": checked && types.error,
-                "u:bg-warning": checked && types.warning,
-                "u:bg-info": checked && types.info
+                "u:border-default": variants.default,
+                "u:border-primary": variants.primary,
+                "u:border-success": variants.success,
+                "u:border-error": variants.error,
+                "u:border-warning": variants.warning,
+                "u:border-info": variants.info,
+                "u:bg-default": checked && variants.default,
+                "u:bg-primary": checked && variants.primary,
+                "u:bg-success": checked && variants.success,
+                "u:bg-error": checked && variants.error,
+                "u:bg-warning": checked && variants.warning,
+                "u:bg-info": checked && variants.info
             }
         ]}
     >

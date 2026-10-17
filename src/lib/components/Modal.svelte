@@ -1,13 +1,13 @@
 <script lang="ts">
     import { Dialog } from "bits-ui"
     import type { Snippet } from "svelte"
-    import type { ClassValue } from "svelte/elements"
     import { fade } from "svelte/transition"
 
-    interface Props {
+    import type { ComponentBasicProps } from "$lib/types"
+
+    type Props = ComponentBasicProps & {
         visible?: boolean
         persistent?: boolean
-        class?: ClassValue
         children?: Snippet
     }
 
@@ -15,7 +15,8 @@
         visible = $bindable(false),
         persistent = false,
         class: klass = undefined,
-        children
+        children,
+        ...rest
     }: Props = $props()
 
     function handleBackdrop(e: MouseEvent) {
@@ -53,7 +54,10 @@
                         class="u:fixed u:inset-0 u:flex u:justify-center u:items-center u:p-4"
                         onclick={handleBackdrop}
                     >
-                        <div class={["u:p-8 u:bg-content u:shadow-md u:rounded-md", klass]}>
+                        <div
+                            class={["u:p-8 u:bg-content u:shadow-md u:rounded-md", klass]}
+                            {...rest}
+                        >
                             {@render children?.()}
                         </div>
                     </div>

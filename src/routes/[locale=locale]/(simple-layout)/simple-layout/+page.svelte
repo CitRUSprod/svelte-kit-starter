@@ -11,7 +11,7 @@
     <div class="u:p-8 u:border-primary u:rounded-lg u:border u:text-center">
         <h1>{$ll.simpleLayout()}</h1>
         <div class="u:flex u:justify-center u:mt-5">
-            <Button href={$localePath("/")} type="primary">
+            <Button href={$localePath("/")} variant="primary">
                 {$ll.goHome()}
             </Button>
         </div>

@@ -14,7 +14,7 @@
 
 <Content.Default title={$ll.posts()}>
     <div>
-        <Button type="success" onclick={modalPostCreating.open}>
+        <Button variant="success" onclick={modalPostCreating.open}>
             {$ll.createPost()}
         </Button>
     </div>

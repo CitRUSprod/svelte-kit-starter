@@ -21,12 +21,12 @@
         </h2>
     </div>
     <div class="u:flex u:flex-1 u:flex-wrap u:justify-end u:gap-2">
-        <Button href={$localePath("/todo")} type="primary">{$ll.todo()}</Button>
-        <Button href={$localePath("/lorem")} type="primary">Lorem</Button>
-        <Button href={$localePath("/simple-layout")} type="primary">
+        <Button href={$localePath("/todo")} variant="primary">{$ll.todo()}</Button>
+        <Button href={$localePath("/lorem")} variant="primary">Lorem</Button>
+        <Button href={$localePath("/simple-layout")} variant="primary">
             {$ll.simpleLayout()}
         </Button>
-        <Button href={$localePath("/posts")} type="primary">
+        <Button href={$localePath("/posts")} variant="primary">
             {$ll.posts()}
         </Button>
         <div class="u:flex u:items-center u:gap-1 u:mx-1">
@@ -34,7 +34,7 @@
                 <Button
                     class={["u:px-1", { "u:opacity-50": $currentLocale !== locale }]}
                     href={replaceLocaleInUrlWithoutSearchParams(page.url, locale)}
-                    type="primary"
+                    variant="primary"
                 >
                     {locale.toUpperCase()}
                 </Button>
@@ -43,7 +43,7 @@
                 {/if}
             {/each}
         </div>
-        <Button icon type="primary" onclick={darkTheme.toggle}>
+        <Button icon variant="primary" onclick={darkTheme.toggle}>
             <i class="u:i-fa-solid-sun u:dark:i-fa-solid-moon u:text-xl"></i>
         </Button>
         <Button
@@ -51,7 +51,7 @@
             icon
             rel="noopener noreferrer"
             target="_blank"
-            type="primary"
+            variant="primary"
         >
             <i class="u:i-icomoon-free-github u:text-xl"></i>
         </Button>

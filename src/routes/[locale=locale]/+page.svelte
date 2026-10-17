@@ -20,7 +20,7 @@
     <div class="u:p-8 u:border-primary u:rounded-lg u:border u:text-center">
         <h1>{env.PUBLIC_TITLE}</h1>
         <div class="u:flex u:justify-center u:mt-5">
-            <Button type="primary" onclick={addOne}>
+            <Button variant="primary" onclick={addOne}>
                 {$ll.clicked()}: {count}
             </Button>
         </div>
