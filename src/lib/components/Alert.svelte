@@ -4,7 +4,7 @@
 
     import Button from "./Button.svelte"
 
-    import { t } from "$lib/locales"
+    import { ll } from "$i18n/helpers"
     import type { ElementBasicType } from "$lib/types"
     import { getElementBasicTypeObject } from "$lib/utils"
 
@@ -31,13 +31,13 @@
     function getTextByType(localType: string) {
         switch (localType) {
             case "success":
-                return $t("components.alert.success")
+                return $ll.success()
             case "error":
-                return $t("components.alert.error")
+                return $ll.error()
             case "warning":
-                return $t("components.alert.warning")
+                return $ll.warning()
             default:
-                return $t("components.alert.info")
+                return $ll.info()
         }
     }
 

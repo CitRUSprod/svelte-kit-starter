@@ -14,7 +14,7 @@ const prettierRules = {
 /** @type {import("eslint").Linter.Config[]} */
 const config = [
     {
-        ignores: ["**/pnpm-lock.yaml", "**/.svelte-kit", "**/dist"]
+        ignores: ["**/pnpm-lock.yaml", "**/.svelte-kit", "**/dist", "**/i18n-*.ts"]
     },
     {
         plugins: { prettier }

@@ -1,27 +1,50 @@
-import { defaultLocale, locales } from "$lib/locales"
-import { getLocaleAndRoute } from "$lib/utils"
+import type { Handle, RequestEvent } from "@sveltejs/kit"
+import { redirect } from "@sveltejs/kit"
+import { detectLocale, initAcceptLanguageHeaderDetector } from "typesafe-i18n/detectors"
 
-const supportedLocales = locales.get()
+import type { Locale } from "$i18n/helpers"
+import { defaultLocale, locales, i18n, isLocale, loadAllLocales } from "$i18n/helpers"
 
-export async function handle({ event: e, resolve }) {
-    const { locale, route } = getLocaleAndRoute(e.url.pathname)
+loadAllLocales()
 
-    if (!locale) {
-        const lang = e.request.headers.get("accept-language") ?? ""
-        const localeCandidate = /^[a-z]{2}\b/.exec(lang)?.toString()
-        const isSupportedLocale = !!localeCandidate && supportedLocales.includes(localeCandidate)
+const l = i18n()
 
-        const headers = new Headers()
-        headers.set("location", `/${isSupportedLocale ? localeCandidate : defaultLocale}${route}`)
+function getPreferredLocale(e: RequestEvent) {
+    const acceptLanguageDetector = initAcceptLanguageHeaderDetector(e.request)
+    return detectLocale(defaultLocale, locales, acceptLanguageDetector)
+}
 
-        return new Response(undefined, { status: 301, headers })
+export const handle: Handle = async ({ event: e, resolve }) => {
+    const [, locale, ...pathname] = e.url.pathname.split("/")
+
+    if (!(locale && isLocale(locale))) {
+        const localeFromCookie = e.cookies.get("locale")
+
+        let localLocale: Locale
+
+        if (localeFromCookie && isLocale(localeFromCookie)) {
+            localLocale = localeFromCookie
+        } else {
+            localLocale = getPreferredLocale(e)
+        }
+
+        const localPathname = pathname.length > 0 ? `/${pathname.join("/")}` : ""
+
+        redirect(307, `/${localLocale}${locale ? `/${locale}` : ""}${localPathname}${e.url.search}`)
     }
+
+    e.locals.locale = locale
+    e.locals.ll = l[locale]
 
     const response = await resolve(e, {
         transformPageChunk({ html }) {
             return html.replace(/<html.*>/, `<html lang="${locale}">`)
         }
     })
+
+    const localeCookie = `locale=${locale}; Path=/; Max-Age=${100 * 24 * 60 * 60}; SameSite=Lax`
+
+    response.headers.append("set-cookie", localeCookie)
 
     return response
 }

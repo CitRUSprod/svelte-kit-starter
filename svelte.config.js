@@ -8,6 +8,7 @@ const config = {
     kit: {
         adapter: process.env.ADAPTER === "auto" ? adapterAuto() : adapterNode({ out: "dist" }),
         alias: {
+            $i18n: "src/i18n",
             $styles: "src/styles"
         }
     }

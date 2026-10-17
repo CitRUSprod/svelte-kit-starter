@@ -4,6 +4,8 @@
     import { PageProgressBar, ToastContainer } from "./_components"
 
     import { browser } from "$app/environment"
+    import type { Locale } from "$i18n/helpers"
+    import { setLocale } from "$i18n/helpers"
     import { darkTheme } from "$lib/stores"
 
     // eslint-disable-next-line import-x/no-unassigned-import
@@ -14,10 +16,15 @@
     import "$styles/global.css"
 
     interface Props {
+        data: { locale: Locale }
         children?: Snippet
     }
 
-    const { children }: Props = $props()
+    const { data, children }: Props = $props()
+
+    $effect(() => {
+        setLocale(data.locale)
+    })
 
     if (browser) {
         darkTheme.sync()

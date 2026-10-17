@@ -16,5 +16,6 @@
 node_modules
 .svelte-kit
 dist
+i18n-*.ts
 *.tsbuildinfo
 

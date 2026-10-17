@@ -1,8 +1,6 @@
-import { loadTranslations } from "$lib/locales"
-import { getLocaleAndRoute } from "$lib/utils"
+import { loadLocaleAsync } from "$i18n/helpers"
 
-export async function load({ url }) {
-    const { locale, route } = getLocaleAndRoute(url.pathname)
-    await loadTranslations(locale!, route)
-    return { route }
+export async function load(e) {
+    await loadLocaleAsync(e.data.locale)
+    return { locale: e.data.locale }
 }
