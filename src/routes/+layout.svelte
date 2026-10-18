@@ -1,10 +1,12 @@
 <script lang="ts">
-    import type { Snippet } from "svelte"
+    import { ProgressBar } from "@prgm/sveltekit-progress-bar"
+    import Cookies from "js-cookie"
+    import { watch } from "runed"
+    import { untrack } from "svelte"
 
-    import { PageProgressBar, ToastContainer } from "./_components"
+    import { ToastContainer } from "./_components"
 
-    import type { Locale } from "$i18n/helpers"
-    import { setLocale } from "$i18n/helpers"
+    import { currentLocale, setLocale } from "$i18n/helpers"
 
     // eslint-disable-next-line import-x/no-unassigned-import
     import "uno.css"
@@ -13,18 +15,22 @@
     // eslint-disable-next-line import-x/no-unassigned-import
     import "$styles/global.css"
 
-    interface Props {
-        data: { locale: Locale }
-        children?: Snippet
-    }
+    const { data, children } = $props()
 
-    const { data, children }: Props = $props()
+    setLocale(untrack(() => data.locale))
 
-    $effect(() => {
-        setLocale(data.locale)
-    })
+    watch(
+        () => $currentLocale,
+        locale => {
+            Cookies.set("locale", locale, {
+                path: "/",
+                expires: 100,
+                sameSite: "lax"
+            })
+        }
+    )
 </script>
 
-<PageProgressBar />
+<ProgressBar class={"u:text-green-500" as any} />
 {@render children?.()}
 <ToastContainer />
