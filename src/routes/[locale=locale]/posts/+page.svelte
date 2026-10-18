@@ -5,7 +5,7 @@
     import { Content, Button } from "$lib/components"
     import { posts } from "$lib/stores"
 
-    let dialogPostCreating: DialogPostCreating
+    let dialogPostCreating = $state<DialogPostCreating>()
 </script>
 
 <svelte:head>
@@ -14,7 +14,7 @@
 
 <Content.Default title={$ll.posts()}>
     <div>
-        <Button variant="success" onClick={dialogPostCreating.open}>
+        <Button variant="success" onClick={() => dialogPostCreating?.open()}>
             {$ll.createPost()}
         </Button>
     </div>
