@@ -38,7 +38,7 @@ pnpm commit
 Check types with `svelte-check`:
 
 ```sh
-pnpm validate
+pnpm check-types
 ```
 
 Lint with `prettier`, `stylelint` and `eslint`:
@@ -52,6 +52,20 @@ Format with `prettier`, `stylelint` and `eslint`:
 ```sh
 pnpm format
 ```
+
+Check types and lint:
+
+```sh
+pnpm validate
+```
+
+### CI/CD
+
+GitHub Actions (`.github/workflows/check.yml`) runs on every push and executes:
+
+1. Installing dependencies (`pnpm i`)
+2. Building the project (`pnpm build`)
+3. Full check (`pnpm validate` — types + linting)
 
 ### Environment variables
 
