@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { ModalPostEditing, ModalPostRemoving } from "./_components"
+    import { DialogPostEditing, DialogPostRemoving } from "./_components"
 
     import { browser } from "$app/environment"
     import { goto } from "$app/navigation"
@@ -19,8 +19,8 @@
         if (browser && !post) goto($localePath("/posts"))
     })
 
-    let modalPostEditing = $state<ModalPostEditing>()
-    let modalPostRemoving = $state<ModalPostRemoving>()
+    let dialogPostEditing = $state<DialogPostEditing>()
+    let dialogPostRemoving = $state<DialogPostRemoving>()
 </script>
 
 <svelte:head>
@@ -39,15 +39,15 @@
             {/each}
         </div>
         <div>
-            <Button variant="warning" onClick={() => modalPostEditing?.open()}>
+            <Button variant="warning" onClick={() => dialogPostEditing?.open()}>
                 {$ll.edit()}
             </Button>
-            <Button variant="error" onClick={() => modalPostRemoving?.open()}>
+            <Button variant="error" onClick={() => dialogPostRemoving?.open()}>
                 {$ll.remove()}
             </Button>
         </div>
     </Content.Default>
 
-    <ModalPostEditing bind:this={modalPostEditing} {post} />
-    <ModalPostRemoving bind:this={modalPostRemoving} {post} />
+    <DialogPostEditing bind:this={dialogPostEditing} {post} />
+    <DialogPostRemoving bind:this={dialogPostRemoving} {post} />
 {/if}

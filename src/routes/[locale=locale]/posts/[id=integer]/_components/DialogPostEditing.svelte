@@ -1,7 +1,7 @@
 <script lang="ts">
     import { ll } from "$i18n/helpers"
     import * as api from "$lib/api"
-    import { Button, TextField, TextArea, Modal } from "$lib/components"
+    import { Button, TextField, TextArea, Dialog } from "$lib/components"
     import type { Post } from "$lib/types"
 
     interface Props {
@@ -49,7 +49,7 @@
     }
 </script>
 
-<Modal class="u:flex u:flex-col u:gap-4 u:w-200" persistent={loading} bind:visible>
+<Dialog class="u:flex u:flex-col u:gap-4 u:w-200" persistent={loading} bind:visible>
     <div>
         <h1 class="u:text-center">{$ll.postEditing()}</h1>
     </div>
@@ -78,4 +78,4 @@
             {$ll.save()}
         </Button>
     </div>
-</Modal>
+</Dialog>

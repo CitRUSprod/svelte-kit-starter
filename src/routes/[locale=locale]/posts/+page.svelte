@@ -1,11 +1,11 @@
 <script lang="ts">
-    import { ModalPostCreating } from "./_components"
+    import { DialogPostCreating } from "./_components"
 
     import { ll, localePath } from "$i18n/helpers"
     import { Content, Button } from "$lib/components"
     import { posts } from "$lib/stores"
 
-    let modalPostCreating: ModalPostCreating
+    let dialogPostCreating: DialogPostCreating
 </script>
 
 <svelte:head>
@@ -14,7 +14,7 @@
 
 <Content.Default title={$ll.posts()}>
     <div>
-        <Button variant="success" onClick={modalPostCreating.open}>
+        <Button variant="success" onClick={dialogPostCreating.open}>
             {$ll.createPost()}
         </Button>
     </div>
@@ -35,4 +35,4 @@
     </div>
 </Content.Default>
 
-<ModalPostCreating bind:this={modalPostCreating} />
+<DialogPostCreating bind:this={dialogPostCreating} />

@@ -2,7 +2,7 @@
     import { goto } from "$app/navigation"
     import { ll, localePath } from "$i18n/helpers"
     import * as api from "$lib/api"
-    import { Button, TextField, TextArea, Modal } from "$lib/components"
+    import { Button, TextField, TextArea, Dialog } from "$lib/components"
 
     let visible = $state(false)
     let loading = $state(false)
@@ -40,7 +40,7 @@
     }
 </script>
 
-<Modal class="u:flex u:flex-col u:gap-4 u:w-200" persistent={loading} bind:visible>
+<Dialog class="u:flex u:flex-col u:gap-4 u:w-200" persistent={loading} bind:visible>
     <div>
         <h1 class="u:text-center">{$ll.postCreating()}</h1>
     </div>
@@ -69,4 +69,4 @@
             {$ll.create()}
         </Button>
     </div>
-</Modal>
+</Dialog>

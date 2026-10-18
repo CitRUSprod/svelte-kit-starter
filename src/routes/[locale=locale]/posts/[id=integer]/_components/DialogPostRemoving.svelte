@@ -1,7 +1,7 @@
 <script lang="ts">
     import { ll } from "$i18n/helpers"
     import * as api from "$lib/api"
-    import { Button, Modal } from "$lib/components"
+    import { Button, Dialog } from "$lib/components"
     import type { Post } from "$lib/types"
 
     interface Props {
@@ -31,7 +31,7 @@
     }
 </script>
 
-<Modal class="u:flex u:flex-col u:gap-4 u:w-100" persistent={loading} bind:visible>
+<Dialog class="u:flex u:flex-col u:gap-4 u:w-100" persistent={loading} bind:visible>
     <div>
         <h1>{$ll.postRemoving()}</h1>
     </div>
@@ -46,4 +46,4 @@
             {$ll.remove()}
         </Button>
     </div>
-</Modal>
+</Dialog>
