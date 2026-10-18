@@ -2,7 +2,7 @@
     import { DialogPostCreating } from "./_components"
 
     import { ll, localePath } from "$i18n/helpers"
-    import { Content, Button } from "$lib/components"
+    import { ContentDefault, Button } from "$lib/components"
     import { posts } from "$lib/stores"
 
     let dialogPostCreating = $state<DialogPostCreating>()
@@ -12,7 +12,7 @@
     <title>{$ll.posts()}</title>
 </svelte:head>
 
-<Content.Default title={$ll.posts()}>
+<ContentDefault title={$ll.posts()}>
     <div>
         <Button variant="success" onClick={() => dialogPostCreating?.open()}>
             {$ll.createPost()}
@@ -33,6 +33,6 @@
             </a>
         {/each}
     </div>
-</Content.Default>
+</ContentDefault>
 
 <DialogPostCreating bind:this={dialogPostCreating} />

@@ -3,7 +3,7 @@
 
     import { browser } from "$app/environment"
     import { ll } from "$i18n/helpers"
-    import { Content, Button, TextField, Checkbox } from "$lib/components"
+    import { ContentDefault, Button, TextField, Checkbox } from "$lib/components"
 
     const [send, receive] = crossfade({
         duration: 500,
@@ -72,7 +72,7 @@
     <title>{$ll.todo()}</title>
 </svelte:head>
 
-<Content.Default title={$ll.todo()}>
+<ContentDefault title={$ll.todo()}>
     <div class="u:flex u:gap-2">
         <TextField
             class="u:flex-1"
@@ -124,4 +124,4 @@
             </ul>
         </div>
     </div>
-</Content.Default>
+</ContentDefault>

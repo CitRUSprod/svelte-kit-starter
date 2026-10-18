@@ -4,7 +4,7 @@
     import { browser } from "$app/environment"
     import { goto } from "$app/navigation"
     import { ll, localePath } from "$i18n/helpers"
-    import { Content, Button } from "$lib/components"
+    import { ContentDefault, Button } from "$lib/components"
     import { posts } from "$lib/stores"
 
     interface Props {
@@ -32,7 +32,7 @@
 </svelte:head>
 
 {#if browser && post}
-    <Content.Default title={post.title}>
+    <ContentDefault title={post.title}>
         <div class="u:flex u:flex-col u:gap-4">
             {#each post.content.split(/\n+/) as paragraph, index (index)}
                 <p>{paragraph}</p>
@@ -46,7 +46,7 @@
                 {$ll.remove()}
             </Button>
         </div>
-    </Content.Default>
+    </ContentDefault>
 
     <DialogPostEditing bind:this={dialogPostEditing} {post} />
     <DialogPostRemoving bind:this={dialogPostRemoving} {post} />
