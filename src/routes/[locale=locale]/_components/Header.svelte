@@ -1,12 +1,7 @@
 <script lang="ts">
-    import { page } from "$app/state"
-    import {
-        ll,
-        currentLocale,
-        locales,
-        localePath,
-        replaceLocaleInUrlWithoutSearchParams
-    } from "$i18n/helpers"
+    import { LocaleSwitcher } from "./_components"
+
+    import { ll, localePath } from "$i18n/helpers"
     import { Button } from "$lib/components"
     import { theme } from "$lib/stores"
     import { env } from "$lib/utils"
@@ -29,20 +24,7 @@
         <Button href={$localePath("/posts")} variant="primary">
             {$ll.posts()}
         </Button>
-        <div class="u:flex u:items-center u:gap-1 u:mx-1">
-            {#each locales as locale, index (locale)}
-                <Button
-                    class={["u:px-1", { "u:opacity-50": $currentLocale !== locale }]}
-                    href={replaceLocaleInUrlWithoutSearchParams(page.url, locale)}
-                    variant="primary"
-                >
-                    {locale.toUpperCase()}
-                </Button>
-                {#if index < locales.length - 1}
-                    <div class="u:font-bold">/</div>
-                {/if}
-            {/each}
-        </div>
+        <LocaleSwitcher />
         <Button icon variant="primary" onClick={theme.toggle}>
             <i class="u:i-fa-solid-sun u:dark:i-fa-solid-moon u:text-xl"></i>
         </Button>

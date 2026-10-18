@@ -1,0 +1,50 @@
+<script lang="ts">
+    import { afterNavigate, invalidateAll } from "$app/navigation"
+    import { page } from "$app/state"
+    import type { Locale } from "$i18n/helpers"
+    import {
+        currentLocale,
+        isLocale,
+        locales,
+        setLocale,
+        loadLocaleAsync,
+        replaceLocaleInUrl
+    } from "$i18n/helpers"
+    import { Button } from "$lib/components"
+
+    async function switchLocale(newLocale: Locale | undefined) {
+        if (!newLocale || $currentLocale === newLocale) {
+            return
+        }
+
+        await loadLocaleAsync(newLocale)
+        document.querySelector("html")?.setAttribute("lang", newLocale)
+        setLocale(newLocale)
+        await invalidateAll()
+    }
+
+    afterNavigate(() => {
+        const { locale } = page.params
+
+        if (locale && isLocale(locale)) {
+            switchLocale(locale)
+        }
+    })
+</script>
+
+<svelte:window onpopstate={({ state }) => switchLocale(state?.locale)} />
+
+<div class="u:flex u:items-center u:gap-1 u:mx-1">
+    {#each locales as locale, index (locale)}
+        <Button
+            class={["u:px-1", { "u:opacity-50": $currentLocale !== locale }]}
+            href={replaceLocaleInUrl(page.url, locale)}
+            variant="primary"
+        >
+            {locale.toUpperCase()}
+        </Button>
+        {#if index < locales.length - 1}
+            <div class="u:font-bold">/</div>
+        {/if}
+    {/each}
+</div>
