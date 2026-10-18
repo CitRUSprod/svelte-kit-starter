@@ -101,7 +101,7 @@
             </div>
             {#if closable}
                 <div class="u:pr-2 u:py-2">
-                    <Button icon text {variant} onclick={close}>
+                    <Button icon text {variant} onClick={close}>
                         <i class="u:i-fa-solid-times u:text-xl"></i>
                     </Button>
                 </div>

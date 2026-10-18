@@ -39,10 +39,10 @@
             {/each}
         </div>
         <div>
-            <Button variant="warning" onclick={() => modalPostEditing?.open()}>
+            <Button variant="warning" onClick={() => modalPostEditing?.open()}>
                 {$ll.edit()}
             </Button>
-            <Button variant="error" onclick={() => modalPostRemoving?.open()}>
+            <Button variant="error" onClick={() => modalPostRemoving?.open()}>
                 {$ll.remove()}
             </Button>
         </div>

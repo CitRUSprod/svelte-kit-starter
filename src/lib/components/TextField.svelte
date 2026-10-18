@@ -17,7 +17,7 @@
         value?: string | number | null | undefined
         leftIconClass?: string
         rightIconClass?: string
-        onkeypress?: HTMLInputAttributes["onkeypress"]
+        onKeyPress?: HTMLInputAttributes["onkeypress"]
     }
 
     let {
@@ -31,6 +31,7 @@
         value = $bindable(),
         leftIconClass = undefined,
         rightIconClass = undefined,
+        onKeyPress = undefined,
         class: klass = undefined,
         ...restProps
     }: Props = $props()
@@ -85,6 +86,7 @@
         {readonly}
         type={valueType}
         bind:value
+        onkeypress={onKeyPress}
         {...restProps}
     />
     {#if rightIconClass}

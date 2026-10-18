@@ -39,10 +39,10 @@
         <p>{$ll.postRemovingConfirmation()}</p>
     </div>
     <div class="u:flex u:justify-between">
-        <Button disabled={loading} text variant="success" onclick={close}>
+        <Button disabled={loading} text variant="success" onClick={close}>
             {$ll.cancel()}
         </Button>
-        <Button {loading} variant="error" onclick={removePost}>
+        <Button {loading} variant="error" onClick={removePost}>
             {$ll.remove()}
         </Button>
     </div>

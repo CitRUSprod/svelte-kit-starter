@@ -80,9 +80,9 @@
             placeholder={$ll.enterTask()}
             variant="primary"
             bind:value={taskText}
-            onkeypress={addTaskOnEnter}
+            onKeyPress={addTaskOnEnter}
         />
-        <Button disabled={!trimmedTaskText} variant="primary" onclick={addTask}>
+        <Button disabled={!trimmedTaskText} variant="primary" onClick={addTask}>
             {$ll.add()}
         </Button>
     </div>
@@ -98,7 +98,7 @@
                     >
                         <Checkbox variant="primary" bind:checked={task.completed} />
                         <span class="u:flex-1">{task.text}</span>
-                        <Button icon text variant="error" onclick={() => removeTask(task.id)}>
+                        <Button icon text variant="error" onClick={() => removeTask(task.id)}>
                             <i class="u:i-ph-trash-bold u:text-xl"></i>
                         </Button>
                     </li>
@@ -116,7 +116,7 @@
                     >
                         <Checkbox variant="primary" bind:checked={task.completed} />
                         <span class="u:flex-1 u:line-through">{task.text}</span>
-                        <Button icon text variant="error" onclick={() => removeTask(task.id)}>
+                        <Button icon text variant="error" onClick={() => removeTask(task.id)}>
                             <i class="u:i-ph-trash-bold u:text-xl"></i>
                         </Button>
                     </li>

@@ -71,10 +71,10 @@
         />
     </div>
     <div class="u:flex u:justify-between">
-        <Button disabled={loading} text variant="error" onclick={close}>
+        <Button disabled={loading} text variant="error" onClick={close}>
             {$ll.cancel()}
         </Button>
-        <Button {disabled} {loading} variant="success" onclick={editPost}>
+        <Button {disabled} {loading} variant="success" onClick={editPost}>
             {$ll.save()}
         </Button>
     </div>

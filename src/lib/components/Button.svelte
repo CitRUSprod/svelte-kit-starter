@@ -15,7 +15,7 @@
         icon?: boolean
         disabled?: boolean
         loading?: boolean
-        onclick?: HTMLButtonAttributes["onclick"]
+        onClick?: HTMLButtonAttributes["onclick"]
         children?: Snippet
     }
 
@@ -30,6 +30,7 @@
         icon = false,
         disabled = false,
         loading = false,
+        onClick = undefined,
         children,
         ...restProps
     }: Props = $props()
@@ -91,6 +92,7 @@
     {href}
     {rel}
     {target}
+    onclick={onClick}
     {...restProps}
 >
     {@render children?.()}
