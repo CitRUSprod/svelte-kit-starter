@@ -3,10 +3,18 @@
     import Cookies from "js-cookie"
     import { watch } from "runed"
     import { untrack } from "svelte"
+    import SvelteSeo from "svelte-seo"
 
     import { ToastContainer } from "./_components"
 
-    import { currentLocale, setLocale } from "$i18n/helpers"
+    import { page } from "$app/state"
+    import {
+        currentLocale,
+        locales,
+        replaceLocaleInUrlWithoutSearchParams,
+        setLocale
+    } from "$i18n/helpers"
+    import { env } from "$lib/utils"
 
     // eslint-disable-next-line import-x/no-unassigned-import
     import "uno.css"
@@ -30,6 +38,16 @@
         }
     )
 </script>
+
+<SvelteSeo
+    title={env.PUBLIC_TITLE}
+    applicationName={env.PUBLIC_TITLE}
+    canonical={`${env.PUBLIC_BASE_URL}${page.url.pathname}`}
+    languageAlternates={locales.map(locale => ({
+        hreflang: locale,
+        href: `${env.PUBLIC_BASE_URL}${replaceLocaleInUrlWithoutSearchParams(page.url, locale)}`
+    }))}
+/>
 
 <ProgressBar class={"u:text-green-500" as any} />
 {@render children?.()}

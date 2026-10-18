@@ -1,5 +1,6 @@
 <script lang="ts">
     import { crossfade } from "svelte/transition"
+    import SvelteSeo from "svelte-seo"
 
     import { browser } from "$app/environment"
     import { ll } from "$i18n/helpers"
@@ -68,9 +69,7 @@
     }
 </script>
 
-<svelte:head>
-    <title>{$ll.todo()}</title>
-</svelte:head>
+<SvelteSeo title={$ll.todo()} />
 
 <ContentDefault title={$ll.todo()}>
     <div class="u:flex u:gap-2">

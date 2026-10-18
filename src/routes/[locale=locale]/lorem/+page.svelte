@@ -1,10 +1,10 @@
 <script lang="ts">
+    import SvelteSeo from "svelte-seo"
+
     import { ContentDefault } from "$lib/components"
 </script>
 
-<svelte:head>
-    <title>Lorem</title>
-</svelte:head>
+<SvelteSeo title="Lorem" />
 
 <ContentDefault title="Lorem">
     <p>

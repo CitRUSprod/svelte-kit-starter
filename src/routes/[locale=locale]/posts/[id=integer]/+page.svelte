@@ -1,4 +1,6 @@
 <script lang="ts">
+    import SvelteSeo from "svelte-seo"
+
     import { DialogPostEditing, DialogPostRemoving } from "./_components"
 
     import { browser } from "$app/environment"
@@ -23,13 +25,7 @@
     let dialogPostRemoving = $state<DialogPostRemoving>()
 </script>
 
-<svelte:head>
-    {#if browser && post}
-        {#key post}
-            <title>{post.title}</title>
-        {/key}
-    {/if}
-</svelte:head>
+<SvelteSeo title={$ll.posts()} />
 
 {#if browser && post}
     <ContentDefault title={post.title}>

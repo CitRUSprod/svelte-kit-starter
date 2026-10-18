@@ -1,12 +1,12 @@
 <script lang="ts">
+    import SvelteSeo from "svelte-seo"
+
     import { page } from "$app/state"
     import { ll, localePath } from "$i18n/helpers"
     import { ContentCenter, Button } from "$lib/components"
 </script>
 
-<svelte:head>
-    <title>{$ll.error()} {page.status}</title>
-</svelte:head>
+<SvelteSeo title={`${$ll.error()} ${String(page.status)}`} noindex />
 
 <main class="u:relative u:flex-1">
     <ContentCenter>

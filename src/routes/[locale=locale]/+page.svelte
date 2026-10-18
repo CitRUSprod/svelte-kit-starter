@@ -1,4 +1,6 @@
 <script lang="ts">
+    import SvelteSeo from "svelte-seo"
+
     import { ll } from "$i18n/helpers"
     import { ContentCenter, Button } from "$lib/components"
     import { toasts } from "$lib/stores"
@@ -12,9 +14,7 @@
     }
 </script>
 
-<svelte:head>
-    <title>{$ll.home()}</title>
-</svelte:head>
+<SvelteSeo title={$ll.home()} />
 
 <ContentCenter>
     <div class="u:p-8 u:border-primary u:rounded-lg u:border u:text-center">

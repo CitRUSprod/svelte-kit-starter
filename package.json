@@ -81,6 +81,7 @@
         "svelte": "5.57.2",
         "svelte-check": "4.7.7",
         "svelte-eslint-parser": "1.9.0",
+        "svelte-seo": "2.0.0",
         "type-fest": "5.10.0",
         "typescript": "6.0.3",
         "typescript-eslint": "8.71.2",

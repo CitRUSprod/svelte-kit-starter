@@ -1,4 +1,6 @@
 <script lang="ts">
+    import SvelteSeo from "svelte-seo"
+
     import { DialogPostCreating } from "./_components"
 
     import { ll, localePath } from "$i18n/helpers"
@@ -8,9 +10,7 @@
     let dialogPostCreating = $state<DialogPostCreating>()
 </script>
 
-<svelte:head>
-    <title>{$ll.posts()}</title>
-</svelte:head>
+<SvelteSeo title={$ll.posts()} />
 
 <ContentDefault title={$ll.posts()}>
     <div>
