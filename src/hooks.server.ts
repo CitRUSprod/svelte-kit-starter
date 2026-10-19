@@ -36,9 +36,12 @@ export const handle: Handle = async ({ event: e, resolve }) => {
     e.locals.locale = locale
     e.locals.ll = l[locale]
 
+    const dark = e.cookies.get("darkTheme") === "true"
+
     const response = await resolve(e, {
         transformPageChunk({ html }) {
-            return html.replace(/<html.*>/, `<html lang="${locale}">`)
+            const template = `<html lang="${locale}"${dark ? ' class="dark"' : ""}>`
+            return html.replace(/<html.*>/, template)
         }
     })
 
