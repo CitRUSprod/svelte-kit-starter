@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Textarea } from "./internal"
+    import { Textarea } from "./_components"
 
     import type { ComponentBasicProps, ComponentVariant } from "$lib/types"
     import { getComponentVariantMap } from "$lib/utils"

@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { HTMLInputAttributes } from "svelte/elements"
 
-    import { Input } from "./internal"
+    import { Input } from "./_components"
 
     import type { ComponentBasicProps, ComponentVariant } from "$lib/types"
     import { getComponentVariantMap } from "$lib/utils"
