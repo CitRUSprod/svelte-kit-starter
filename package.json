@@ -25,10 +25,10 @@
         "validate": "pnpm check-types && pnpm lint",
         "prepare": "husky"
     },
-    "packageManager": "pnpm@11.20.0",
+    "packageManager": "pnpm@12.14.0",
     "engines": {
         "node": "26.12.0",
-        "pnpm": "11.20.0"
+        "pnpm": "12.14.0"
     },
     "config": {
         "commitizen": {
@@ -46,9 +46,9 @@
         "@citrus-linting/eslint-config": "1.5.0",
         "@citrus-linting/prettier-config": "1.0.1",
         "@citrus-linting/stylelint-config": "1.1.0",
-        "@commitlint/cli": "21.2.3",
+        "@commitlint/cli": "21.2.4",
         "@commitlint/types": "21.2.3",
-        "@iconify/json": "2.2.544",
+        "@iconify/json": "2.2.545",
         "@prgm/sveltekit-progress-bar": "3.0.2",
         "@stylistic/eslint-plugin": "5.10.0",
         "@sveltejs/adapter-auto": "7.0.1",
@@ -63,7 +63,7 @@
         "@unocss/reset": "66.11.0",
         "any-eslint-parser": "1.0.1",
         "commitizen": "4.3.2",
-        "concurrently": "9.2.1",
+        "concurrently": "10.0.6",
         "cz-customizable": "7.5.4",
         "eslint": "10.13.0",
         "eslint-config-prettier": "10.1.8",
@@ -91,7 +91,7 @@
     },
     "dependencies": {
         "bits-ui": "2.19.5",
-        "js-cookie": "3.0.5",
+        "js-cookie": "3.0.8",
         "runed": "0.37.1",
         "tslib": "2.8.1",
         "typesafe-i18n": "5.27.1",
