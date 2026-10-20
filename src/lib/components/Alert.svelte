@@ -1,96 +1,108 @@
 <script lang="ts">
+    import type { Snippet } from "svelte"
+
     import Button from "./Button.svelte"
 
-    import { createEventDispatcher } from "svelte"
-    import classNames from "classnames"
-    import { t } from "$lib/locales"
-    import { getElementBasicTypeObject } from "$lib/utils"
+    import { ll } from "$i18n/helpers"
+    import type { ComponentBasicProps, ComponentBasicVariant } from "$lib/types"
+    import { getComponentBasicVariantMap } from "$lib/utils"
 
-    import type { ElementBasicType } from "$lib/types"
+    type Props = ComponentBasicProps & {
+        variant: ComponentBasicVariant
+        visible?: boolean
+        closable?: boolean
+        onClose?(): void
+        children?: Snippet
+    }
 
-    export let type: ElementBasicType
-    export let visible = true
-    export let closable = false
+    let {
+        class: klass = undefined,
+        variant,
+        visible = $bindable(true),
+        closable = false,
+        onClose,
+        children,
+        ...rest
+    }: Props = $props()
 
-    let klass: string | undefined = undefined
-    export { klass as class }
+    const variants = $derived(getComponentBasicVariantMap(variant))
 
-    $: types = getElementBasicTypeObject(type)
-
-    const dispatch = createEventDispatcher()
-
-    function getTextByType(localType: string) {
-        switch (localType) {
+    function getTextByVariant(localVariant: string) {
+        switch (localVariant) {
             case "success":
-                return $t("components.alert.success")
+                return $ll.success()
             case "error":
-                return $t("components.alert.error")
+                return $ll.error()
             case "warning":
-                return $t("components.alert.warning")
+                return $ll.warning()
             default:
-                return $t("components.alert.info")
+                return $ll.info()
         }
     }
 
     function close() {
-        dispatch("close")
+        onClose?.()
         visible = false
     }
 </script>
 
 {#if visible}
     <div
-        class={classNames(
+        class={[
             "u:flex u:w-full u:rounded-md u:bg-content u:border-2",
             {
-                "u:border-success": types.success,
-                "u:border-error": types.error,
-                "u:border-warning": types.warning,
-                "u:border-info": types.info
+                "u:border-success": variants.success,
+                "u:border-error": variants.error,
+                "u:border-warning": variants.warning,
+                "u:border-info": variants.info
             },
             klass
-        )}
+        ]}
+        {...rest}
     >
         <div
-            class={classNames(
+            class={[
                 "u:flex u:justify-center u:items-center u:w-12 u:text-content-lighter",
                 {
-                    "u:bg-success": types.success,
-                    "u:bg-error": types.error,
-                    "u:bg-warning": types.warning,
-                    "u:bg-info": types.info
+                    "u:bg-success": variants.success,
+                    "u:bg-error": variants.error,
+                    "u:bg-warning": variants.warning,
+                    "u:bg-info": variants.info
                 }
-            )}
+            ]}
         >
             <i
-                class={classNames("u:text-xl", {
-                    "u:i-fa-solid-check": types.success,
-                    "u:i-fa-solid-times-circle": types.error,
-                    "u:i-fa-solid-exclamation-triangle": types.warning,
-                    "u:i-fa-solid-info-circle": types.info
-                })}
-            />
+                class={[
+                    "u:text-xl",
+                    {
+                        "u:i-fa-solid-check": variants.success,
+                        "u:i-fa-solid-times-circle": variants.error,
+                        "u:i-fa-solid-exclamation-triangle": variants.warning,
+                        "u:i-fa-solid-info-circle": variants.info
+                    }
+                ]}
+            ></i>
         </div>
         <div class="u:flex u:flex-1 u:justify-between">
             <div class="u:px-4 u:py-2">
                 <b
-                    class={classNames({
-                        "u:text-success": types.success,
-                        "u:text-error": types.error,
-                        "u:text-warning": types.warning,
-                        "u:text-info": types.info
-                    })}
+                    class={{
+                        "u:text-success": variants.success,
+                        "u:text-error": variants.error,
+                        "u:text-warning": variants.warning,
+                        "u:text-info": variants.info
+                    }}
                 >
-                    {getTextByType(type)}
+                    {getTextByVariant(variant)}
                 </b>
                 <p class="u:text-content-inverse u:text-sm">
-                    <slot />
+                    {@render children?.()}
                 </p>
             </div>
             {#if closable}
                 <div class="u:pr-2 u:py-2">
-                    <Button icon text {type} on:click={close}>
-                        <i class="u:i-fa-solid-times u:text-xl" />
+                    <Button icon text {variant} onClick={close}>
+                        <i class="u:i-fa-solid-times u:text-xl"></i>
                     </Button>
                 </div>
             {/if}

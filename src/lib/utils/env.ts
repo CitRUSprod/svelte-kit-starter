@@ -1,14 +1,6 @@
-import { Type } from "@sinclair/typebox"
+import { parseDataBySchema } from "./validation"
+
 import * as publicEnv from "$env/static/public"
-import { parseByAjvSchema } from "./ajv"
+import { $env } from "$lib/schemas"
 
-const schema = Type.Strict(
-    Type.Object(
-        {
-            PUBLIC_TITLE: Type.String({ minLength: 1, transform: ["trim"] })
-        },
-        { additionalProperties: false }
-    )
-)
-
-export const env = parseByAjvSchema(schema, publicEnv, "env")
+export const env = parseDataBySchema($env(), publicEnv)

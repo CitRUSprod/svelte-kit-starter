@@ -1,2 +1,2 @@
-export * from "./element-type"
-export * from "./post"
+export type * from "./component"
+export type * from "./post"

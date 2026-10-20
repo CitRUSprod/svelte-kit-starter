@@ -1,26 +1,25 @@
 <script lang="ts">
-    import { Content, Button } from "$lib/components"
+    import SvelteSeo from "svelte-seo"
 
-    import { page } from "$app/stores"
-    import { t, localePath } from "$lib/locales"
+    import { page } from "$app/state"
+    import { ll, localePath } from "$i18n/helpers"
+    import { ContentCenter, Button } from "$lib/components"
 </script>
 
-<svelte:head>
-    <title>{$t("routes.error.error")} {$page.status}</title>
-</svelte:head>
+<SvelteSeo title={`${$ll.error()} ${String(page.status)}`} noindex />
 
 <main class="u:relative u:flex-1">
-    <Content.Center>
+    <ContentCenter>
         <div class="u:p-8 u:border-error u:rounded-lg u:border u:text-center">
-            <h1>{$t("routes.error.error")} {$page.status}</h1>
-            {#if $page.error}
-                <h2>{$page.error.message}</h2>
+            <h1>{$ll.error()} {page.status}</h1>
+            {#if page.error}
+                <h2>{page.error.message}</h2>
             {/if}
             <div class="u:flex u:justify-center u:mt-5">
-                <Button href={$localePath("/")} type="error">
-                    {$t("routes.error.go-home")}
+                <Button href={$localePath("/")} variant="error">
+                    {$ll.goHome()}
                 </Button>
             </div>
         </div>
-    </Content.Center>
+    </ContentCenter>
 </main>

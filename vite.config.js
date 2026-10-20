@@ -1,14 +1,15 @@
-import unocss from "unocss/vite"
 import { sveltekit } from "@sveltejs/kit/vite"
-import dynamicImport from "vite-plugin-dynamic-import"
+import unocss from "unocss/vite"
+
+const isWsl = "WSL_DISTRO_NAME" in process.env
 
 /** @type {import("vite").UserConfig} */
 const config = {
     server: {
         port: 6400,
-        host: true
+        host: !isWsl
     },
-    plugins: [unocss(), sveltekit(), dynamicImport()]
+    plugins: [unocss(), sveltekit()]
 }
 
 export default config

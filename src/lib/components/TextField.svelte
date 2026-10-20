@@ -1,42 +1,58 @@
 <script lang="ts">
-    import { Input } from "./internal"
+    import type { HTMLInputAttributes } from "svelte/elements"
 
-    import classNames from "classnames"
-    import { getElementTypeObject } from "$lib/utils"
+    import { Input } from "./_components"
 
-    import type { ElementType } from "$lib/types"
+    import type { ComponentBasicProps, ComponentVariant } from "$lib/types"
+    import { getComponentVariantMap } from "$lib/utils"
 
-    export let type: ElementType = "default"
-    export let placeholder: string | undefined = undefined
-    export let label: string | undefined = undefined
-    export let valueType = "text"
-    export let disabled = false
-    export let readonly = false
-    export let autofocus = false
-    export let value: string | number | null | undefined = undefined
-    export let leftIconClass: string | undefined = undefined
-    export let rightIconClass: string | undefined = undefined
+    type Props = ComponentBasicProps & {
+        variant?: ComponentVariant
+        placeholder?: string
+        label?: string
+        valueType?: string
+        disabled?: boolean
+        readonly?: boolean
+        autofocus?: boolean
+        value?: string | number | null | undefined
+        leftIconClass?: string
+        rightIconClass?: string
+        onKeyPress?: HTMLInputAttributes["onkeypress"]
+    }
 
-    let klass: string | undefined = undefined
-    export { klass as class }
+    let {
+        variant = "default",
+        placeholder = undefined,
+        label = undefined,
+        valueType = "text",
+        disabled = false,
+        readonly = false,
+        autofocus = false,
+        value = $bindable(),
+        leftIconClass = undefined,
+        rightIconClass = undefined,
+        onKeyPress = undefined,
+        class: klass = undefined,
+        ...restProps
+    }: Props = $props()
 
-    $: types = getElementTypeObject(type)
+    const variants = $derived(getComponentVariantMap(variant))
 </script>
 
 <div
-    class={classNames(
+    class={[
         "u:relative u:flex u:items-center",
         {
             "u:opacity-50": disabled,
-            "u:text-default": types.default,
-            "u:text-primary": types.primary,
-            "u:text-success": types.success,
-            "u:text-error": types.error,
-            "u:text-warning": types.warning,
-            "u:text-info": types.info
+            "u:text-default": variants.default,
+            "u:text-primary": variants.primary,
+            "u:text-success": variants.success,
+            "u:text-error": variants.error,
+            "u:text-warning": variants.warning,
+            "u:text-info": variants.info
         },
         klass
-    )}
+    ]}
 >
     {#if label}
         <div
@@ -46,36 +62,34 @@
         </div>
     {/if}
     {#if leftIconClass}
-        <i class={`u:absolute u:left-3 u:pointer-events-none u:text-xl ${leftIconClass}`} />
+        <i class={["u:absolute u:left-3 u:pointer-events-none u:text-xl", leftIconClass]}></i>
     {/if}
     <Input
-        class={classNames(
+        class={[
             "u:w-full u:h-10 u:px-3 u:bg-content u:text-content-inverse u:border u:rounded u:placeholder-opacity-80 u:outline-none",
             "u:dark:placeholder-opacity-80",
             "u:disabled:cursor-not-allowed",
             {
                 "u:pl-10": leftIconClass,
                 "u:pr-10": rightIconClass,
-                "u:border-default u:placeholder-text-default-lighter": types.default,
-                "u:border-primary u:placeholder-text-primary-lighter": types.primary,
-                "u:border-success u:placeholder-text-success-lighter": types.success,
-                "u:border-error u:placeholder-text-error-lighter": types.error,
-                "u:border-warning u:placeholder-text-warning-lighter": types.warning,
-                "u:border-info u:placeholder-text-info-lighter": types.info
+                "u:border-default u:placeholder-text-default-lighter": variants.default,
+                "u:border-primary u:placeholder-text-primary-lighter": variants.primary,
+                "u:border-success u:placeholder-text-success-lighter": variants.success,
+                "u:border-error u:placeholder-text-error-lighter": variants.error,
+                "u:border-warning u:placeholder-text-warning-lighter": variants.warning,
+                "u:border-info u:placeholder-text-info-lighter": variants.info
             }
-        )}
+        ]}
         {autofocus}
         {disabled}
         {placeholder}
         {readonly}
         type={valueType}
         bind:value
-        on:input
-        on:keypress
-        on:focus
-        on:blur
+        onkeypress={onKeyPress}
+        {...restProps}
     />
     {#if rightIconClass}
-        <i class={`u:absolute u:right-3 u:pointer-events-none u:text-xl ${rightIconClass}`} />
+        <i class={["u:absolute u:right-3 u:pointer-events-none u:text-xl", rightIconClass]}></i>
     {/if}
 </div>

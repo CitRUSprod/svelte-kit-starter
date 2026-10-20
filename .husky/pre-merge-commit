@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+BRANCH=$(git branch --show-current)
+
+if [ "$BRANCH" = "master" ] || [ "$BRANCH" = "main" ]; then
+    echo "Merge into branch \"$BRANCH\" is FORBIDDEN!"
+    echo "Create a feature branch and open a Pull Request."
+    exit 1
+fi

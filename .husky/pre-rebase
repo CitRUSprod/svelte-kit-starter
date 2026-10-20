@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+echo "Rebase is forbidden! History must not be overwritten."
+echo "Use git merge to get the changes."
+exit 1

@@ -1,40 +1,51 @@
 <script lang="ts">
-    import { Textarea } from "./internal"
+    import { Textarea } from "./_components"
 
-    import classNames from "classnames"
-    import { getElementTypeObject } from "$lib/utils"
+    import type { ComponentBasicProps, ComponentVariant } from "$lib/types"
+    import { getComponentVariantMap } from "$lib/utils"
 
-    import type { ElementType } from "$lib/types"
+    type Props = ComponentBasicProps & {
+        variant?: ComponentVariant
+        placeholder?: string
+        label?: string
+        resizable?: boolean
+        disabled?: boolean
+        readonly?: boolean
+        autofocus?: boolean
+        value?: string | number | null | undefined
+    }
 
-    export let type: ElementType = "default"
-    export let placeholder: string | undefined = undefined
-    export let label: string | undefined = undefined
-    export let resizable = false
-    export let disabled = false
-    export let readonly = false
-    export let autofocus = false
-    export let value: string | number | null | undefined = undefined
+    let {
+        variant = "default",
+        placeholder = undefined,
+        label = undefined,
+        resizable = false,
+        disabled = false,
+        readonly = false,
+        autofocus = false,
+        value = $bindable(),
+        class: klass = undefined,
+        ...restProps
+    }: Props = $props()
 
-    let klass: string | undefined = undefined
-    export { klass as class }
-
-    $: types = getElementTypeObject(type)
+    const variants = $derived(getComponentVariantMap(variant))
 </script>
 
 <div
-    class={classNames(
+    class={[
         "u:relative u:flex u:items-center",
         {
             "u:opacity-50": disabled,
-            "u:text-default": types.default,
-            "u:text-primary": types.primary,
-            "u:text-success": types.success,
-            "u:text-error": types.error,
-            "u:text-warning": types.warning,
-            "u:text-info": types.info
+            "u:text-default": variants.default,
+            "u:text-primary": variants.primary,
+            "u:text-success": variants.success,
+            "u:text-error": variants.error,
+            "u:text-warning": variants.warning,
+            "u:text-info": variants.info
         },
         klass
-    )}
+    ]}
+    {...restProps}
 >
     {#if label}
         <div
@@ -44,28 +55,25 @@
         </div>
     {/if}
     <Textarea
-        class={classNames(
+        class={[
             "u:w-full u:h-40 u:px-3 u:py-2 u:bg-content u:text-content-inverse u:border u:rounded u:placeholder-opacity-80 u:outline-none",
             "u:dark:placeholder-opacity-80",
             "u:disabled:cursor-not-allowed",
             {
-                "u:border-default u:placeholder-text-default-lighter": types.default,
-                "u:border-primary u:placeholder-text-primary-lighter": types.primary,
-                "u:border-success u:placeholder-text-success-lighter": types.success,
-                "u:border-error u:placeholder-text-error-lighter": types.error,
-                "u:border-warning u:placeholder-text-warning-lighter": types.warning,
-                "u:border-info u:placeholder-text-info-lighter": types.info,
+                "u:border-default u:placeholder-text-default-lighter": variants.default,
+                "u:border-primary u:placeholder-text-primary-lighter": variants.primary,
+                "u:border-success u:placeholder-text-success-lighter": variants.success,
+                "u:border-error u:placeholder-text-error-lighter": variants.error,
+                "u:border-warning u:placeholder-text-warning-lighter": variants.warning,
+                "u:border-info u:placeholder-text-info-lighter": variants.info,
                 "u:resize-none": !resizable
             }
-        )}
+        ]}
         {autofocus}
         {disabled}
         {placeholder}
         {readonly}
         bind:value
-        on:input
-        on:keypress
-        on:focus
-        on:blur
+        {...restProps}
     />
 </div>

@@ -1,3 +1,11 @@
 /// <reference types="@sveltejs/kit" />
 
-declare namespace App {}
+declare namespace App {
+    type Locale = import("$i18n/helpers").Locale
+    type TranslationFunctions = import("$i18n/helpers").TranslationFunctions
+
+    interface Locals {
+        locale: Locale
+        ll: TranslationFunctions
+    }
+}
