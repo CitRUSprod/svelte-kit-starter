@@ -59,13 +59,17 @@ Check types and lint:
 pnpm validate
 ```
 
-### CI/CD
+### CI
 
 GitHub Actions (`.github/workflows/check.yml`) runs on every push and executes:
 
 1. Installing dependencies (`pnpm i`)
-2. Building the project (`pnpm build`)
+2. Building the project (`pnpm build` — adapter-node)
 3. Full check (`pnpm validate` — types + linting)
+
+### Deployment
+
+Deployment is handled by Netlify (`netlify.toml`), not GitHub Actions. Netlify runs `pnpm build:auto` (adapter-auto) and publishes the `build` directory. Note that CI builds with adapter-node, so it does not verify the exact build used in production.
 
 ### Environment variables
 
